@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            About
           </a>
         </li>
       
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -238,6 +238,143 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/07/SS-Command/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/07/SS-Command/" itemprop="url">
+                  SS Command
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T16:32:19+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h2><ul>
+<li><code>yum install -y git</code></li>
+<li><code>yum install -y vim</code></li>
+<li><code>wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</code> </li>
+<li><code>chmod +x bbr.sh</code> </li>
+<li><code>./bbr.sh</code></li>
+<li><code>uname -r</code></li>
+<li><code>sysctl net.ipv4.tcp_available_congestion_control</code></li>
+<li><code>sysctl net.ipv4.tcp_congestion_control</code></li>
+<li><code>sysctl net.core.default_qdisc</code></li>
+<li><code>lsmod | grep bbr</code></li>
+</ul>
+<h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><ul>
+<li><code>git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git</code> </li>
+</ul>
+<h2 id="salsa20-或-chacha20-或-chacha20-ietf"><a href="#salsa20-或-chacha20-或-chacha20-ietf" class="headerlink" title="salsa20 或 chacha20 或 chacha20-ietf"></a>salsa20 或 chacha20 或 chacha20-ietf</h2><ul>
+<li><code>yum install epel-release</code> </li>
+<li><code>yum install libsodium</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -288,7 +425,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T12:17:28+08:00">
                 2017-01-07
@@ -494,7 +631,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T13:34:05+08:00">
                 2017-01-06
@@ -542,6 +679,7 @@ export PATH=$NODE_HOME/bin:$PATH
 <h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb:"></a>mongodb:</h1><p>vim /etc/yum.repos.d/mongodb-org-3.4.repo<br>[mongodb-org-3.4]<br>name=MongoDB Repository<br>baseurl=<a href="https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/" target="_blank" rel="external">https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</a><br>gpgcheck=1<br>enabled=1<br>gpgkey=<a href="https://www.mongodb.org/static/pgp/server-3.4.asc" target="_blank" rel="external">https://www.mongodb.org/static/pgp/server-3.4.asc</a></p>
 <p>yum install -y mongodb-org</p>
 <p>Set SELinux to permissive mode in /etc/selinux/config by setting the SELINUX setting to permissive.<br>SELINUX=permissive</p>
+<p>firewall-cmd –zone=public –add-port=80/tcp –permanent<br>systemctl restart firewalld.service</p>
 
           
         
@@ -620,7 +758,7 @@ export PATH=$NODE_HOME/bin:$PATH
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T09:56:35+08:00">
                 2017-01-06
@@ -742,7 +880,7 @@ export PATH=$NODE_HOME/bin:$PATH
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:51:39+08:00">
                 2017-01-05
@@ -860,7 +998,7 @@ export PATH=$NODE_HOME/bin:$PATH
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:42:23+08:00">
                 2017-01-05
@@ -988,7 +1126,7 @@ export PATH=$NODE_HOME/bin:$PATH
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T09:52:46+08:00">
                 2017-01-05
@@ -1125,8 +1263,8 @@ export PATH=$NODE_HOME/bin:$PATH
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1178,7 +1316,7 @@ export PATH=$NODE_HOME/bin:$PATH
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
