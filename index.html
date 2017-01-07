@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -238,6 +238,338 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/07/git-command/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/07/git-command/" itemprop="url">
+                  git command
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T12:17:28+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-First-Time-Git-Setup"><a href="#1-First-Time-Git-Setup" class="headerlink" title="1. First-Time Git Setup"></a>1. First-Time Git Setup</h2><ul>
+<li><code>git config -l</code>      </li>
+<li><code>git config --global user.name &quot;your name&quot;</code>     </li>
+<li><code>git config --global user.email xxx@example.com</code>      </li>
+<li><code>git config --global color.ui true</code>    </li>
+<li><code>git config core.ignorecase false</code>   ##设置大小写敏感</li>
+</ul>
+<h2 id="2-Generate-SSH-key"><a href="#2-Generate-SSH-key" class="headerlink" title="2. Generate SSH key"></a>2. Generate SSH key</h2><ul>
+<li><code>ssh-keygen -t rsa -C &quot;you@yourdomain.com&quot;</code>    </li>
+<li><code>cat ~/.ssh/id_rsa.pub</code>    </li>
+</ul>
+<h2 id="3-Initializing-a-Repository-in-an-Existing-Directory"><a href="#3-Initializing-a-Repository-in-an-Existing-Directory" class="headerlink" title="3. Initializing a Repository in an Existing Directory"></a>3. Initializing a Repository in an Existing Directory</h2><ul>
+<li><code>git init</code>    </li>
+<li><code>git add .</code>    </li>
+<li><code>git commit -m &#39;initial project&#39;</code>    </li>
+<li><code>git remote add &lt;name&gt; &lt;url&gt;</code>    </li>
+<li><code>git push &lt;name&gt;</code>    </li>
+</ul>
+<h2 id="4-Cloning-an-Existing-Repository"><a href="#4-Cloning-an-Existing-Repository" class="headerlink" title="4. Cloning an Existing Repository"></a>4. Cloning an Existing Repository</h2><ul>
+<li><code>git clone [url]</code> </li>
+<li>修改 <code>vim .git/config</code> 令： rebase = true (存在每个分支下)<pre><code>filemode = false （防止git将自己本身文件检测并显示）
+</code></pre><h2 id="5-Git-Base-Command"><a href="#5-Git-Base-Command" class="headerlink" title="5. Git Base Command"></a>5. Git Base Command</h2></li>
+<li><code>git status</code></li>
+<li><code>git add &lt;file&gt;</code>                      # 将工作文件修改提交到暂存区</li>
+<li><code>git add .</code>                          # 将当前目录中所有修改过的工作文件提交暂存区</li>
+<li><code>git rm &lt;file&gt;</code>                      # 将文件从仓库中移除，并且从当前目录中删除</li>
+<li><code>git rm &lt;file&gt; --cached</code>              # 将文件从仓库中移除，但仍然保留在当前目录中</li>
+<li><code>git git clean -df &lt;url&gt;</code></li>
+<li><code>git mv FileName NewFileName</code>      # 文件重命名</li>
+<li><code>git commit -m &quot;something&quot; someFile</code>     # 提交指定文件 </li>
+<li><code>git commit -a -m &quot;something&quot;</code>                # 把所有已经跟踪过的文件暂存,并提交</li>
+<li><code>git commit --amend</code>                      # 增补提交</li>
+<li><code>git commit -C HEAD -a —amend</code>  # 复用HEAD留言，增补提交</li>
+<li><code>git pull</code>                         # 抓取远程仓库所有分支更新并合并到本地</li>
+<li><code>git fetch origin</code>           # 抓取远程仓库更新</li>
+<li><code>git merge origin/master</code>     # 将远程主分支合并到本地当前分支</li>
+<li><code>git merge &lt;branch&gt;</code>          # 将branch分支合并到当前分支</li>
+<li><code>git push</code>                              # push所有分支   </li>
+<li><code>git push origin master</code>       # 推到远程主分支   </li>
+<li><code>git push -u origin master</code>   # 推到远程主分支(如无远程主分支则创建，用于初始化远程仓库)  </li>
+</ul>
+<h2 id="6-Undoing-Unstaged-File"><a href="#6-Undoing-Unstaged-File" class="headerlink" title="6. Undoing Unstaged File"></a>6. Undoing Unstaged File</h2><ul>
+<li><code>git checkout  -- &lt;file&gt;</code>                    # 用暂存区中filename文件来覆盖工作区中的filename文件 </li>
+<li><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code>  # 用<commit>所指向的提交中filename替换暂存区和工作区中相应的文件 </commit></li>
+<li><code>git checkout -- .</code> 　　　　                # 或者git checkout . 用暂存区的所有文件直接覆盖本地文件 </li>
+</ul>
+<h2 id="7-Undoing-Staged-Commited-File"><a href="#7-Undoing-Staged-Commited-File" class="headerlink" title="7. Undoing Staged/Commited File"></a>7. Undoing Staged/Commited File</h2><ul>
+<li><code>git reset --mixed &lt;commit&gt;</code>    # (默认)更改引用的指向及重置暂存区，但是不改变工作区</li>
+<li><code>git reset --hard &lt;commit&gt;</code>     # 替换引用的指向，替换暂存区，替换工作区 </li>
+<li><code>git reset --soft &lt;commit&gt;</code>     # 更改引用的指向(复位版本库)，不改变暂存区和工作区 </li>
+<li><code>git reset &lt;file&gt;</code>              # 将文件的改动撤出暂存区，相当于命令git add <file>的反射操作  </file></li>
+<li><code>git reset --soft HEAD^</code>        # 工作区和暂存区不改变，但是引用向前回退一次，撤销最新的提交以便重新提交 </li>
+<li><code>git reset --hard HEAD^</code>        # 彻底撤销最近的提交（本地文件代码修改一并撤回）</li>
+</ul>
+<h2 id="8-Branch-Related"><a href="#8-Branch-Related" class="headerlink" title="8. Branch Related"></a>8. Branch Related</h2><ul>
+<li><code>git checkout brname</code>                  # 切换分支 </li>
+<li><code>git checkout -b brname</code>             # 创建并切换分支</li>
+<li><code>git branch brname master/cid/tag</code>  # 基于某次提交、分支或标签创建新分支 </li>
+<li><code>git branch -r</code>                       # 显示远程分支 </li>
+<li><code>git branch -a</code>                      # 列出所有分支 </li>
+<li><code>git branch -m master mymaster</code>      # 分支重命名 -M 大写M会覆盖同名的分支 </li>
+<li><code>git branch -d</code>                      # 删除分支</li>
+<li><code>git br -D &lt;branch&gt;</code>                  # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</li>
+</ul>
+<h2 id="9-Diff-Related"><a href="#9-Diff-Related" class="headerlink" title="9. Diff Related"></a>9. Diff Related</h2><ul>
+<li><code>git diff</code>                          # 比较尚未暂存的文件</li>
+<li><code>git diff &lt;file&gt;</code>               # 比较当前文件和暂存区文件差异   </li>
+<li><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code>  # 比较两次提交之间的差异   </li>
+<li><code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>  # 在两个分支之间比较   </li>
+<li><code>git diff --staged</code>     # 比较暂存区和版本库差异   </li>
+<li><code>git diff --cached</code>    # 比较暂存区和版本库差异   </li>
+<li><code>git diff --stat</code>         # 仅仅比较统计信息</li>
+</ul>
+<h2 id="10-Log-Related"><a href="#10-Log-Related" class="headerlink" title="10. Log Related"></a>10. Log Related</h2><ul>
+<li><code>git log &lt;--oneline&gt;</code> </li>
+<li><code>git log &lt;file&gt;</code>            # 查看该文件每次提交记录   </li>
+<li><code>git log -p &lt;file&gt;</code>        # 查看每次详细修改内容的diff   </li>
+<li><code>git log -p -2</code>            # 查看最近两次详细修改内容的diff   </li>
+<li><code>git log --stat</code>            # 查看提交统计信息</li>
+</ul>
+<h2 id="11-stash"><a href="#11-stash" class="headerlink" title="11. stash"></a>11. stash</h2><ul>
+<li><code>git stash</code> </li>
+<li><code>git stash save &quot;缓存记录名&quot;</code></li>
+<li><code>git stash list 缓存列表</code></li>
+<li><code>git stash apply stash{0} 放出缓存为stash{0}的缓存</code></li>
+</ul>
+<h2 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h2><p><code>git cherry-pick &lt;commit&gt;</code> 将另一个分支的提交提交到当前分支</p>
+<p>Addition<br>rebase: <a href="http://gitbook.liuhui998.com/4_2.html" target="_blank" rel="external">http://gitbook.liuhui998.com/4_2.html</a><br>reset:  <a href="http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html" target="_blank" rel="external">http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/06/常用开发环境安装配置/" itemprop="url">
+                  常用开发环境安装配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T13:34:05+08:00">
+                2017-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><p>`</p>
+<pre><code>#set for nodejs   
+export NODE_HOME=/usr/local/node-v.6.x   
+export PATH=$NODE_HOME/bin:$PATH
+</code></pre><p>`</p>
+<h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb:"></a>mongodb:</h1><p>vim /etc/yum.repos.d/mongodb-org-3.4.repo<br>[mongodb-org-3.4]<br>name=MongoDB Repository<br>baseurl=<a href="https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/" target="_blank" rel="external">https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</a><br>gpgcheck=1<br>enabled=1<br>gpgkey=<a href="https://www.mongodb.org/static/pgp/server-3.4.asc" target="_blank" rel="external">https://www.mongodb.org/static/pgp/server-3.4.asc</a></p>
+<p>yum install -y mongodb-org</p>
+<p>Set SELinux to permissive mode in /etc/selinux/config by setting the SELINUX setting to permissive.<br>SELINUX=permissive</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -288,7 +620,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T09:56:35+08:00">
                 2017-01-06
@@ -328,11 +660,11 @@
       
         
           
-            <h1 id="目录（还不能使用目录结构）"><a href="#目录（还不能使用目录结构）" class="headerlink" title="目录（还不能使用目录结构）"></a>目录（还不能使用目录结构）</h1><ol>
+            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
 <li><a href="#1">抽奖接口</a></li>
 <li><a href="#2">领奖接口</a></li>
 </ol>
-<h2 id="1"> 抽奖接口</h2><br><strong>简要描述：</strong><br>- 抽奖接口<br>- 备注:更多返回错误代码请看首页的错误代码描述<br><br>|请求URL：                                                                                                                   |请求方式：<br>|:—-                                                                                                                      |:—<br>|<a href="http://xx.com/acs-apis/api/wpy/{platform}/lottery/prize" target="_blank" rel="external">http://xx.com/acs-apis/api/wpy/{platform}/lottery/prize</a>        |PUT<br><br><strong>参数：</strong><br><br>|参数名            |必选     |类型       |说明              |<br>|:—-            |:—     |:—–     |—–             |<br>|prizeIds         |是       |Long[]     |                  |<br>|addressId        |是       |Long       |                  |<br>|shipTimeType     |否       |string     |                  |<br>|resourceChannel  |否       |string     |                  |<br>|address          |否       |string     |                  |<br><br> <strong>返回示例</strong><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;code&quot;: 0,</div><div class="line">  &quot;msg&quot;: 0,</div><div class="line">  &quot;data&quot;: &#123;</div><div class="line">    &quot;uid&quot;: &quot;1&quot;,</div><div class="line">    &quot;username&quot;: &quot;12154545&quot;,</div><div class="line">    &quot;name&quot;: &quot;吴系挂&quot;,</div><div class="line">    &quot;groupid&quot;: 2 ,</div><div class="line">    &quot;reg_time&quot;: &quot;1436864169&quot;,</div><div class="line">    &quot;last_login_time&quot;: &quot;0&quot;,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br> <strong>返回参数说明</strong><br><br>|参数名      |类型    |说明<br>|:—–      |:—–  |—–<br>|groupid     |int     |用户组id，1：超级管理员；2：普通用户<br><br>——————————————————————–<br><br><h2 id="2"> 领奖接口</h2>  
+<h2 id="1"> 抽奖接口</h2><br><strong>简要描述：</strong><br>- 抽奖接口<br>- 备注:更多返回错误代码请看首页的错误代码描述<br><br>|请求URL：                                                                                                                   |请求方式：<br>|:—-                                                                                                                      |:—<br>|<a href="http://xx.com/acs-apis/api/wpy/{platform}/lottery/prize" target="_blank" rel="external">http://xx.com/acs-apis/api/wpy/{platform}/lottery/prize</a>        |PUT<br><br><strong>参数：</strong><br><br>|参数名           |必选     |类型       |说明              |<br>|:—-            |:—     |:—–     |—–             |<br>|prizeIds         |是       |Long[]     |                  |<br>|addressId        |是       |Long       |                  |<br>|shipTimeType     |否       |string     |                  |<br>|resourceChannel  |否       |string     |                  |<br>|address          |否       |string     |                  |<br><br> <strong>返回示例</strong><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;code&quot;: 0,</div><div class="line">  &quot;msg&quot;: 0,</div><div class="line">  &quot;data&quot;: &#123;</div><div class="line">    &quot;uid&quot;: &quot;1&quot;,</div><div class="line">    &quot;username&quot;: &quot;12154545&quot;,</div><div class="line">    &quot;name&quot;: &quot;吴系挂&quot;,</div><div class="line">    &quot;groupid&quot;: 2 ,</div><div class="line">    &quot;reg_time&quot;: &quot;1436864169&quot;,</div><div class="line">    &quot;last_login_time&quot;: &quot;0&quot;,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br> <strong>返回参数说明</strong><br><br>|参数名      |类型    |说明<br>|:—–      |:—–  |—–<br>|groupid     |int     |用户组id，1：超级管理员；2：普通用户<br><br>——————————————————————–<br><br><h2 id="2"> 领奖接口</h2>  
           
         
       
@@ -410,7 +742,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:51:39+08:00">
                 2017-01-05
@@ -528,7 +860,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:42:23+08:00">
                 2017-01-05
@@ -656,7 +988,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T09:52:46+08:00">
                 2017-01-05
@@ -793,8 +1125,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -846,7 +1178,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
