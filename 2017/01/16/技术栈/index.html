@@ -110,7 +110,7 @@ Spring FrameWork(Spring MVC,Spring Boot)
 Rabbitmq
 Mongodb(mongoose)
 Nodejs(express)">
-<meta property="og:updated_time" content="2017-03-01T10:09:30.000Z">
+<meta property="og:updated_time" content="2017-03-01T10:13:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术栈">
 <meta name="twitter:description" content="技术栈
@@ -357,9 +357,10 @@ Nodejs(express)">
       
         <!--
 # 目录
-1. [并发多线程，网络IO](#1)
-2. [缓存数据库读写](#2)
-3. [系统架构](#3)
+1. [技术栈](#1)
+2. [并发多线程，网络IO](#2)
+2. [缓存数据库读写](#3)
+3. [系统架构](#4)
 -->
 <p></p><h2 id="1">技术栈</h2><p></p>
 <ul>
@@ -372,7 +373,7 @@ Nodejs(express)">
 <li>Rabbitmq</li>
 <li>Mongodb(mongoose)</li>
 <li>Nodejs(express)<a id="more"></a> 
-<h2 id="3">并发多线程，网络IO</h2><br><h2 id="4">缓存数据库读写</h2><h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3></li>
+<h2 id="2">并发多线程，网络IO</h2><br><h2 id="3">缓存数据库读写</h2><h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3></li>
 </ul>
 <ol>
 <li>redis中key的前缀生成策略如下：<h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key<br>目前项目包括：</li>
@@ -381,7 +382,7 @@ Nodejs(express)">
 <p>000000该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）</p>
 <h3 id="数据库Mysql"><a href="#数据库Mysql" class="headerlink" title="数据库Mysql"></a>数据库Mysql</h3><ol>
 <li>数据库读写分离</li>
-<li>数据库主键生成策略<h2 id="5">系统架构</h2></li>
+<li>数据库主键生成策略<h2 id="4">系统架构</h2></li>
 <li>用户体系</li>
 <li>常量结构<br>背景，现在CommonConstants类是越来越庞大，而且现在微盘和大盘的分割会是两边后台代码维护越来越复杂。同时为了使代码更加简洁，清晰，优雅，也是为了提高代码可读性，降低耦合程度，提出以下几点归纳和建议：<br>CommonConstants类现在主要包括：1.接口等加密所用的混淆“盐”值，2.账号类型常量值，3.部分操作具体小的业务常量值，4.redis所用到的key值。其中占大量篇幅的应该是redis的key值，重要的是账号类型的常量值。<br>分解思路<br>1.将redis key值抽出重新归纳为一个类中<br>2.将所有账号类型相关的常量值统一使用枚举来实现，区分账号类型和业务类型。该类尽量减少其他代码的入侵。<br>3.接口加盐加密抽离存放<br>4.将具体的小业务常量存放在子项目中（比如文章相关的常量可以存放在tools中的common类中等）</li>
 </ol>
@@ -528,7 +529,7 @@ Nodejs(express)">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">2.</span> <span class="nav-text">并发多线程，网络IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">3.</span> <span class="nav-text">缓存数据库读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存Redis"><span class="nav-number">3.1.</span> <span class="nav-text">缓存Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基础方法："><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 基础方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高级方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 高级方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库Mysql"><span class="nav-number">3.2.</span> <span class="nav-text">数据库Mysql</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-number">4.</span> <span class="nav-text">系统架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">并发多线程，网络IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">缓存数据库读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存Redis"><span class="nav-number">3.1.</span> <span class="nav-text">缓存Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基础方法："><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 基础方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高级方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 高级方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库Mysql"><span class="nav-number">3.2.</span> <span class="nav-text">数据库Mysql</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">系统架构</span></a></li></ol></div>
             
 
           </div>
