@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/index.html">
 <meta property="og:site_name" content="长大后能够飞">
 <meta property="og:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
-<meta property="og:updated_time" content="2017-03-01T09:58:13.808Z">
+<meta property="og:updated_time" content="2017-03-01T10:00:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用开发环境安装配置">
 <meta name="twitter:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
@@ -327,11 +327,23 @@
       
         <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#set for nodejs   </div><div class="line">export NODE_HOME=/usr/local/node-v.6.x   </div><div class="line">export PATH=$NODE_HOME/bin:$PATH</div></pre></td></tr></table></figure>
 <a id="more"></a>    
-<h1 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb:"></a>安装mongodb:</h1><p><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">[mongodb-org-3.4]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc</div><div class="line">```        </div><div class="line">`yum install -y mongodb-org`  </div><div class="line"></div><div class="line">如遇到错误可尝试如下方法：    </div><div class="line">Set SELinux to permissive mode in `/etc/selinux/config` by setting the SELINUX setting to permissive.    </div><div class="line">`SELINUX=permissive`    </div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">centos7防火墙开放80端口   </div><div class="line">`firewall-cmd --zone=public --add-port=80/tcp --permanent`      </div><div class="line">centos7关闭防火墙    </div><div class="line">`systemctl restart firewalld.service`       </div><div class="line">## Error: EACCES: permission denied</div></pre></td></tr></table></figure></p>
-<p>sudo chown -R $USER ~/.npm<br>sudo chown -R $USER /usr/lib/node_modules<br>sudo chown -R $USER /usr/local/lib/node_modules</p>
-<pre><code>## checking for C compiler ... not found
-</code></pre><p>sudo yum groupinstall “Development Tools”<br>yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y<br>```    </p>
-
+<h1 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb:"></a>安装mongodb:</h1><p><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo</code></p>
+<pre><code>[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+</code></pre><p><code>yum install -y mongodb-org</code>  </p>
+<p>如遇到错误可尝试如下方法：<br>Set SELinux to permissive mode in <code>/etc/selinux/config</code> by setting the SELINUX setting to permissive.<br><code>SELINUX=permissive</code>    </p>
+<hr>
+<p>centos7防火墙开放80端口<br><code>firewall-cmd --zone=public --add-port=80/tcp --permanent</code><br>centos7关闭防火墙<br><code>systemctl restart firewalld.service</code>        </p>
+<h2 id="Error-EACCES-permission-denied"><a href="#Error-EACCES-permission-denied" class="headerlink" title="Error: EACCES: permission denied"></a>Error: EACCES: permission denied</h2><pre><code>sudo chown -R $USER ~/.npm
+sudo chown -R $USER /usr/lib/node_modules
+sudo chown -R $USER /usr/local/lib/node_modules
+</code></pre><h2 id="checking-for-C-compiler-…-not-found"><a href="#checking-for-C-compiler-…-not-found" class="headerlink" title="checking for C compiler … not found"></a>checking for C compiler … not found</h2><pre><code>sudo yum groupinstall &quot;Development Tools&quot;
+yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y
+</code></pre>
       
     </div>
 
@@ -478,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mongodb"><span class="nav-number">2.</span> <span class="nav-text">安装mongodb:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mongodb"><span class="nav-number">2.</span> <span class="nav-text">安装mongodb:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-EACCES-permission-denied"><span class="nav-number">2.1.</span> <span class="nav-text">Error: EACCES: permission denied</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checking-for-C-compiler-…-not-found"><span class="nav-number">2.2.</span> <span class="nav-text">checking for C compiler … not found</span></a></li></ol></li></ol></div>
             
 
           </div>
