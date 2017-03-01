@@ -84,34 +84,31 @@
 
 
 
-<meta name="description" content="编程思想阅读心得
-1.对象入门
+<meta name="description" content="编程思想阅读心得1.对象入门
 建立模型——“知识结构”。
 不必强行记住运算符优先级，拿不准时加括号即可。
 对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。
 多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。
-C++和J">
+C++和Ja">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程思想阅读心得">
 <meta property="og:url" content="https://suyuanhxx.github.io/2016/07/20/编程思想阅读心得/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="编程思想阅读心得
-1.对象入门
+<meta property="og:description" content="编程思想阅读心得1.对象入门
 建立模型——“知识结构”。
 不必强行记住运算符优先级，拿不准时加括号即可。
 对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。
 多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。
-C++和J">
-<meta property="og:updated_time" content="2017-03-01T09:44:21.671Z">
+C++和Ja">
+<meta property="og:updated_time" content="2017-03-01T09:46:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程思想阅读心得">
-<meta name="twitter:description" content="编程思想阅读心得
-1.对象入门
+<meta name="twitter:description" content="编程思想阅读心得1.对象入门
 建立模型——“知识结构”。
 不必强行记住运算符优先级，拿不准时加括号即可。
 对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。
 多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。
-C++和J">
+C++和Ja">
 
 
 
@@ -343,24 +340,17 @@ C++和J">
       
 
       
-        <h2 id="编程思想阅读心得"><a href="#编程思想阅读心得" class="headerlink" title="编程思想阅读心得"></a>编程思想阅读心得</h2><hr>
-<h4 id="1-对象入门"><a href="#1-对象入门" class="headerlink" title="1.对象入门"></a><strong>1.对象入门</strong></h4><ol>
+        <h2 id="编程思想阅读心得"><a href="#编程思想阅读心得" class="headerlink" title="编程思想阅读心得"></a>编程思想阅读心得</h2><h4 id="1-对象入门"><a href="#1-对象入门" class="headerlink" title="1.对象入门"></a><strong>1.对象入门</strong></h4><ol>
 <li>建立模型——“知识结构”。</li>
 <li>不必强行记住运算符优先级，拿不准时加括号即可。</li>
 <li>对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。</li>
 <li>多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。</li>
-<li>C++和Java都是杂合语言，多重编程风格。</li>
-</ol>
-<hr>
-<a id="more"></a>
-<h4 id="2-一切都是对象"><a href="#2-一切都是对象" class="headerlink" title="2.一切都是对象"></a><strong>2.一切都是对象</strong></h4><ol>
+<li>C++和Java都是杂合语言，多重编程风格。<a id="more"></a>
+<h4 id="2-一切都是对象"><a href="#2-一切都是对象" class="headerlink" title="2.一切都是对象"></a><strong>2.一切都是对象</strong></h4></li>
 <li>程序运行时，最好对数据保存到什么地方做到心中有数。特别要注意的是内存的分配六种保存数据位置：<br>1)<strong>寄存器</strong>，最快的保存区域，处理器内部；没有直接的控制权，由编译器分配。也不可能在自己的程序里找到寄存器存在的任何踪迹。<br>2)<strong>堆栈</strong>，驻留于常规RAM（随机访问存储器）区域，<strong>尽管有些Java数据要保存在堆栈里——特别是对象句柄，但Java对象并不放到其中</strong>。<br>3)<strong>堆</strong>。一种常规用途的内存池，<strong>保存了Java对象</strong>。<strong>和堆栈不同，“内存堆”或“堆”（Heap）最吸引人的地方在于编译器不必知道要从堆里分配多少存储空间，也不必知道存储的数据要在堆里停留多长的时间</strong>。因此，用堆保存数据时会得到更大的灵活性。要求创建一个对象时，只需用new命令编制相关的代码即可。执行这些代码时，会在堆里自动进行数据的保存。RAM。<br>(4)<strong>静态存储</strong>。“静态”（Static）是指“位于固定位置”。程序运行期间，静态存储的数据将随时等候调用。可用static关键字指出一个对象的特定元素是静态的。但Java对象本身永远都不会置入静态存储空间。 RAM“固定位置”。<br>(5)<strong>常数存储</strong>。常数值通常直接置于程序代码内部。这样做是安全的，因为它们永远都不会改变。有的常数需要严格地保护，所以可考虑将它们置入只读存储器（ROM）。<br>(6)<strong>非RAM存储</strong>。若数据完全独立于一个程序之外，则程序不运行时仍可存在，并在程序的控制范围之外。其中两个最主要的例子便是“流式对象”和“固定对象”。对于流式对象，对象会变成字节流，通常会发给 另一台机器。而对于固定对象，对象保存在磁盘中。即使程序中止运行，它们仍可保持自己的状态不变。对于这些类型的数据存储，一个特别有用的技巧就是它们能存在于其他媒体中。一旦需要，甚至能将它们恢复成普通的、基于RAM的对象。<br><strong>特例：对于基本数据类型，由于用new创建对象（特别是小的、简单的变量）并不是非常有效，因为new将对象置于“堆”里。对于这些类型，Java采纳了与C和C++相同的方法。也就是说，不是用new创建变量，而是创建一个并非句柄的“自动”变量。这个变量容纳了具体的值，并置于堆栈中，能够更高效地存取。</strong><br><strong>Java所有数组均为Object对象，存储于堆内存中</strong></li>
 <li>软件库名为域名反转（BruceEckel.com -&gt; com.bruceeckel.utility.foibles）软件包都以小写字母为标准。</li>
 <li>对象作用域，Java对象不具备与主类型（基本数据类型）一样的存在时间。用new关键字创建一个Java对象的时候，它会超出作用域的范围之外。所以假若使用下面这段代码：<br><code>String s=&quot;a string&quot;</code><br>//句柄s会在作用域的终点处消失。然而，s指向的String对象依然占据着内存空间，指向它的唯一一个句柄已超出了作用域的边界。垃圾回收器</li>
-<li>Java可以嵌入html注释文档</li>
-</ol>
-<hr>
-<h4 id="3-控制程序流程"><a href="#3-控制程序流程" class="headerlink" title="3.控制程序流程"></a><strong>3.控制程序流程</strong></h4><ol>
+<li>Java可以嵌入html注释文档<h4 id="3-控制程序流程"><a href="#3-控制程序流程" class="headerlink" title="3.控制程序流程"></a><strong>3.控制程序流程</strong></h4></li>
 <li>自增和自减：对于前递增和前递减（如++A或–A），会先执行运算（指执行++运算），再生成值。而对于后递增和后递减（如A++或A–），会先生成值，再执行运算。  </li>
 <li>按位运算符：AND（&amp;）运算符、OR（|）运算符、XOR（^异或）运算符、NOT（~非）运算符（一元运算符），重点是异或^运算符，不要当成了次方运算符。</li>
 <li>位移运算符：&lt;&lt;左移运算符、&gt;&gt;右移运算符.</li>
@@ -370,24 +360,12 @@ C++和J">
 <li>Java不支持goto语句</li>
 <li>程序控制关键字<code>if-else</code>、<code>return</code>、<code>while</code>、<code>do-while</code>、<code>for</code>、<code>switch case</code><br>中断<code>break</code> <code>continue</code></li>
 <li>Java方法重载：<code>override</code>区别过载方法：每个过载的方法都必须采取独一无二的自变量类型列表（参数列表），参数类型中，即使自变量的顺序也足够我们区分两个方法</li>
-<li>static方法不能访问非static方法，反之可以</li>
-</ol>
-<hr>
-<h4 id="4-初始化和清除"><a href="#4-初始化和清除" class="headerlink" title="4.初始化和清除"></a><strong>4.初始化和清除</strong></h4><ol>
+<li>static方法不能访问非static方法，反之可以<h4 id="4-初始化和清除"><a href="#4-初始化和清除" class="headerlink" title="4.初始化和清除"></a><strong>4.初始化和清除</strong></h4></li>
 <li>JVM垃圾回收<code>System.gc()</code></li>
 <li>静态数据初始化顺序：Java初始化顺序<br> <strong>在new B一个实例时首先要进行类的装载</strong>（类只有在使用New调用创建的时候才会被java类装载器装入）<br> 1.在装载类时，先装载父类A，再装载子类B<br> 2.装载父类A后，完成静态动作（包括静态块、静态变量，它们的级别是相同的，按代码中出现的顺序初始化）<br> 3.装载子类B后，完成静态动作<br> <strong>类装载完成，开始进行实例化</strong><br> 1.在实例化子类B时，先要实例化父类A<br> 2.实例化父类A时，先成员实例化（非静态代码）<br> 3.父类A的构造方法<br> 4.子类B的成员实例化（非静态代码）<br> 5.子类B的构造方法<br> <strong>总结：先初始化父类的静态代码—&gt;初始化子类的静态代码–&gt;初始化父类的非静态代码—&gt;初始化父类构造函数—&gt;初始化子类非静态代码—&gt;初始化子类构造函数</strong>  </li>
-<li>数组初始化，多维数组的初始化 </li>
-</ol>
-<hr>
-<h4 id="5-隐藏实施过程"><a href="#5-隐藏实施过程" class="headerlink" title="5.隐藏实施过程"></a><strong>5.隐藏实施过程</strong></h4><ol>
-<li>关键字<code>public</code>、<code>protected</code>、<code>private</code>.<br><code>private</code> 不能被继承，同一个包里继承类能够访问<code>protected</code>成员，不同包里不能访问。<br><code>public</code> 成员放在类最上面提高代码可读性</li>
-</ol>
-<hr>
-<h4 id="6-类再生"><a href="#6-类再生" class="headerlink" title="6.类再生"></a><strong>6.类再生</strong></h4><ol>
-<li>继承和组合（合成）要合理使用：考虑是否需要从新类上溯造型回基础类。若必须上溯，就需要继承。但如果不需要上溯造型，就应提醒自己防止继承的滥用。只要记住经常问自己“我真的需要上溯造型吗”，对于合成还是继承的选择就不应该是个太大的问题。</li>
-</ol>
-<hr>
-<h3 id="7-多形性"><a href="#7-多形性" class="headerlink" title="7.多形性"></a><strong>7.多形性</strong></h3><ol>
+<li>数组初始化，多维数组的初始化 <h4 id="5-隐藏实施过程"><a href="#5-隐藏实施过程" class="headerlink" title="5.隐藏实施过程"></a><strong>5.隐藏实施过程</strong></h4></li>
+<li>关键字<code>public</code>、<code>protected</code>、<code>private</code>.<br><code>private</code> 不能被继承，同一个包里继承类能够访问<code>protected</code>成员，不同包里不能访问。<br><code>public</code> 成员放在类最上面提高代码可读性<h4 id="6-类再生"><a href="#6-类再生" class="headerlink" title="6.类再生"></a><strong>6.类再生</strong></h4></li>
+<li>继承和组合（合成）要合理使用：考虑是否需要从新类上溯造型回基础类。若必须上溯，就需要继承。但如果不需要上溯造型，就应提醒自己防止继承的滥用。只要记住经常问自己“我真的需要上溯造型吗”，对于合成还是继承的选择就不应该是个太大的问题。<h3 id="7-多形性"><a href="#7-多形性" class="headerlink" title="7.多形性"></a><strong>7.多形性</strong></h3></li>
 <li>面向对象的程序设计语言（OOP）的三种最基本的特征：数据抽象、继承和多形性。</li>
 <li>后期绑定，<code>Shape shape = new Circle();</code>Shape的<code>draw()</code>方法会被覆盖，实际调用的是Circle的<code>Draw()</code>方法。后期绑定介入。</li>
 <li>内部类，内部类访问和对象生成<br><code>BaseClass instance = new BaseClass();</code><br><code>BaseClass.InnerClass a = instance.getInnerClass();//getInnerCase为返回内部类方法</code><br>内部类可以非常方便的隐藏实施细节（private内部类的合理使用和上溯造型）<pre><code>interface base{
@@ -410,10 +388,9 @@ public class InnerClassDemo {
     }
 }
 </code></pre>Inner类除了InnerClassDemo类以外其他任何东西都不能访问。 </li>
-<li>如果已经设计了某个特殊的清除进程，要求它必须作为垃圾收集的一部分进行覆盖衍生类的 finalize()时，务必记住调用 finalize()的基础类版本  </li>
+<li>如果已经设计了某个特殊的清除进程，要求它必须作为垃圾收集的一部分进行覆盖衍生类的 finalize()时，务必记住调用 finalize()的基础类版本  <h3 id="8-面向对象特性和设计原则"><a href="#8-面向对象特性和设计原则" class="headerlink" title="8.面向对象特性和设计原则"></a><strong>8.面向对象特性和设计原则</strong></h3></li>
 </ol>
-<hr>
-<h3 id="8-面向对象特性和设计原则"><a href="#8-面向对象特性和设计原则" class="headerlink" title="8.面向对象特性和设计原则"></a><strong>8.面向对象特性和设计原则</strong></h3><ul>
+<ul>
 <li><strong>面向对象三大特性：封装，继承，多态</strong></li>
 <li><strong>单一职责原则SRP</strong>：指一个类的功能要单一，不能包罗万象。</li>
 <li><strong>里氏替换原则LSP</strong>：父类对象出现的地方都可以替换成子类对象（OO基本思想）。</li>

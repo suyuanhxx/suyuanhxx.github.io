@@ -327,55 +327,19 @@
 
       
         
-          
-            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
 <li><a href="#1">并发多线程，网络IO</a></li>
 <li><a href="#2">缓存数据库读写</a></li>
 <li><a href="#3">系统架构</a></li>
-<li><a href="#4">管理</a></li>
-</ol>
-<h2 id="1">并发多线程，网络IO</h2>
-
-
-<h2 id="2">缓存数据库读写</h2>
-
-<h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3><ol>
-<li>redis中key的前缀生成策略如下：<h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000</li>
-</ol>
-<p>以基础方法命名key<br>目前项目包括：</p>
-<hr>
-<p>000000该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）</p>
-<h3 id="数据库Mysql"><a href="#数据库Mysql" class="headerlink" title="数据库Mysql"></a>数据库Mysql</h3><ol>
-<li>数据库读写分离</li>
-<li>数据库主键生成策略</li>
-</ol>
-<h2 id="3">系统架构</h2>
-
-<ol>
-<li>用户体系</li>
-<li><p>常量结构<br>背景，现在CommonConstants类是越来越庞大，而且现在微盘和大盘的分割会是两边后台代码维护越来越复杂。同时为了使代码更加简洁，清晰，优雅，也是为了提高代码可读性，降低耦合程度，提出以下几点归纳和建议：<br>CommonConstants类现在主要包括：1.接口等加密所用的混淆“盐”值，2.账号类型常量值，3.部分操作具体小的业务常量值，4.redis所用到的key值。其中占大量篇幅的应该是redis的key值，重要的是账号类型的常量值。<br>分解思路<br>1.将redis key值抽出重新归纳为一个类中<br>2.将所有账号类型相关的常量值统一使用枚举来实现，区分账号类型和业务类型。该类尽量减少其他代码的入侵。<br>3.接口加盐加密抽离存放<br>4.将具体的小业务常量存放在子项目中（比如文章相关的常量可以存放在tools中的common类中等）</p>
-</li>
-<li><p>系统技术结构</p>
-</li>
-</ol>
-<ul>
-<li>mysql</li>
-<li>redis</li>
-<li>mybatis</li>
-<li>apache dbcp封装的读写分离</li>
-<li>Hessian</li>
-<li>springMVC</li>
-<li>Rabbitmq</li>
-<li>MongoDB</li>
-<li>NodeJS</li>
-<li>HTML5</li>
-<li>iOS</li>
-<li>Android</li>
-<li>前后端分离（node驱动前端页面，使用http获取java后台数据）</li>
-<li>多线程推送，iOS使用苹果自带服务器apns</li>
-</ul>
-<h2 id="4">管理</h2>
-          
+<li><a href="#4">管理</a><br><h2 id="1">并发多线程，网络IO</h2><br><h2 id="2">缓存数据库读写</h2><h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3></li>
+<li>redis中key的前缀生成策略如下：
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/16/技术栈/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -491,28 +455,19 @@
 
       
         
-          
-            <h2 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h2><ul>
+          <h2 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h2><ul>
 <li><code>yum install -y git</code></li>
 <li><code>yum install -y vim</code></li>
 <li><code>wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</code> </li>
 <li><code>chmod +x bbr.sh</code> </li>
-<li><code>./bbr.sh</code></li>
-<li><code>uname -r</code></li>
-<li><code>sysctl net.ipv4.tcp_available_congestion_control</code></li>
-<li><code>sysctl net.ipv4.tcp_congestion_control</code></li>
-<li><code>sysctl net.core.default_qdisc</code></li>
-<li><code>lsmod | grep bbr</code></li>
-</ul>
-<h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><ul>
-<li><code>git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git</code> </li>
-</ul>
-<h2 id="salsa20-或-chacha20-或-chacha20-ietf"><a href="#salsa20-或-chacha20-或-chacha20-ietf" class="headerlink" title="salsa20 或 chacha20 或 chacha20-ietf"></a>salsa20 或 chacha20 或 chacha20-ietf</h2><ul>
-<li><code>yum install epel-release</code> </li>
-<li><code>yum install libsodium</code></li>
-</ul>
-
-          
+<li><code>./bbr.sh</code>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/07/SS-Command/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -628,98 +583,19 @@
 
       
         
-          
-            <h1 id="git常用命名汇总"><a href="#git常用命名汇总" class="headerlink" title="git常用命名汇总"></a>git常用命名汇总</h1><h2 id="1-First-Time-Git-Setup"><a href="#1-First-Time-Git-Setup" class="headerlink" title="1. First-Time Git Setup"></a>1. First-Time Git Setup</h2><ul>
+          <h1 id="git常用命名汇总"><a href="#git常用命名汇总" class="headerlink" title="git常用命名汇总"></a>git常用命名汇总</h1><h2 id="1-First-Time-Git-Setup"><a href="#1-First-Time-Git-Setup" class="headerlink" title="1. First-Time Git Setup"></a>1. First-Time Git Setup</h2><ul>
 <li><code>git config -l</code>      </li>
 <li><code>git config --global user.name &quot;your name&quot;</code>     </li>
 <li><code>git config --global user.email xxx@example.com</code>      </li>
 <li><code>git config --global color.ui true</code>    </li>
-<li><code>git config core.ignorecase false</code>   ##设置大小写敏感</li>
-</ul>
-<h2 id="2-Generate-SSH-key"><a href="#2-Generate-SSH-key" class="headerlink" title="2. Generate SSH key"></a>2. Generate SSH key</h2><ul>
-<li><code>ssh-keygen -t rsa -C &quot;you@yourdomain.com&quot;</code>    </li>
-<li><code>cat ~/.ssh/id_rsa.pub</code>    </li>
-</ul>
-<h2 id="3-Initializing-a-Repository-in-an-Existing-Directory"><a href="#3-Initializing-a-Repository-in-an-Existing-Directory" class="headerlink" title="3. Initializing a Repository in an Existing Directory"></a>3. Initializing a Repository in an Existing Directory</h2><ul>
-<li><code>git init</code>    </li>
-<li><code>git add .</code>    </li>
-<li><code>git commit -m &#39;initial project&#39;</code>    </li>
-<li><code>git remote add &lt;name&gt; &lt;url&gt;</code>    </li>
-<li><code>git push &lt;name&gt;</code>    </li>
-</ul>
-<h2 id="4-Cloning-an-Existing-Repository"><a href="#4-Cloning-an-Existing-Repository" class="headerlink" title="4. Cloning an Existing Repository"></a>4. Cloning an Existing Repository</h2><ul>
-<li><code>git clone [url]</code> </li>
-<li>修改 <code>vim .git/config</code> 令： rebase = true (存在每个分支下)<pre><code>filemode = false （防止git将自己本身文件检测并显示）
-</code></pre><h2 id="5-Git-Base-Command"><a href="#5-Git-Base-Command" class="headerlink" title="5. Git Base Command"></a>5. Git Base Command</h2></li>
-<li><code>git status</code></li>
-<li><code>git add &lt;file&gt;</code>                      # 将工作文件修改提交到暂存区</li>
-<li><code>git add .</code>                          # 将当前目录中所有修改过的工作文件提交暂存区</li>
-<li><code>git rm &lt;file&gt;</code>                      # 将文件从仓库中移除，并且从当前目录中删除</li>
-<li><code>git rm &lt;file&gt; --cached</code>              # 将文件从仓库中移除，但仍然保留在当前目录中</li>
-<li><code>git git clean -df &lt;url&gt;</code></li>
-<li><code>git mv FileName NewFileName</code>      # 文件重命名</li>
-<li><code>git commit -m &quot;something&quot; someFile</code>     # 提交指定文件 </li>
-<li><code>git commit -a -m &quot;something&quot;</code>                # 把所有已经跟踪过的文件暂存,并提交</li>
-<li><code>git commit --amend</code>                      # 增补提交</li>
-<li><code>git commit -C HEAD -a —amend</code>  # 复用HEAD留言，增补提交</li>
-<li><code>git pull</code>                         # 抓取远程仓库所有分支更新并合并到本地</li>
-<li><code>git fetch origin</code>           # 抓取远程仓库更新</li>
-<li><code>git merge origin/master</code>     # 将远程主分支合并到本地当前分支</li>
-<li><code>git merge &lt;branch&gt;</code>          # 将branch分支合并到当前分支</li>
-<li><code>git push</code>                              # push所有分支   </li>
-<li><code>git push origin master</code>       # 推到远程主分支   </li>
-<li><code>git push -u origin master</code>   # 推到远程主分支(如无远程主分支则创建，用于初始化远程仓库)  </li>
-</ul>
-<h2 id="6-Undoing-Unstaged-File"><a href="#6-Undoing-Unstaged-File" class="headerlink" title="6. Undoing Unstaged File"></a>6. Undoing Unstaged File</h2><ul>
-<li><code>git checkout  -- &lt;file&gt;</code>                    # 用暂存区中filename文件来覆盖工作区中的filename文件 </li>
-<li><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code>  # 用<commit>所指向的提交中filename替换暂存区和工作区中相应的文件 </commit></li>
-<li><code>git checkout -- .</code> 　　　　                # 或者git checkout . 用暂存区的所有文件直接覆盖本地文件 </li>
-<li><code>git checkout feature file-x</code>   #从feature分支检出相应文件</li>
-</ul>
-<h2 id="7-Undoing-Staged-Commited-File"><a href="#7-Undoing-Staged-Commited-File" class="headerlink" title="7. Undoing Staged/Commited File"></a>7. Undoing Staged/Commited File</h2><ul>
-<li><code>git reset --mixed &lt;commit&gt;</code>    # (默认)更改引用的指向及重置暂存区，但是不改变工作区</li>
-<li><code>git reset --hard &lt;commit&gt;</code>     # 替换引用的指向，替换暂存区，替换工作区 </li>
-<li><code>git reset --soft &lt;commit&gt;</code>     # 更改引用的指向(复位版本库)，不改变暂存区和工作区 </li>
-<li><code>git reset &lt;file&gt;</code>              # 将文件的改动撤出暂存区，相当于命令git add <file>的反射操作  </file></li>
-<li><code>git reset --soft HEAD^</code>        # 工作区和暂存区不改变，但是引用向前回退一次，撤销最新的提交以便重新提交 </li>
-<li><code>git reset --hard HEAD^</code>        # 彻底撤销最近的提交（本地文件代码修改一并撤回）</li>
-</ul>
-<h2 id="8-Branch-Related"><a href="#8-Branch-Related" class="headerlink" title="8. Branch Related"></a>8. Branch Related</h2><ul>
-<li><code>git checkout brname</code>                  # 切换分支 </li>
-<li><code>git checkout -b brname</code>             # 创建并切换分支</li>
-<li><code>git branch brname master/cid/tag</code>  # 基于某次提交、分支或标签创建新分支 </li>
-<li><code>git branch -r</code>                       # 显示远程分支 </li>
-<li><code>git branch -a</code>                      # 列出所有分支 </li>
-<li><code>git branch -m master mymaster</code>      # 分支重命名 -M 大写M会覆盖同名的分支 </li>
-<li><code>git branch -d</code>                      # 删除分支</li>
-<li><code>git br -D &lt;branch&gt;</code>                  # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</li>
-</ul>
-<h2 id="9-Diff-Related"><a href="#9-Diff-Related" class="headerlink" title="9. Diff Related"></a>9. Diff Related</h2><ul>
-<li><code>git diff</code>                          # 比较尚未暂存的文件</li>
-<li><code>git diff &lt;file&gt;</code>               # 比较当前文件和暂存区文件差异   </li>
-<li><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code>  # 比较两次提交之间的差异   </li>
-<li><code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>  # 在两个分支之间比较   </li>
-<li><code>git diff --staged</code>     # 比较暂存区和版本库差异   </li>
-<li><code>git diff --cached</code>    # 比较暂存区和版本库差异   </li>
-<li><code>git diff --stat</code>         # 仅仅比较统计信息</li>
-</ul>
-<h2 id="10-Log-Related"><a href="#10-Log-Related" class="headerlink" title="10. Log Related"></a>10. Log Related</h2><ul>
-<li><code>git log &lt;--oneline&gt;</code> </li>
-<li><code>git log &lt;file&gt;</code>            # 查看该文件每次提交记录   </li>
-<li><code>git log -p &lt;file&gt;</code>        # 查看每次详细修改内容的diff   </li>
-<li><code>git log -p -2</code>            # 查看最近两次详细修改内容的diff   </li>
-<li><code>git log --stat</code>            # 查看提交统计信息</li>
-</ul>
-<h2 id="11-stash"><a href="#11-stash" class="headerlink" title="11. stash"></a>11. stash</h2><ul>
-<li><code>git stash</code> </li>
-<li><code>git stash save &quot;缓存记录名&quot;</code></li>
-<li><code>git stash list 缓存列表</code></li>
-<li><code>git stash apply stash{0} 放出缓存为stash{0}的缓存</code></li>
-</ul>
-<h2 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h2><p><code>git cherry-pick &lt;commit&gt;</code> 将另一个分支的提交提交到当前分支</p>
-<p>Addition<br>rebase: <a href="http://gitbook.liuhui998.com/4_2.html" target="_blank" rel="external">http://gitbook.liuhui998.com/4_2.html</a><br>reset:  <a href="http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html" target="_blank" rel="external">http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html</a></p>
-
-          
+<li><code>git config core.ignorecase false</code>   ##设置大小写敏感
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/07/git-command/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -835,30 +711,14 @@
 
       
         
-          
-            <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><pre><code>#set for nodejs   
-export NODE_HOME=/usr/local/node-v.6.x   
-export PATH=$NODE_HOME/bin:$PATH
-</code></pre><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb:"></a>mongodb:</h1><pre><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo
-[mongodb-org-3.4]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
-
-yum install -y mongodb-org
-</code></pre><p>Set SELinux to permissive mode in /etc/selinux/config by setting the SELINUX setting to permissive.<br>SELINUX=permissive</p>
-<pre><code>firewall-cmd --zone=public --add-port=80/tcp --permanent
-systemctl restart firewalld.service
-</code></pre><h2 id="Error-EACCES-permission-denied"><a href="#Error-EACCES-permission-denied" class="headerlink" title="Error: EACCES: permission denied"></a>Error: EACCES: permission denied</h2><pre><code>sudo chown -R $USER ~/.npm
-sudo chown -R $USER /usr/lib/node_modules
-sudo chown -R $USER /usr/local/lib/node_modules
-/root/.node-gyp/6.9.2
-</code></pre><h2 id="checking-for-C-compiler-…-not-found"><a href="#checking-for-C-compiler-…-not-found" class="headerlink" title="checking for C compiler … not found"></a>checking for C compiler … not found</h2><pre><code>sudo yum groupinstall &quot;Development Tools&quot;
-</code></pre><p> yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y</p>
-
-          
+          <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#set for nodejs   </div><div class="line">export NODE_HOME=/usr/local/node-v.6.x   </div><div class="line">export PATH=$NODE_HOME/bin:$PATH</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/06/常用开发环境安装配置/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1245,15 +1105,12 @@ sudo chown -R $USER /usr/local/lib/node_modules
 
       
         
-          <h2 id="编程思想阅读心得"><a href="#编程思想阅读心得" class="headerlink" title="编程思想阅读心得"></a>编程思想阅读心得</h2><hr>
-<h4 id="1-对象入门"><a href="#1-对象入门" class="headerlink" title="1.对象入门"></a><strong>1.对象入门</strong></h4><ol>
+          <h2 id="编程思想阅读心得"><a href="#编程思想阅读心得" class="headerlink" title="编程思想阅读心得"></a>编程思想阅读心得</h2><h4 id="1-对象入门"><a href="#1-对象入门" class="headerlink" title="1.对象入门"></a><strong>1.对象入门</strong></h4><ol>
 <li>建立模型——“知识结构”。</li>
 <li>不必强行记住运算符优先级，拿不准时加括号即可。</li>
 <li>对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。</li>
 <li>多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。</li>
-<li>C++和Java都是杂合语言，多重编程风格。</li>
-</ol>
-<hr>
+<li>C++和Java都是杂合语言，多重编程风格。
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/20/编程思想阅读心得/#more" rel="contents">

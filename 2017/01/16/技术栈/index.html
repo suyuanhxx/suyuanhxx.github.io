@@ -88,15 +88,8 @@
 并发多线程，网络IO
 缓存数据库读写
 系统架构
-管理
-
-并发多线程，网络IO
-
-
-缓存数据库读写
-
-缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
+管理并发多线程，网络IO缓存数据库读写缓存Redis
+redis中key的前缀生成策略如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="技术栈">
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/01/16/技术栈/index.html">
@@ -105,31 +98,17 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 并发多线程，网络IO
 缓存数据库读写
 系统架构
-管理
-
-并发多线程，网络IO
-
-
-缓存数据库读写
-
-缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
-<meta property="og:updated_time" content="2017-03-01T09:27:15.244Z">
+管理并发多线程，网络IO缓存数据库读写缓存Redis
+redis中key的前缀生成策略如下：">
+<meta property="og:updated_time" content="2017-03-01T09:55:36.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术栈">
 <meta name="twitter:description" content="目录
 并发多线程，网络IO
 缓存数据库读写
 系统架构
-管理
-
-并发多线程，网络IO
-
-
-缓存数据库读写
-
-缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
+管理并发多线程，网络IO缓存数据库读写缓存Redis
+redis中key的前缀生成策略如下：">
 
 
 
@@ -365,31 +344,18 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 <li><a href="#1">并发多线程，网络IO</a></li>
 <li><a href="#2">缓存数据库读写</a></li>
 <li><a href="#3">系统架构</a></li>
-<li><a href="#4">管理</a></li>
+<li><a href="#4">管理</a><br><h2 id="1">并发多线程，网络IO</h2><br><h2 id="2">缓存数据库读写</h2><h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3></li>
+<li>redis中key的前缀生成策略如下：<a id="more"></a>
+<h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key<br>目前项目包括：</li>
 </ol>
-<h2 id="1">并发多线程，网络IO</h2>
-
-
-<h2 id="2">缓存数据库读写</h2>
-
-<h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3><ol>
-<li>redis中key的前缀生成策略如下：<h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000</li>
-</ol>
-<p>以基础方法命名key<br>目前项目包括：</p>
 <hr>
 <p>000000该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）</p>
 <h3 id="数据库Mysql"><a href="#数据库Mysql" class="headerlink" title="数据库Mysql"></a>数据库Mysql</h3><ol>
 <li>数据库读写分离</li>
-<li>数据库主键生成策略</li>
-</ol>
-<h2 id="3">系统架构</h2>
-
-<ol>
+<li>数据库主键生成策略<h2 id="3">系统架构</h2></li>
 <li>用户体系</li>
-<li><p>常量结构<br>背景，现在CommonConstants类是越来越庞大，而且现在微盘和大盘的分割会是两边后台代码维护越来越复杂。同时为了使代码更加简洁，清晰，优雅，也是为了提高代码可读性，降低耦合程度，提出以下几点归纳和建议：<br>CommonConstants类现在主要包括：1.接口等加密所用的混淆“盐”值，2.账号类型常量值，3.部分操作具体小的业务常量值，4.redis所用到的key值。其中占大量篇幅的应该是redis的key值，重要的是账号类型的常量值。<br>分解思路<br>1.将redis key值抽出重新归纳为一个类中<br>2.将所有账号类型相关的常量值统一使用枚举来实现，区分账号类型和业务类型。该类尽量减少其他代码的入侵。<br>3.接口加盐加密抽离存放<br>4.将具体的小业务常量存放在子项目中（比如文章相关的常量可以存放在tools中的common类中等）</p>
-</li>
-<li><p>系统技术结构</p>
-</li>
+<li>常量结构<br>背景，现在CommonConstants类是越来越庞大，而且现在微盘和大盘的分割会是两边后台代码维护越来越复杂。同时为了使代码更加简洁，清晰，优雅，也是为了提高代码可读性，降低耦合程度，提出以下几点归纳和建议：<br>CommonConstants类现在主要包括：1.接口等加密所用的混淆“盐”值，2.账号类型常量值，3.部分操作具体小的业务常量值，4.redis所用到的key值。其中占大量篇幅的应该是redis的key值，重要的是账号类型的常量值。<br>分解思路<br>1.将redis key值抽出重新归纳为一个类中<br>2.将所有账号类型相关的常量值统一使用枚举来实现，区分账号类型和业务类型。该类尽量减少其他代码的入侵。<br>3.接口加盐加密抽离存放<br>4.将具体的小业务常量存放在子项目中（比如文章相关的常量可以存放在tools中的common类中等）</li>
+<li>系统技术结构</li>
 </ol>
 <ul>
 <li>mysql</li>
@@ -405,9 +371,9 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 <li>iOS</li>
 <li>Android</li>
 <li>前后端分离（node驱动前端页面，使用http获取java后台数据）</li>
-<li>多线程推送，iOS使用苹果自带服务器apns</li>
+<li>多线程推送，iOS使用苹果自带服务器apns<h2 id="4">管理</h2></li>
 </ul>
-<h2 id="4">管理</h2>
+
       
     </div>
 
