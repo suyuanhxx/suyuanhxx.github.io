@@ -100,7 +100,7 @@ redis中key的前缀生成策略如下：">
 系统架构
 管理并发多线程，网络IO缓存数据库读写缓存Redis
 redis中key的前缀生成策略如下：">
-<meta property="og:updated_time" content="2017-03-01T09:55:36.892Z">
+<meta property="og:updated_time" content="2017-03-01T09:57:29.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术栈">
 <meta name="twitter:description" content="目录
@@ -345,7 +345,7 @@ redis中key的前缀生成策略如下：">
 <li><a href="#2">缓存数据库读写</a></li>
 <li><a href="#3">系统架构</a></li>
 <li><a href="#4">管理</a><br><h2 id="1">并发多线程，网络IO</h2><br><h2 id="2">缓存数据库读写</h2><h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3></li>
-<li>redis中key的前缀生成策略如下：<a id="more"></a>
+<li>redis中key的前缀生成策略如下：<a id="more"></a>   
 <h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key<br>目前项目包括：</li>
 </ol>
 <hr>
