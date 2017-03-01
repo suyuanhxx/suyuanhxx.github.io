@@ -93,11 +93,10 @@
 并发多线程，网络IO
 
 
-
 缓存数据库读写
 
 缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法">
+redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="技术栈">
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/01/16/技术栈/index.html">
@@ -111,12 +110,11 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 并发多线程，网络IO
 
 
-
 缓存数据库读写
 
 缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法">
-<meta property="og:updated_time" content="2017-01-20T03:12:00.794Z">
+redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
+<meta property="og:updated_time" content="2017-03-01T09:27:15.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术栈">
 <meta name="twitter:description" content="目录
@@ -128,11 +126,10 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 并发多线程，网络IO
 
 
-
 缓存数据库读写
 
 缓存Redis
-redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法">
+redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。2. 高级方法对">
 
 
 
@@ -373,13 +370,12 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 <h2 id="1">并发多线程，网络IO</h2>
 
 
-
 <h2 id="2">缓存数据库读写</h2>
 
 <h3 id="缓存Redis"><a href="#缓存Redis" class="headerlink" title="缓存Redis"></a>缓存Redis</h3><ol>
 <li>redis中key的前缀生成策略如下：<h4 id="1-基础方法："><a href="#1-基础方法：" class="headerlink" title="1. 基础方法："></a>1. 基础方法：</h4>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。<br>举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<h4 id="2-高级方法"><a href="#2-高级方法" class="headerlink" title="2. 高级方法"></a>2. 高级方法</h4>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000</li>
 </ol>
-<p>以基础方法命名key<br>目前项目包括：<br>dp wpy wpb,<br>dp:acs:user:<br>common–|<br>acs–|user—|<br>————-|login<br>————-|register<br>————-|access<br>—–|account|login(游客)<br>————-|register（注册未开户）<br>————-|openAccount（注册已开户）<br>————-|activation（注册已开户）<br>————-|activation<br>live,<br>tools,<br>push<br>console</p>
+<p>以基础方法命名key<br>目前项目包括：</p>
 <hr>
 <p>000000该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）</p>
 <h3 id="数据库Mysql"><a href="#数据库Mysql" class="headerlink" title="数据库Mysql"></a>数据库Mysql</h3><ol>
@@ -411,12 +407,7 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
 <li>前后端分离（node驱动前端页面，使用http获取java后台数据）</li>
 <li>多线程推送，iOS使用苹果自带服务器apns</li>
 </ul>
-<p></p><h2 id="4">管理</h2><p></p>
-<ol>
-<li>微盘宝，大象贵金属（中盘，大盘）</li>
-<li>推送</li>
-</ol>
-
+<h2 id="4">管理</h2>
       
     </div>
 
@@ -520,7 +511,7 @@ redis中key的前缀生成策略如下：1. 基础方法：以项目+模块的�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
