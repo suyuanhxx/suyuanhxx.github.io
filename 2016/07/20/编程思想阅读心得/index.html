@@ -102,7 +102,7 @@ C++和J">
 对象，一切都是对象。控制程序流程、初始化和清除、隐藏实现过程、类再生、多形性、对象的容纳、违例差错控制、Java IO系统、运行期类型鉴定、传递和返回对象、创建窗口和程序片、多线程、网络编程、设计方范式。
 多线程，独立运行的片段叫作“线程”，利用它编程的概念就叫作“多线程处理”。
 C++和J">
-<meta property="og:updated_time" content="2017-03-01T09:34:44.000Z">
+<meta property="og:updated_time" content="2017-03-01T09:44:21.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程思想阅读心得">
 <meta name="twitter:description" content="编程思想阅读心得
@@ -352,6 +352,7 @@ C++和J">
 <li>C++和Java都是杂合语言，多重编程风格。</li>
 </ol>
 <hr>
+<a id="more"></a>
 <h4 id="2-一切都是对象"><a href="#2-一切都是对象" class="headerlink" title="2.一切都是对象"></a><strong>2.一切都是对象</strong></h4><ol>
 <li>程序运行时，最好对数据保存到什么地方做到心中有数。特别要注意的是内存的分配六种保存数据位置：<br>1)<strong>寄存器</strong>，最快的保存区域，处理器内部；没有直接的控制权，由编译器分配。也不可能在自己的程序里找到寄存器存在的任何踪迹。<br>2)<strong>堆栈</strong>，驻留于常规RAM（随机访问存储器）区域，<strong>尽管有些Java数据要保存在堆栈里——特别是对象句柄，但Java对象并不放到其中</strong>。<br>3)<strong>堆</strong>。一种常规用途的内存池，<strong>保存了Java对象</strong>。<strong>和堆栈不同，“内存堆”或“堆”（Heap）最吸引人的地方在于编译器不必知道要从堆里分配多少存储空间，也不必知道存储的数据要在堆里停留多长的时间</strong>。因此，用堆保存数据时会得到更大的灵活性。要求创建一个对象时，只需用new命令编制相关的代码即可。执行这些代码时，会在堆里自动进行数据的保存。RAM。<br>(4)<strong>静态存储</strong>。“静态”（Static）是指“位于固定位置”。程序运行期间，静态存储的数据将随时等候调用。可用static关键字指出一个对象的特定元素是静态的。但Java对象本身永远都不会置入静态存储空间。 RAM“固定位置”。<br>(5)<strong>常数存储</strong>。常数值通常直接置于程序代码内部。这样做是安全的，因为它们永远都不会改变。有的常数需要严格地保护，所以可考虑将它们置入只读存储器（ROM）。<br>(6)<strong>非RAM存储</strong>。若数据完全独立于一个程序之外，则程序不运行时仍可存在，并在程序的控制范围之外。其中两个最主要的例子便是“流式对象”和“固定对象”。对于流式对象，对象会变成字节流，通常会发给 另一台机器。而对于固定对象，对象保存在磁盘中。即使程序中止运行，它们仍可保持自己的状态不变。对于这些类型的数据存储，一个特别有用的技巧就是它们能存在于其他媒体中。一旦需要，甚至能将它们恢复成普通的、基于RAM的对象。<br><strong>特例：对于基本数据类型，由于用new创建对象（特别是小的、简单的变量）并不是非常有效，因为new将对象置于“堆”里。对于这些类型，Java采纳了与C和C++相同的方法。也就是说，不是用new创建变量，而是创建一个并非句柄的“自动”变量。这个变量容纳了具体的值，并置于堆栈中，能够更高效地存取。</strong><br><strong>Java所有数组均为Object对象，存储于堆内存中</strong></li>
 <li>软件库名为域名反转（BruceEckel.com -&gt; com.bruceeckel.utility.foibles）软件包都以小写字母为标准。</li>
@@ -421,7 +422,7 @@ public class InnerClassDemo {
 <li><strong>开放封闭原则OCP</strong>：一个模块在扩展性方面应该是开放的而在更改性方面应该是封闭的。</li>
 </ul>
 <hr>
-<h3 id="9"><a href="#9" class="headerlink" title="9."></a><strong>9.</strong></h3>
+
       
     </div>
 
@@ -564,7 +565,7 @@ public class InnerClassDemo {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编程思想阅读心得"><span class="nav-number">1.</span> <span class="nav-text">编程思想阅读心得</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-对象入门"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.对象入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-一切都是对象"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.一切都是对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-控制程序流程"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.控制程序流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-初始化和清除"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.初始化和清除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-隐藏实施过程"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.隐藏实施过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-类再生"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.类再生</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-多形性"><span class="nav-number">1.1.</span> <span class="nav-text">7.多形性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-面向对象特性和设计原则"><span class="nav-number">1.2.</span> <span class="nav-text">8.面向对象特性和设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9"><span class="nav-number">1.3.</span> <span class="nav-text">9.</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编程思想阅读心得"><span class="nav-number">1.</span> <span class="nav-text">编程思想阅读心得</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-对象入门"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.对象入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-一切都是对象"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.一切都是对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-控制程序流程"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.控制程序流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-初始化和清除"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.初始化和清除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-隐藏实施过程"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.隐藏实施过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-类再生"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.类再生</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-多形性"><span class="nav-number">1.1.</span> <span class="nav-text">7.多形性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-面向对象特性和设计原则"><span class="nav-number">1.2.</span> <span class="nav-text">8.面向对象特性和设计原则</span></a></li></ol></li></ol></div>
             
 
           </div>
