@@ -84,31 +84,34 @@
 
 
 
-<meta name="description" content="nodejs:`
-#set for nodejs   
+<meta name="description" content="nodejs:#set for nodejs   
 export NODE_HOME=/usr/local/node-v.6.x   
 export PATH=$NODE_HOME/bin:$PATH
-`
-mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo[mongodb-org-3.4]name=MongoDB Repositorybaseur">
+mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用开发环境安装配置">
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="nodejs:`
-#set for nodejs   
+<meta property="og:description" content="nodejs:#set for nodejs   
 export NODE_HOME=/usr/local/node-v.6.x   
 export PATH=$NODE_HOME/bin:$PATH
-`
-mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo[mongodb-org-3.4]name=MongoDB Repositorybaseur">
-<meta property="og:updated_time" content="2017-01-07T07:54:31.000Z">
+mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl">
+<meta property="og:updated_time" content="2017-01-18T08:49:23.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用开发环境安装配置">
-<meta name="twitter:description" content="nodejs:`
-#set for nodejs   
+<meta name="twitter:description" content="nodejs:#set for nodejs   
 export NODE_HOME=/usr/local/node-v.6.x   
 export PATH=$NODE_HOME/bin:$PATH
-`
-mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo[mongodb-org-3.4]name=MongoDB Repositorybaseur">
+mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl">
 
 
 
@@ -340,15 +343,27 @@ mongodb:vim /etc/yum.repos.d/mongodb-org-3.4.repo[mongodb-org-3.4]name=MongoDB R
       
 
       
-        <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><p>`</p>
-<pre><code>#set for nodejs   
+        <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><pre><code>#set for nodejs   
 export NODE_HOME=/usr/local/node-v.6.x   
 export PATH=$NODE_HOME/bin:$PATH
-</code></pre><p>`</p>
-<h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb:"></a>mongodb:</h1><p>vim /etc/yum.repos.d/mongodb-org-3.4.repo<br>[mongodb-org-3.4]<br>name=MongoDB Repository<br>baseurl=<a href="https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/" target="_blank" rel="external">https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</a><br>gpgcheck=1<br>enabled=1<br>gpgkey=<a href="https://www.mongodb.org/static/pgp/server-3.4.asc" target="_blank" rel="external">https://www.mongodb.org/static/pgp/server-3.4.asc</a></p>
-<p>yum install -y mongodb-org</p>
-<p>Set SELinux to permissive mode in /etc/selinux/config by setting the SELINUX setting to permissive.<br>SELINUX=permissive</p>
-<p>firewall-cmd –zone=public –add-port=80/tcp –permanent<br>systemctl restart firewalld.service</p>
+</code></pre><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb:"></a>mongodb:</h1><pre><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+
+yum install -y mongodb-org
+</code></pre><p>Set SELinux to permissive mode in /etc/selinux/config by setting the SELINUX setting to permissive.<br>SELINUX=permissive</p>
+<pre><code>firewall-cmd --zone=public --add-port=80/tcp --permanent
+systemctl restart firewalld.service
+</code></pre><h2 id="Error-EACCES-permission-denied"><a href="#Error-EACCES-permission-denied" class="headerlink" title="Error: EACCES: permission denied"></a>Error: EACCES: permission denied</h2><pre><code>sudo chown -R $USER ~/.npm
+sudo chown -R $USER /usr/lib/node_modules
+sudo chown -R $USER /usr/local/lib/node_modules
+/root/.node-gyp/6.9.2
+</code></pre><h2 id="checking-for-C-compiler-…-not-found"><a href="#checking-for-C-compiler-…-not-found" class="headerlink" title="checking for C compiler … not found"></a>checking for C compiler … not found</h2><pre><code>sudo yum groupinstall &quot;Development Tools&quot;
+</code></pre><p> yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y</p>
 
       
     </div>
@@ -375,8 +390,8 @@ export PATH=$NODE_HOME/bin:$PATH
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/06/ApiDocTemplate/" rel="next" title="ApiDocTemplate">
-                <i class="fa fa-chevron-left"></i> ApiDocTemplate
+              <a href="/2017/01/05/2017-New-Years-Plan/" rel="next" title="2017 New Years Plan">
+                <i class="fa fa-chevron-left"></i> 2017 New Years Plan
               </a>
             
           </div>
@@ -457,7 +472,7 @@ export PATH=$NODE_HOME/bin:$PATH
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -496,7 +511,7 @@ export PATH=$NODE_HOME/bin:$PATH
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongodb"><span class="nav-number">2.</span> <span class="nav-text">mongodb:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongodb"><span class="nav-number">2.</span> <span class="nav-text">mongodb:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-EACCES-permission-denied"><span class="nav-number">2.1.</span> <span class="nav-text">Error: EACCES: permission denied</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checking-for-C-compiler-…-not-found"><span class="nav-number">2.2.</span> <span class="nav-text">checking for C compiler … not found</span></a></li></ol></li></ol></div>
             
 
           </div>
