@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
+<meta name="description" content="分布式URL：http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml
+中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Leas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用开发环境安装配置">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/index.html">
+<meta property="og:title" content="分布式">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/05/分布式/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
-<meta property="og:updated_time" content="2017-03-01T10:00:56.000Z">
+<meta property="og:description" content="分布式URL：http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml
+中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Leas">
+<meta property="og:updated_time" content="2017-03-06T01:26:08.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用开发环境安装配置">
-<meta name="twitter:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
+<meta name="twitter:title" content="分布式">
+<meta name="twitter:description" content="分布式URL：http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml
+中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Leas">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/05/分布式/"/>
 
 
 
 
 
-  <title> 常用开发环境安装配置 | 长大后能够飞 </title>
+  <title> 分布式 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -250,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/05/分布式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -274,7 +280,7 @@
             
             
               
-                常用开发环境安装配置
+                分布式
               
             
           </h1>
@@ -289,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T13:34:05+08:00">
-                2017-01-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-05T14:14:20+08:00">
+                2017-03-05
               </time>
             
 
@@ -325,25 +331,14 @@
       
 
       
-        <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#set for nodejs   </div><div class="line">export NODE_HOME=/usr/local/node-v.6.x   </div><div class="line">export PATH=$NODE_HOME/bin:$PATH</div></pre></td></tr></table></figure>
-<a id="more"></a>    
-<h1 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb:"></a>安装mongodb:</h1><p><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo</code></p>
-<pre><code>[mongodb-org-3.4]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
-</code></pre><p><code>yum install -y mongodb-org</code>  </p>
-<p>如遇到错误可尝试如下方法：<br>Set SELinux to permissive mode in <code>/etc/selinux/config</code> by setting the SELINUX setting to permissive.<br><code>SELINUX=permissive</code>    </p>
-<hr>
-<p>centos7防火墙开放80端口<br><code>firewall-cmd --zone=public --add-port=80/tcp --permanent</code><br>centos7关闭防火墙<br><code>systemctl restart firewalld.service</code>        </p>
-<h2 id="Error-EACCES-permission-denied"><a href="#Error-EACCES-permission-denied" class="headerlink" title="Error: EACCES: permission denied"></a>Error: EACCES: permission denied</h2><pre><code>sudo chown -R $USER ~/.npm
-sudo chown -R $USER /usr/lib/node_modules
-sudo chown -R $USER /usr/local/lib/node_modules
-</code></pre><h2 id="checking-for-C-compiler-…-not-found"><a href="#checking-for-C-compiler-…-not-found" class="headerlink" title="checking for C compiler … not found"></a>checking for C compiler … not found</h2><pre><code>sudo yum groupinstall &quot;Development Tools&quot;
-yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y
-</code></pre>
+        <p>分布式<br>URL：<a href="http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml" target="_blank" rel="external">http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml</a></p>
+<p>中心化<br>中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。<br>去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。</p>
+<p>Zookeeper：<br>用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。</p>
+<p>MySql：<br>MySQL的主从库设计也是基于日志。从库只需通过回放主库的日志，就可以实现与主库的同步。由于从库同步的速度与主库更新的速度没有强约束，这种方式只能实现最终一致性。</p>
+<p>两阶段提交：<br>两阶段提交的思路比较简单，在第一阶段，协调者询问所有的参与者是否可以提交事务（请参与者投票），所有参与者向协调者投票。在第二阶段，协调者根据所有参与者的投票结果做出是否事务可以全局提交的决定，并通知所有的参与者执行该决定。在一个两阶段提交流程中，参与者不能改变自己的投票结果。两阶段提交协议的可以全局提交的前提是所有的参与者都同意提交事务，只要有一个参与者投票选择放弃(abort)事务，则事务必须被放弃。可以这么认为，两阶段提交协议对于这种超时的相关异常也没有很好的容错机制，整个流程只能阻塞在这里，且对于参与者而言流程状态处于未知，参与者即不能提交本地节点上的事务，也不能放弃本地节点事务。<br>    8． 第一、两阶段提交协议的容错能力较差。<br>    9．第二、两阶段提交协议的性能较差。一次成功的两阶段提交协议流程中，协调者与每个参与者之间至少需要两轮交互4个消息“prepare”、“vote-commit”、“global-commit”、“确认global-commit”。过多的交互次数会降低性能。另一方面，协调者需要等待所有的参与者的投票结果，一旦存在较慢的参与者，会影响全局流程执行速度。</p>
+<p>单机上的事务：<br>事务靠日志技术或MVCC等技术实现。<br>MVCC即多个不同版本的数据实现并发控制的技术，其基本思想是为每次事务生成一个新版本的数据，在读数据时选择不同版本的数据即可以实现对事务结果的完整性读取。在使用MVCC时，每个事务都是基于一个已生效的基础版本进行更新，事务可以并行进行。其思想是根据版本号，在多个节点取同一个版本号的数据。</p>
+<p>分布式系统=分布式硬件 分布式控制 分布式数据；</p>
+
       
     </div>
 
@@ -369,8 +364,8 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/05/2016-Summary/" rel="next" title="2016 Summary">
-                <i class="fa fa-chevron-left"></i> 2016 Summary
+              <a href="/2017/03/02/nodejs-express学习笔记/" rel="next" title="nodejs express学习笔记">
+                <i class="fa fa-chevron-left"></i> nodejs express学习笔记
               </a>
             
           </div>
@@ -378,10 +373,6 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/07/git-command/" rel="prev" title="git command">
-                git command <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -428,17 +419,8 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -480,22 +462,6 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mongodb"><span class="nav-number">2.</span> <span class="nav-text">安装mongodb:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-EACCES-permission-denied"><span class="nav-number">2.1.</span> <span class="nav-text">Error: EACCES: permission denied</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checking-for-C-compiler-…-not-found"><span class="nav-number">2.2.</span> <span class="nav-text">checking for C compiler … not found</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

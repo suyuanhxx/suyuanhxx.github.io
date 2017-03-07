@@ -84,16 +84,25 @@
 
 
 
-<meta name="description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
+<meta name="description" content="打算用Nodejs和Express做一个简单的项目，其中遇到的一些很多问题，记录供他人参考。
+nodejs, mongodb分页实现
+使用mongoose skip方法实现
+123456789var modelSchema = mongoose.model(model , pageIndex , pageSize);    var query = modelSchema.find();">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用开发环境安装配置">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/index.html">
+<meta property="og:title" content="nodejs express学习笔记">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
-<meta property="og:updated_time" content="2017-03-01T10:00:56.000Z">
+<meta property="og:description" content="打算用Nodejs和Express做一个简单的项目，其中遇到的一些很多问题，记录供他人参考。
+nodejs, mongodb分页实现
+使用mongoose skip方法实现
+123456789var modelSchema = mongoose.model(model , pageIndex , pageSize);    var query = modelSchema.find();">
+<meta property="og:updated_time" content="2017-03-07T08:51:13.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用开发环境安装配置">
-<meta name="twitter:description" content="nodejs:123#set for nodejs   export NODE_HOME=/usr/local/node-v.6.x   export PATH=$NODE_HOME/bin:$PATH">
+<meta name="twitter:title" content="nodejs express学习笔记">
+<meta name="twitter:description" content="打算用Nodejs和Express做一个简单的项目，其中遇到的一些很多问题，记录供他人参考。
+nodejs, mongodb分页实现
+使用mongoose skip方法实现
+123456789var modelSchema = mongoose.model(model , pageIndex , pageSize);    var query = modelSchema.find();">
 
 
 
@@ -121,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/"/>
 
 
 
 
 
-  <title> 常用开发环境安装配置 | 长大后能够飞 </title>
+  <title> nodejs express学习笔记 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -250,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/06/常用开发环境安装配置/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -274,7 +283,7 @@
             
             
               
-                常用开发环境安装配置
+                nodejs express学习笔记
               
             
           </h1>
@@ -289,8 +298,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T13:34:05+08:00">
-                2017-01-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T21:06:52+08:00">
+                2017-03-02
               </time>
             
 
@@ -325,25 +334,24 @@
       
 
       
-        <h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs:"></a>nodejs:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#set for nodejs   </div><div class="line">export NODE_HOME=/usr/local/node-v.6.x   </div><div class="line">export PATH=$NODE_HOME/bin:$PATH</div></pre></td></tr></table></figure>
-<a id="more"></a>    
-<h1 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb:"></a>安装mongodb:</h1><p><code>vim /etc/yum.repos.d/mongodb-org-3.4.repo</code></p>
-<pre><code>[mongodb-org-3.4]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
-</code></pre><p><code>yum install -y mongodb-org</code>  </p>
-<p>如遇到错误可尝试如下方法：<br>Set SELinux to permissive mode in <code>/etc/selinux/config</code> by setting the SELINUX setting to permissive.<br><code>SELINUX=permissive</code>    </p>
-<hr>
-<p>centos7防火墙开放80端口<br><code>firewall-cmd --zone=public --add-port=80/tcp --permanent</code><br>centos7关闭防火墙<br><code>systemctl restart firewalld.service</code>        </p>
-<h2 id="Error-EACCES-permission-denied"><a href="#Error-EACCES-permission-denied" class="headerlink" title="Error: EACCES: permission denied"></a>Error: EACCES: permission denied</h2><pre><code>sudo chown -R $USER ~/.npm
-sudo chown -R $USER /usr/lib/node_modules
-sudo chown -R $USER /usr/local/lib/node_modules
-</code></pre><h2 id="checking-for-C-compiler-…-not-found"><a href="#checking-for-C-compiler-…-not-found" class="headerlink" title="checking for C compiler … not found"></a>checking for C compiler … not found</h2><pre><code>sudo yum groupinstall &quot;Development Tools&quot;
-yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel -y
-</code></pre>
+        <p>　　</p><p>打算用Nodejs和Express做一个简单的项目，其中遇到的一些很多问题，记录供他人参考。</p><p></p>
+<h2 id="nodejs-mongodb分页实现"><a href="#nodejs-mongodb分页实现" class="headerlink" title="nodejs, mongodb分页实现"></a>nodejs, mongodb分页实现</h2><ol>
+<li><p>使用<code>mongoose</code> <code>skip</code>方法实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var modelSchema = mongoose.model(model , pageIndex , pageSize);</div><div class="line">    var query = modelSchema.find();</div><div class="line">    if (Number(pageIndex) &gt;= 1 &amp;&amp; Number(pageSize) &gt;= 1) &#123;</div><div class="line">        query.skip((pageIndex - 1) * Number(pageSize));</div><div class="line">        query.limit(Number(pageSize));</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>根据ObjectId获取最后一个，然后获取这个_id的下一页，需要实现两个方法:</p>
+<ol>
+<li><p><code>getLatestObjectId</code>获取当页最后一个ObjectId</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var getLatest = function (model, size, callback) &#123;</div><div class="line">    var query = model.find();</div><div class="line">    query.limit(Number(size));</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        var doc = docs[size - 1];</div><div class="line">        callback(err, doc);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>getNextPageWithLastId</code>获取下一页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var getNextPageWithLastId = function (model, lastId, size, callback) &#123;</div><div class="line">    var query = model.find(&#123;&apos;_id&apos;: &#123;&quot;$gt&quot;: lastId&#125;&#125;);</div><div class="line">    query.limit(Number(size));</div><div class="line">    if (undefined != fields || &apos;&apos; != fields) &#123;</div><div class="line">        query.select(fields);</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line">```  </div><div class="line">  3. 主方法</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<p>exports.pagingAlgorithm = function (model, pageIndex, pageSize, callback) {<br>    var modelSchema = mongoose.model(model);<br>    getLatest(modelSchema, (pageIndex - 1) * pageSize, function (err, doc) {<br>        getNextPageWithLastId(modelSchema, doc._id, pageSize, function (err, docs) {<br>            callback(err, docs);<br>        })<br>    })<br>};<br>```</p>
+
       
     </div>
 
@@ -369,8 +377,8 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/05/2016-Summary/" rel="next" title="2016 Summary">
-                <i class="fa fa-chevron-left"></i> 2016 Summary
+              <a href="/2017/01/16/技术进阶/" rel="next" title="技术进阶">
+                <i class="fa fa-chevron-left"></i> 技术进阶
               </a>
             
           </div>
@@ -379,8 +387,8 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/07/git-command/" rel="prev" title="git command">
-                git command <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/05/分布式/" rel="prev" title="分布式">
+                分布式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +498,7 @@ yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-deve
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">1.</span> <span class="nav-text">nodejs:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mongodb"><span class="nav-number">2.</span> <span class="nav-text">安装mongodb:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-EACCES-permission-denied"><span class="nav-number">2.1.</span> <span class="nav-text">Error: EACCES: permission denied</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checking-for-C-compiler-…-not-found"><span class="nav-number">2.2.</span> <span class="nav-text">checking for C compiler … not found</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-mongodb分页实现"><span class="nav-number">1.</span> <span class="nav-text">nodejs, mongodb分页实现</span></a></li></ol></div>
             
 
           </div>

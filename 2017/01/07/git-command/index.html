@@ -98,7 +98,7 @@ git config -l
 git config --global user.name &amp;quot;your name&amp;quot;     
 git config --global user.email xxx@example.com      
 git config --global color.ui true">
-<meta property="og:updated_time" content="2017-03-01T09:47:35.000Z">
+<meta property="og:updated_time" content="2017-03-07T08:34:10.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git command">
 <meta name="twitter:description" content="git常用命名汇总1. First-Time Git Setup
@@ -351,7 +351,7 @@ git config --global color.ui true">
 <li><code>git commit -m &#39;initial project&#39;</code>    </li>
 <li><code>git remote add &lt;name&gt; &lt;url&gt;</code>    </li>
 <li><code>git push &lt;name&gt;</code>    <h2 id="4-Cloning-an-Existing-Repository"><a href="#4-Cloning-an-Existing-Repository" class="headerlink" title="4. Cloning an Existing Repository"></a>4. Cloning an Existing Repository</h2></li>
-<li><code>git clone [url]</code> </li>
+<li><code>git clone [url]</code></li>
 <li>修改 <code>vim .git/config</code> 令： rebase = true (存在每个分支下)</li>
 <li>filemode = false （防止git将自己本身文件检测并显示）<h2 id="5-Git-Base-Command"><a href="#5-Git-Base-Command" class="headerlink" title="5. Git Base Command"></a>5. Git Base Command</h2></li>
 <li><code>git status</code></li>
@@ -361,7 +361,7 @@ git config --global color.ui true">
 <li><code>git rm &lt;file&gt; --cached</code>              # 将文件从仓库中移除，但仍然保留在当前目录中</li>
 <li><code>git git clean -df &lt;url&gt;</code></li>
 <li><code>git mv FileName NewFileName</code>      # 文件重命名</li>
-<li><code>git commit -m &quot;something&quot; someFile</code>     # 提交指定文件 </li>
+<li><code>git commit -m &quot;something&quot; someFile</code>     # 提交指定文件</li>
 <li><code>git commit -a -m &quot;something&quot;</code>                # 把所有已经跟踪过的文件暂存,并提交</li>
 <li><code>git commit --amend</code>                      # 增补提交</li>
 <li><code>git commit -C HEAD -a —amend</code>  # 复用HEAD留言，增补提交</li>
@@ -372,22 +372,22 @@ git config --global color.ui true">
 <li><code>git push</code>                              # push所有分支   </li>
 <li><code>git push origin master</code>       # 推到远程主分支   </li>
 <li><code>git push -u origin master</code>   # 推到远程主分支(如无远程主分支则创建，用于初始化远程仓库)  <h2 id="6-Undoing-Unstaged-File"><a href="#6-Undoing-Unstaged-File" class="headerlink" title="6. Undoing Unstaged File"></a>6. Undoing Unstaged File</h2></li>
-<li><code>git checkout  -- &lt;file&gt;</code>                    # 用暂存区中filename文件来覆盖工作区中的filename文件 </li>
-<li><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code>  # 用<commit>所指向的提交中filename替换暂存区和工作区中相应的文件 </commit></li>
-<li><code>git checkout -- .</code> 　　　　                # 或者git checkout . 用暂存区的所有文件直接覆盖本地文件 </li>
+<li><code>git checkout  -- &lt;file&gt;</code>                    # 用暂存区中filename文件来覆盖工作区中的filename文件</li>
+<li><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code>  # 用<commit>所指向的提交中filename替换暂存区和工作区中相应的文件</commit></li>
+<li><code>git checkout -- .</code> 　　　　                # 或者git checkout . 用暂存区的所有文件直接覆盖本地文件</li>
 <li><code>git checkout feature file-x</code>   #从feature分支检出相应文件<h2 id="7-Undoing-Staged-Commited-File"><a href="#7-Undoing-Staged-Commited-File" class="headerlink" title="7. Undoing Staged/Commited File"></a>7. Undoing Staged/Commited File</h2></li>
 <li><code>git reset --mixed &lt;commit&gt;</code>    # (默认)更改引用的指向及重置暂存区，但是不改变工作区</li>
-<li><code>git reset --hard &lt;commit&gt;</code>     # 替换引用的指向，替换暂存区，替换工作区 </li>
-<li><code>git reset --soft &lt;commit&gt;</code>     # 更改引用的指向(复位版本库)，不改变暂存区和工作区 </li>
+<li><code>git reset --hard &lt;commit&gt;</code>     # 替换引用的指向，替换暂存区，替换工作区</li>
+<li><code>git reset --soft &lt;commit&gt;</code>     # 更改引用的指向(复位版本库)，不改变暂存区和工作区</li>
 <li><code>git reset &lt;file&gt;</code>              # 将文件的改动撤出暂存区，相当于命令git add <file>的反射操作  </file></li>
-<li><code>git reset --soft HEAD^</code>        # 工作区和暂存区不改变，但是引用向前回退一次，撤销最新的提交以便重新提交 </li>
+<li><code>git reset --soft HEAD^</code>        # 工作区和暂存区不改变，但是引用向前回退一次，撤销最新的提交以便重新提交</li>
 <li><code>git reset --hard HEAD^</code>        # 彻底撤销最近的提交（本地文件代码修改一并撤回）<h2 id="8-Branch-Related"><a href="#8-Branch-Related" class="headerlink" title="8. Branch Related"></a>8. Branch Related</h2></li>
-<li><code>git checkout brname</code>                  # 切换分支 </li>
+<li><code>git checkout brname</code>                  # 切换分支</li>
 <li><code>git checkout -b brname</code>             # 创建并切换分支</li>
-<li><code>git branch brname master/cid/tag</code>  # 基于某次提交、分支或标签创建新分支 </li>
-<li><code>git branch -r</code>                       # 显示远程分支 </li>
-<li><code>git branch -a</code>                      # 列出所有分支 </li>
-<li><code>git branch -m master mymaster</code>      # 分支重命名 -M 大写M会覆盖同名的分支 </li>
+<li><code>git branch brname master/cid/tag</code>  # 基于某次提交、分支或标签创建新分支</li>
+<li><code>git branch -r</code>                       # 显示远程分支</li>
+<li><code>git branch -a</code>                      # 列出所有分支</li>
+<li><code>git branch -m master mymaster</code>      # 分支重命名 -M 大写M会覆盖同名的分支</li>
 <li><code>git branch -d</code>                      # 删除分支</li>
 <li><code>git br -D &lt;branch&gt;</code>                  # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)<h2 id="9-Diff-Related"><a href="#9-Diff-Related" class="headerlink" title="9. Diff Related"></a>9. Diff Related</h2></li>
 <li><code>git diff</code>                          # 比较尚未暂存的文件</li>
@@ -397,12 +397,12 @@ git config --global color.ui true">
 <li><code>git diff --staged</code>     # 比较暂存区和版本库差异   </li>
 <li><code>git diff --cached</code>    # 比较暂存区和版本库差异   </li>
 <li><code>git diff --stat</code>         # 仅仅比较统计信息<h2 id="10-Log-Related"><a href="#10-Log-Related" class="headerlink" title="10. Log Related"></a>10. Log Related</h2></li>
-<li><code>git log &lt;--oneline&gt;</code> </li>
+<li><code>git log &lt;--oneline&gt;</code></li>
 <li><code>git log &lt;file&gt;</code>            # 查看该文件每次提交记录   </li>
 <li><code>git log -p &lt;file&gt;</code>        # 查看每次详细修改内容的diff   </li>
 <li><code>git log -p -2</code>            # 查看最近两次详细修改内容的diff   </li>
 <li><code>git log --stat</code>            # 查看提交统计信息<h2 id="11-stash"><a href="#11-stash" class="headerlink" title="11. stash"></a>11. stash</h2></li>
-<li><code>git stash</code> </li>
+<li><code>git stash</code></li>
 <li><code>git stash save &quot;缓存记录名&quot;</code></li>
 <li><code>git stash list 缓存列表</code></li>
 <li><code>git stash apply stash{0} 放出缓存为stash{0}的缓存</code><h2 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h2><code>git cherry-pick &lt;commit&gt;</code> 将另一个分支的提交提交到当前分支<br>Addition<br>rebase: <a href="http://gitbook.liuhui998.com/4_2.html" target="_blank" rel="external">http://gitbook.liuhui998.com/4_2.html</a><br>reset:  <a href="http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html" target="_blank" rel="external">http://www.cnblogs.com/craftor/archive/2012/11/04/2754140.html</a></li>
@@ -515,7 +515,7 @@ git config --global color.ui true">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

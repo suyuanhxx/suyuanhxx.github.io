@@ -1,0 +1,687 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
+TODO List
+Learning English
+阅读spring源码
+提高Java知识（基础知识和J2EE相关）
+读书
+目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="https://suyuanhxx.github.io/2016/06/21/Java基础/index.html">
+<meta property="og:site_name" content="长大后能够飞">
+<meta property="og:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
+TODO List
+Learning English
+阅读spring源码
+提高Java知识（基础知识和J2EE相关）
+读书
+目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta property="og:updated_time" content="2017-03-07T06:17:48.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础">
+<meta name="twitter:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
+TODO List
+Learning English
+阅读spring源码
+提高Java知识（基础知识和J2EE相关）
+读书
+目前急需提高的技术能力：DI，多线程，ORM映射框架">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://suyuanhxx.github.io/2016/06/21/Java基础/"/>
+
+
+
+
+
+  <title> Java基础 | 长大后能够飞 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">长大后能够飞</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2016/06/21/Java基础/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-21T20:27:53+08:00">
+                2016-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java能力提升计划"><a href="#Java能力提升计划" class="headerlink" title="Java能力提升计划"></a>Java能力提升计划</h1><p>主要以J2EE为主线，摆脱迷茫和随波逐流<br>这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解</p>
+<h1 id="TODO-List"><a href="#TODO-List" class="headerlink" title="TODO List"></a>TODO List</h1><ul>
+<li>Learning English</li>
+<li>阅读spring源码</li>
+<li>提高Java知识（基础知识和J2EE相关）</li>
+<li>读书</li>
+<li>目前急需提高的技术能力：DI，多线程，ORM映射框架<a id="more"></a>
+<h2 id="Java语言基础"><a href="#Java语言基础" class="headerlink" title="Java语言基础"></a>Java语言基础</h2><h3 id="1-java中-static-final-transient-volatile关键字的作用"><a href="#1-java中-static-final-transient-volatile关键字的作用" class="headerlink" title="1. java中 static , final,transient,volatile关键字的作用"></a>1. java中 <code>static</code> , <code>final</code>,<code>transient</code>,<code>volatile</code>关键字的作用</h3></li>
+</ul>
+<ol>
+<li><code>static</code> 静态修饰关键字，可以修饰变量，程序块，类的方法；当定义一个static的变量的时候jvm会将将其分配在内存堆上，所有程序对它的引用都会指向这一个地址而不会重新分配内存；</li>
+<li><code>final</code>  只能赋值一次；修饰变量、方法及类。当定义一个final变量时，jvm会将其分配到常量池中，程序不可改变其值；当你定义一个方法时，改方法在子类中将不能被重写；当你修饰一个类时，该类不能被继承。</li>
+<li><code>transient</code> 一个对象只要实现了Serilizable接口，这个对象就可以被序列化。将不需要序列化的属性前添加关键字transient，序列化对象的时候，这个属性就不会序列化到指定的目的地中。</li>
+<li><code>volatile</code><h3 id="2-java-util相关包"><a href="#2-java-util相关包" class="headerlink" title="2. java.util相关包"></a>2. <code>java.util</code>相关包</h3> 集合框架主要包括<br><strong>Collection</strong><br>├List <em>元素有放入顺序，元素可重复</em><br>│├LinkedList <em>双向链表，使用LinkedList可以实现队列<code>Queue</code>（包括优先级队列）和栈<code>Stack</code>，删除和插入时间复杂度O(1)，查询时间复杂度O(n)</em><br>│├ArrayList <em>数组列表，使用频率最高，插入和删除时间复杂度O(n)，查询时间复杂为O(1)</em><br>│└Vector <em>线程安全，其他非线程安全</em><br>│　└Stack<br>└Set <em>元素无放入顺序，元素不可重复，元素去重时可以使用借助set集合操作完成</em><br><strong>Map</strong>  <em> 元素按键值对存储，无放入顺序 </em><br>├HashMap <em>最常使用的一种键值对映射数据结构，HashMap内部维护一个线性数组和链表，key为数组，value为链表存储，采用hash算法计算key值，故查询时间复杂度为O(1)，扩容方式要注意</em><br>hash算法实现无序存放，<br>├Hashtable <em>HashMap的线程安全模式，该数据结构已弃用，使用ConcurrentHashMap替代</em><br>├ConcurrentHashMap <em>HashMap的线程安全模式，采用分段锁的概念实现Hash线程安全，且在效率上优于‘全局锁’</em><br>集合框架中非常重要的两个工具类<code>Collections</code>和<code>Arrays</code><br><code>HashMap</code>线程不安全，主要是多线程<code>put</code>，<code>get</code>时会出现同步问题<br><code>HashMap</code>存储键值对，<code>HashSet</code>仅存储对象。<code>HashSet</code>内部数据结构使用<code>HashMap</code>存储，存储的对象为<code>key</code>,<code>PRESENT</code>为<code>value</code>。<code>HashSet</code> <code>add</code>代码如下：(<code>PRESENT</code>为一个<code>static final Object</code>对象)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean add(E e) &#123;</div><div class="line">    return map.put(e, PRESENT)==null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-Java泛型和反射"><a href="#3-Java泛型和反射" class="headerlink" title="3. Java泛型和反射"></a>3. Java泛型和反射</h3><h3 id="4-多线程，高并发。线程池技术ThreadPool"><a href="#4-多线程，高并发。线程池技术ThreadPool" class="headerlink" title="4. 多线程，高并发。线程池技术ThreadPool"></a>4. 多线程，高并发。线程池技术<code>ThreadPool</code></h3><p>进程和线程之间的区别。</p>
+<h3 id="5-IO，NIO"><a href="#5-IO，NIO" class="headerlink" title="5. IO，NIO"></a>5. IO，NIO</h3><h3 id="6-JVM虚拟机"><a href="#6-JVM虚拟机" class="headerlink" title="6. JVM虚拟机"></a>6. JVM虚拟机</h3><h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><hr>
+<h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul>
+<li>Servlet和Servlet容器</li>
+<li>EJB</li>
+<li>Tomcat JBoss Jetty热部署</li>
+<li>Spring依赖注入DI Lookup</li>
+</ul>
+<hr>
+<h2 id="数据结构-amp-amp-数据库"><a href="#数据结构-amp-amp-数据库" class="headerlink" title="数据结构&amp;&amp;数据库"></a>数据结构&amp;&amp;数据库</h2><ul>
+<li>常用数据结构，列表，链表，队列，堆，二叉树</li>
+<li>mysql数据引擎，mysql锁机制</li>
+<li>数据库表设计范式</li>
+</ul>
+<hr>
+<h2 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h2><ul>
+<li>设计模式</li>
+<li>Spring框架，SpringAOP Spring DI</li>
+<li>SpringMVC</li>
+<li>ORM映射框架，mybatis</li>
+<li>Redis缓存</li>
+<li>远程调用框架Hessian</li>
+<li>分布式Dubbo和zookeeper</li>
+</ul>
+<hr>
+<h2 id="操作系统-amp-amp-网络编程"><a href="#操作系统-amp-amp-网络编程" class="headerlink" title="操作系统&amp;&amp;网络编程"></a>操作系统&amp;&amp;网络编程</h2><ul>
+<li>TCP/IP</li>
+<li>Socket编程</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/15/JavaWeb面试题/" rel="next" title="JavaWeb面试题">
+                <i class="fa fa-chevron-left"></i> JavaWeb面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/编程思想阅读心得/" rel="prev" title="编程思想阅读心得">
+                编程思想阅读心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Huangxiaoxu" />
+          <p class="site-author-name" itemprop="name">Huangxiaoxu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java能力提升计划"><span class="nav-number">1.</span> <span class="nav-text">Java能力提升计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO-List"><span class="nav-number">2.</span> <span class="nav-text">TODO List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java语言基础"><span class="nav-number">2.1.</span> <span class="nav-text">Java语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java中-static-final-transient-volatile关键字的作用"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java中 static , final,transient,volatile关键字的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-java-util相关包"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. java.util相关包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java泛型和反射"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Java泛型和反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-多线程，高并发。线程池技术ThreadPool"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 多线程，高并发。线程池技术ThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-IO，NIO"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. IO，NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-JVM虚拟机"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. JVM虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-java垃圾回收机制"><span class="nav-number">2.1.7.</span> <span class="nav-text">7. java垃圾回收机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J2EE"><span class="nav-number">2.2.</span> <span class="nav-text">J2EE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构-amp-amp-数据库"><span class="nav-number">2.3.</span> <span class="nav-text">数据结构&&数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件架构"><span class="nav-number">2.4.</span> <span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统-amp-amp-网络编程"><span class="nav-number">2.5.</span> <span class="nav-text">操作系统&&网络编程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxiaoxu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
