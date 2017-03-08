@@ -86,23 +86,20 @@
 
 <meta name="description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
 nodejs, mongodb分页实现
-使用mongoose skip方法实现
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mo">
+使用mongoose skip方法实现1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mon">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs express学习笔记">
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/index.html">
 <meta property="og:site_name" content="长大后能够飞">
 <meta property="og:description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
 nodejs, mongodb分页实现
-使用mongoose skip方法实现
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mo">
-<meta property="og:updated_time" content="2017-03-08T01:55:35.438Z">
+使用mongoose skip方法实现1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mon">
+<meta property="og:updated_time" content="2017-03-08T05:37:35.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs express学习笔记">
 <meta name="twitter:description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
 nodejs, mongodb分页实现
-使用mongoose skip方法实现
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mo">
+使用mongoose skip方法实现1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = mon">
 
 
 
@@ -336,9 +333,11 @@ nodejs, mongodb分页实现
       
         <p>　　</p><p>打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。</p><p></p>
 <h2 id="nodejs-mongodb分页实现"><a href="#nodejs-mongodb分页实现" class="headerlink" title="nodejs, mongodb分页实现"></a><code>nodejs</code>, <code>mongodb</code>分页实现</h2><ol>
-<li><p>使用<code>mongoose</code> <code>skip</code>方法实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &#123;</div><div class="line">    var modelSchema = mongoose.model(model);</div><div class="line">    var query = modelSchema.find();</div><div class="line">    if (Number(pageIndex) &gt;= 1 &amp;&amp; Number(pageSize) &gt;= 1) &#123;</div><div class="line">        query.skip((pageIndex - 1) * Number(pageSize));</div><div class="line">        query.limit(Number(pageSize));</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<li>使用<code>mongoose</code> <code>skip</code>方法实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &#123;</div><div class="line">    var modelSchema = mongoose.model(model);</div><div class="line">    var query = modelSchema.find();</div><div class="line">    if (Number(pageIndex) &gt;= 1 &amp;&amp; Number(pageSize) &gt;= 1) &#123;</div><div class="line">        query.skip((pageIndex - 1) * Number(pageSize));</div><div class="line">        query.limit(Number(pageSize));</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p>根据ObjectId获取最后一个，然后获取这个_id的下一页，需要实现两个方法:</p>
 <ol>
 <li><p><code>getLatestObjectId</code>获取当页最后一个ObjectId</p>
