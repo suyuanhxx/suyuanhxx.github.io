@@ -84,25 +84,22 @@
 
 
 
-<meta name="description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
-nodejs, mongodb分页实现
-使用mongoose skip方法实现:
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = m">
+<meta name="description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
+MySql：MySQL的主从库设计也是基于日志。从库只需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nodejs express学习笔记">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/index.html">
+<meta property="og:title" content="分布式技术">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/09/分布式/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
-nodejs, mongodb分页实现
-使用mongoose skip方法实现:
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = m">
-<meta property="og:updated_time" content="2017-03-09T09:20:21.510Z">
+<meta property="og:description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
+MySql：MySQL的主从库设计也是基于日志。从库只需">
+<meta property="og:updated_time" content="2017-03-09T10:49:27.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nodejs express学习笔记">
-<meta name="twitter:description" content="打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。
-nodejs, mongodb分页实现
-使用mongoose skip方法实现:
-1234567891011exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &amp;#123;    var modelSchema = m">
+<meta name="twitter:title" content="分布式技术">
+<meta name="twitter:description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
+Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
+MySql：MySQL的主从库设计也是基于日志。从库只需">
 
 
 
@@ -130,13 +127,13 @@ nodejs, mongodb分页实现
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/09/分布式/"/>
 
 
 
 
 
-  <title> nodejs express学习笔记 | 长大后能够飞 </title>
+  <title> 分布式技术 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -259,7 +256,7 @@ nodejs, mongodb分页实现
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/02/nodejs-express学习笔记/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/09/分布式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -283,7 +280,7 @@ nodejs, mongodb分页实现
             
             
               
-                nodejs express学习笔记
+                分布式技术
               
             
           </h1>
@@ -298,8 +295,8 @@ nodejs, mongodb分页实现
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T21:06:52+08:00">
-                2017-03-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T13:20:13+08:00">
+                2017-03-09
               </time>
             
 
@@ -334,37 +331,11 @@ nodejs, mongodb分页实现
       
 
       
-        <p>　　</p><p>打算用Nodejs和Express做一个简单的项目，从零开始一步一步学习nodejs。</p><p></p>
-<h2 id="nodejs-mongodb分页实现"><a href="#nodejs-mongodb分页实现" class="headerlink" title="nodejs, mongodb分页实现"></a><code>nodejs</code>, <code>mongodb</code>分页实现</h2><ol>
-<li><p>使用<code>mongoose</code> <code>skip</code>方法实现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">exports.pagingBySkip = function (model, pageIndex, pageSize, callback) &#123;</div><div class="line">    var modelSchema = mongoose.model(model);</div><div class="line">    var query = modelSchema.find();</div><div class="line">    if (Number(pageIndex) &gt;= 1 &amp;&amp; Number(pageSize) &gt;= 1) &#123;</div><div class="line">        query.skip((pageIndex - 1) * Number(pageSize));</div><div class="line">        query.limit(Number(pageSize));</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>根据ObjectId获取最后一个，然后获取这个id的下一页，需要实现两个方法:</p>
-<a id="more"></a>
-<ol>
-<li><p><code>getLatestObjectId</code>获取当页最后一个ObjectId</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var getLatest = function (model, size, callback) &#123;</div><div class="line">    var query = model.find();</div><div class="line">    query.limit(Number(size));</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        var doc = docs[size - 1];</div><div class="line">        callback(err, doc);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>getNextPageWithLastId</code>获取下一页</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var getNextPageWithLastId = function (model, lastId, size, callback) &#123;</div><div class="line">    var query = model.find(&#123;&apos;_id&apos;: &#123;&quot;$gt&quot;: lastId&#125;&#125;);</div><div class="line">    query.limit(Number(size));</div><div class="line">    if (undefined != fields || &apos;&apos; != fields) &#123;</div><div class="line">        query.select(fields);</div><div class="line">    &#125;</div><div class="line">    query.exec(function (err, docs) &#123;</div><div class="line">        callback(err, docs);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>paging</code>主方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">exports.paging = function (model, pageIndex, pageSize, callback) &#123;</div><div class="line">    var modelSchema = mongoose.model(model);</div><div class="line">    getLatest(modelSchema, (pageIndex - 1) * pageSize, function (err, doc) &#123;</div><div class="line">        getNextPageWithLastId(modelSchema, doc._id, pageSize, function (err, docs) &#123;</div><div class="line">            callback(err, docs);</div><div class="line">        &#125;)</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="mongoose-update"><a href="#mongoose-update" class="headerlink" title="mongoose update"></a><code>mongoose</code> <code>update</code></h2><p>官方文档给多种更新方式</p>
-<ol>
-<li><p>根据<code>ObjectId</code>使用<code>findOne</code>找出这条需要更新的记录，然后保存<code>save</code>，保存时会自动使用新值合并这两条记录。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Model.findById(id, function (err, model) &#123;</div><div class="line">  if (err) return handleError(err);</div><div class="line">  model.size = &apos;large&apos;;</div><div class="line">  model.save(function (err, model) &#123;</div><div class="line">    if (err) return handleError(err);</div><div class="line">    res.send(model);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>直接使用<code>update</code>方法<code>Model.update({ _id: id }, { $set: { size: &#39;large&#39; }}, callback);</code></p>
-</li>
-<li>如果需要参数返回，使用<code>findByIdAndUpdate</code>方法   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Model.findByIdAndUpdate(id, &#123; $set: &#123; size: &apos;large&apos; &#125;&#125;, &#123; new: true &#125;, function (err, model) &#123;</div><div class="line">  if (err) return handleError(err);</div><div class="line">  res.send(model);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>上面方法2,3都可以使用<code>Validators</code>进行更新参数校验</p>
+        <h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>中心化<br>中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。<br>去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。</p>
+<p>Zookeeper：<br>用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。</p>
+<p>MySql：<br>MySQL的主从库设计也是基于日志。从库只需通过回放主库的日志，就可以实现与主库的同步。由于从库同步的速度与主库更新的速度没有强约束，这种方式只能实现最终一致性。<br>读写分离，主从同步<br><a id="more"></a><br>两阶段提交：<br>两阶段提交的思路比较简单，在第一阶段，协调者询问所有的参与者是否可以提交事务（请参与者投票），所有参与者向协调者投票。在第二阶段，协调者根据所有参与者的投票结果做出是否事务可以全局提交的决定，并通知所有的参与者执行该决定。在一个两阶段提交流程中，参与者不能改变自己的投票结果。两阶段提交协议的可以全局提交的前提是所有的参与者都同意提交事务，只要有一个参与者投票选择放弃(abort)事务，则事务必须被放弃。可以这么认为，两阶段提交协议对于这种超时的相关异常也没有很好的容错机制，整个流程只能阻塞在这里，且对于参与者而言流程状态处于未知，参与者即不能提交本地节点上的事务，也不能放弃本地节点事务。<br>    8． 第一、两阶段提交协议的容错能力较差。<br>    9．第二、两阶段提交协议的性能较差。一次成功的两阶段提交协议流程中，协调者与每个参与者之间至少需要两轮交互4个消息“prepare”、“vote-commit”、“global-commit”、“确认global-commit”。过多的交互次数会降低性能。另一方面，协调者需要等待所有的参与者的投票结果，一旦存在较慢的参与者，会影响全局流程执行速度。</p>
+<p>单机上的事务：<br>事务靠日志技术或MVCC等技术实现。<br>MVCC即多个不同版本的数据实现并发控制的技术，其基本思想是为每次事务生成一个新版本的数据，在读数据时选择不同版本的数据即可以实现对事务结果的完整性读取。在使用MVCC时，每个事务都是基于一个已生效的基础版本进行更新，事务可以并行进行。其思想是根据版本号，在多个节点取同一个版本号的数据。￼</p>
+<p>负载均衡算法：<br>常见负载均衡算法举例，轮询法、随机法、源地址哈希法、加权轮询法、加权随机法、最小连接达。大部分算法为了服务器上线、下线或宕机带来的并发问题，都会将服务调用地址缓存在线程本地变量中；<br>    •    轮询法：将服务调用地址缓存在线程本地变量中，通过同步顺序调用，保证请求转移的绝对均衡。缺点是缓存变量不能很好的更新下线的机器列表，并且悲观锁导致性能和吞吐量下降；<br>    •    随机法：将服务调用地址缓存在线程本地变量中，利用随机函数，随机选择一台服务器进行访问。比如random.nextInt(serverSize);<br>    •    源地址哈希法：利用客户端访问的IP地址，通过哈希函数计算得到一个数值，并对服务器列表大小取模运算，得到需要访问的索引；特点是每个IP访问的服务器地址将是固定的，所以可以建立有状态的session会话；<br>    •    加权轮询法：<br>给性能优良、配置好的服务器设置更大的权重值，根据权重大小，把服务器地址重复地添加到线程本地服务器地址中，权重越大，每次轮询获得的请求次数就越多；<br>    •    加权随机法：<br>与加权轮询法类似，不同的是，它按照权重来随机选取服务，而非顺序；<br>    •    最小连接数：<br>根据后台服务器的连接情况，动态的选择其中当前积压连接数最少的服务器来处理当前请求；<br>    •    一致性哈希：先构造一个长度为232的整数环（这个环被称为一致性Hash环），根据节点名称的Hash值（其分布为[0, 232-1]）将服务器节点放置在这个Hash环上，然后根据数据的Key值计算得到其Hash值（其分布也为[0, 232-1]），接着在Hash环上顺时针查找距离这个Key值的Hash值最近的服务器节点，完成Key到服务器的映射查找。<br>        虚拟节点：将一个物理节点拆分为多个虚拟节点，并且同一个物理节点的虚拟节点尽量均匀分布在Hash环上。采取这样的方式，就可以有效地解决增加或减少节点时候的负载不均衡的问题。</p>
 
       
     </div>
@@ -391,8 +362,8 @@ nodejs, mongodb分页实现
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/技术进阶/" rel="next" title="技术进阶">
-                <i class="fa fa-chevron-left"></i> 技术进阶
+              <a href="/2017/03/02/nodejs-express学习笔记/" rel="next" title="nodejs express学习笔记">
+                <i class="fa fa-chevron-left"></i> nodejs express学习笔记
               </a>
             
           </div>
@@ -401,8 +372,8 @@ nodejs, mongodb分页实现
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/分布式/" rel="prev" title="分布式技术">
-                分布式技术 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/09/《大型分布式网站架构设计与实践》阅读心得/" rel="prev" title="《大型分布式网站架构设计与实践》阅读心得">
+                《大型分布式网站架构设计与实践》阅读心得 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,7 +483,7 @@ nodejs, mongodb分页实现
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-mongodb分页实现"><span class="nav-number">1.</span> <span class="nav-text">nodejs, mongodb分页实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose-update"><span class="nav-number">2.</span> <span class="nav-text">mongoose update</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式"><span class="nav-number">1.</span> <span class="nav-text">分布式</span></a></li></ol></div>
             
 
           </div>
