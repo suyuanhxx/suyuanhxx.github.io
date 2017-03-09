@@ -110,7 +110,7 @@ Spring FrameWork(Spring MVC,Spring Boot)
 Rabbitmq
 Mongodb(mongoose)
 Nodejs(express,promise,callback)">
-<meta property="og:updated_time" content="2017-03-07T06:17:45.741Z">
+<meta property="og:updated_time" content="2017-03-09T09:06:36.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术进阶">
 <meta name="twitter:description" content="技术进阶之路  
@@ -377,7 +377,13 @@ Nodejs(express,promise,callback)">
 </ul>
 <p></p><h2 id="2">并发多线程，网络IO</h2>     <p></p>
 <ul>
-<li>并发编程<br>  <em>场景1：</em><br>  将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象<br>  <em>场景2：</em><br>  在推送APP消息推送过程中，总是出现一条消息推送两次给用户的现象。<br>  JVM内存模型，多线程之间共享变量造成<br>  <em>场景3：</em><br>  日志打印，同一请求在多台服务器上打印日志（同一行日志）<br>  <em>场景4：</em><br>  项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁</li>
+<li>并发编程<br>  <em>场景1：</em><br>  将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象<br>  <em>场景2：</em><br>  在推送APP消息推送过程中，总是出现一条消息推送两次给用户的现象。<br>  JVM内存模型，多线程之间共享变量造成<br>  <em>场景3：</em><br>  日志打印，同一请求在多台服务器上打印日志（同一行日志）<br>  <em>场景4：</em><br>  项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁<br>  <em>场景5:</em> 100ms内响应用户请求，最高峰时候单位时间高几百万的用户请求，高并发，服务不宕机（高可用），设计方案<ol>
+<li>（应用）服务分布式部署，防止一台服务器宕机之后影响其他服务。</li>
+<li>数据库设计读写分离（分表分库），一主多重，主从同步</li>
+<li>缓存的设计，可使用分布式集群部署缓存，防止数据库雪崩</li>
+<li>接口代码中使用hystrix服务降级和过载保护<br>项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁</li>
+</ol>
+</li>
 <li><p>线程安全<br>  <code>synchronized</code><br>  <code>volatile</code></p>
 </li>
 <li><p>IO</p>
@@ -520,7 +526,7 @@ Nodejs(express,promise,callback)">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
