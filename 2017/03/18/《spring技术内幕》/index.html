@@ -84,46 +84,22 @@
 
 
 
-<meta name="description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
+<meta name="description" content="Spring FrameworkSpring core
+IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
+IoC容器：BeanFactory，ApplicationContext">
 <meta property="og:type" content="article">
-<meta property="og:title" content="技术进阶">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/01/16/技术进阶/index.html">
+<meta property="og:title" content="《spring技术内幕》">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/18/《spring技术内幕》/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
-<meta property="og:updated_time" content="2017-03-11T06:58:29.000Z">
+<meta property="og:description" content="Spring FrameworkSpring core
+IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
+IoC容器：BeanFactory，ApplicationContext">
+<meta property="og:updated_time" content="2017-03-18T11:30:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术进阶">
-<meta name="twitter:description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
+<meta name="twitter:title" content="《spring技术内幕》">
+<meta name="twitter:description" content="Spring FrameworkSpring core
+IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
+IoC容器：BeanFactory，ApplicationContext">
 
 
 
@@ -151,13 +127,13 @@ Nodejs(express,promise,callback)">
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/18/《spring技术内幕》/"/>
 
 
 
 
 
-  <title> 技术进阶 | 长大后能够飞 </title>
+  <title> 《spring技术内幕》 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -280,7 +256,7 @@ Nodejs(express,promise,callback)">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/18/《spring技术内幕》/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -304,7 +280,7 @@ Nodejs(express,promise,callback)">
             
             
               
-                技术进阶
+                《spring技术内幕》
               
             
           </h1>
@@ -319,8 +295,8 @@ Nodejs(express,promise,callback)">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T13:20:13+08:00">
-                2017-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T13:41:27+08:00">
+                2017-03-18
               </time>
             
 
@@ -355,69 +331,9 @@ Nodejs(express,promise,callback)">
       
 
       
-        <!--
-# 目录
-1. [技术栈](#1)
-2. [并发多线程，网络IO](#2)
-2. [缓存数据库读写](#3)
-3. [系统架构](#4)
--->
-<p></p><h2 id="1">技术进阶之路</h2>  <p></p>
-<ul>
-<li>java</li>
-<li>mysql()</li>
-<li>redis</li>
-<li>mybatis</li>
-<li>RPC(hessian,grpc,thrift,protobuf)</li>
-<li>Spring FrameWork(Spring MVC,Spring Boot)</li>
-<li>Rabbitmq</li>
-<li>Mongodb(mongoose)</li>
-<li>Nodejs(express,promise,callback)<a id="more"></a>
-</li>
-</ul>
-<p></p><h2 id="2">并发多线程，网络IO</h2>     <p></p>
-<ul>
-<li>并发编程<br>  <em>场景1：</em><br>  将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象<br>  <em>场景2：</em><br>  在推送APP消息推送过程中，总是出现一条消息推送两次给用户的现象。<br>  JVM内存模型，多线程之间共享变量造成<br>  <em>场景3：</em><br>  日志打印，同一请求在多台服务器上打印日志（同一行日志）<br>  <em>场景4：</em><br>  项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁<br>  <em>场景5:</em> 100ms内响应用户请求，最高峰时候单位时间高几百万的用户请求，高并发，服务不宕机（高可用），设计方案<ol>
-<li>（应用）服务分布式部署，防止一台服务器宕机之后影响其他服务。</li>
-<li>数据库设计读写分离（分表分库），一主多重，主从同步</li>
-<li>缓存的设计，可使用分布式集群部署缓存，防止数据库雪崩</li>
-<li>接口代码中使用hystrix服务降级和过载保护<br>项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁</li>
-</ol>
-</li>
-<li><p>线程安全<br>  <code>synchronized</code><br>  <code>volatile</code></p>
-</li>
-<li><p>IO</p>
-<ol>
-<li>同步与异步<br>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</li>
-<li>阻塞与非阻塞<br>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.</li>
-<li>HTTP Response Entity多次读取，会抛出视图读取已经关闭的流异常<br>4.</li>
-</ol>
-</li>
-</ul>
-<p></p><h2 id="3">缓存数据库读写</h2>      <p></p>
-<ul>
-<li>缓存Redis   <ol>
-<li>redis中key的前缀生成策略如下：  <ol>
-<li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span>  </span></span></li>
-<li>高级方法:<br><span>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key</span><br><code>000000</code>该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）    </li>
-</ol>
-</li>
-<li>缓存淘汰策略：</li>
-<li>Redis发布订阅模式（pub/sub）：</li>
-</ol>
-</li>
-<li>数据库Mysql    <ol>
-<li>数据库读写分离<br><code>Spring AOP</code>作为切入点控制读库写库<br>使用<code>org.apache.commons.dbcp.BasicDataSource</code>数据库连接池</li>
-<li>issue -&gt; “The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server”<br>由于数据库回收了连接，而系统的缓冲池不知道，继续使用被回收的连接所致的。</li>
-</ol>
-</li>
-</ul>
-<p></p><h2 id="4">系统架构</h2><br>分布式数据库，主从读写分离，多台redis，应用分布式部署，自动化构建，自动化检测脚本，日志搜集系统，hessian rpc，nodejs，python<p></p>
-<ul>
-<li>微服务架构<br>spring boot, spring cloud  </li>
-<li>用户体系</li>
-<li>常量结构</li>
-</ul>
+        <h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Spring core</p>
+<h2 id="IoC、AOP是spring的核心"><a href="#IoC、AOP是spring的核心" class="headerlink" title="IoC、AOP是spring的核心"></a>IoC、AOP是spring的核心</h2><p>IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象<br>AOP以动态非侵入式的方式来增强服务的功能<br>（Spring架构图）</p>
+<p>IoC容器：BeanFactory，ApplicationContext</p>
 
       
     </div>
@@ -444,8 +360,8 @@ Nodejs(express,promise,callback)">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/07/SS-Command/" rel="next" title="SS Command">
-                <i class="fa fa-chevron-left"></i> SS Command
+              <a href="/2017/03/09/分布式/" rel="next" title="分布式技术">
+                <i class="fa fa-chevron-left"></i> 分布式技术
               </a>
             
           </div>
@@ -453,10 +369,6 @@ Nodejs(express,promise,callback)">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/02/nodejs-express学习笔记/" rel="prev" title="nodejs express学习笔记">
-                nodejs express学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +477,7 @@ Nodejs(express,promise,callback)">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">技术进阶之路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">并发多线程，网络IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">缓存数据库读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">系统架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Framework"><span class="nav-number">1.</span> <span class="nav-text">Spring Framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC、AOP是spring的核心"><span class="nav-number">2.</span> <span class="nav-text">IoC、AOP是spring的核心</span></a></li></ol></div>
             
 
           </div>

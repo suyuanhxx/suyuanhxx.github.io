@@ -110,7 +110,7 @@ Spring FrameWork(Spring MVC,Spring Boot)
 Rabbitmq
 Mongodb(mongoose)
 Nodejs(express,promise)">
-<meta property="og:updated_time" content="2017-03-01T10:43:09.000Z">
+<meta property="og:updated_time" content="2017-03-02T02:27:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术栈">
 <meta name="twitter:description" content="技术栈  
@@ -372,19 +372,23 @@ Nodejs(express,promise)">
 <li>Spring FrameWork(Spring MVC,Spring Boot)</li>
 <li>Rabbitmq</li>
 <li>Mongodb(mongoose)</li>
-<li>Nodejs(express,promise)<a id="more"></a>   
+<li>Nodejs(express,promise)<a id="more"></a>
 </li>
 </ul>
 <p></p><h2 id="2">并发多线程，网络IO</h2>     <p></p>
 <ul>
-<li>并发编程<br>  <span>将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象</span></li>
-<li>IO   </li>
+<li>并发编程<br>  <span>将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象</span>    </li>
+<li>IO<ol>
+<li>同步与异步<br>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</li>
+<li>阻塞与非阻塞<br>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.</li>
+</ol>
+</li>
 </ul>
 <p></p><h2 id="3">缓存数据库读写</h2>      <p></p>
 <ul>
 <li>缓存Redis   <ol>
-<li>redis中key的前缀生成策略如下：<ol>
-<li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span></span></span></li>
+<li>redis中key的前缀生成策略如下：  <ol>
+<li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span>  </span></span></li>
 <li>高级方法:<br><span>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key</span><br><code>000000</code>该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）    </li>
 </ol>
 </li>
