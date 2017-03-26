@@ -333,11 +333,7 @@
 <li>如果线程A持有锁L并且想获得锁M，线程B持有锁M并且想获得锁L，那么这两个线程将永远等待下去，这种情况就是最简单的死锁形式。</li>
 <li>检测死锁产生：</li>
 <li>1、先找到可疑进程，jps获得当前Java虚拟机进程的pid</li>
-<li>2、使用jstack打印堆栈，jstack打印内容的会报告发现了一个死锁，同时也能够通过分析waiting，locked得出结论<br><img src="https://github.com/suyuanhxx/suyuanhxx.github.io/blob/master/images/deadLock.png" alt=""></li>
-<li>避免死锁的方式：</li>
-<li>1、让程序每次至多只能获得一个锁。当然，在多线程环境下，这种情况通常并不现实</li>
-<li>2、设计时考虑清楚锁的顺序，尽量减少嵌在的加锁交互数量</li>
-<li>3、既然死锁的产生是两个线程无限等待对方持有的锁，那么只要等待时间有个上限不就好了。当然synchronized不具备这个功能，但是我们可以使用Lock类中的tryLock方法去尝试获取锁，这个方法可以指定一个超时时限，在等待超过该时限之后变回返回一个失败信息<br>示例代码：
+<li>2、使用jstack打印堆栈，jstack打印内容的会报告发现了一个死锁，同时也能够通过分析waiting，locked得出结论
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/26/Java死锁分析/#more" rel="contents">
