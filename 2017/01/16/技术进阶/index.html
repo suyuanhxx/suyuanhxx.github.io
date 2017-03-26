@@ -110,7 +110,7 @@ Spring FrameWork(Spring MVC,Spring Boot)
 Rabbitmq
 Mongodb(mongoose)
 Nodejs(express,promise,callback)">
-<meta property="og:updated_time" content="2017-03-11T06:58:29.000Z">
+<meta property="og:updated_time" content="2017-03-26T09:32:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术进阶">
 <meta name="twitter:description" content="技术进阶之路  
@@ -396,7 +396,8 @@ Nodejs(express,promise,callback)">
 </ul>
 <p></p><h2 id="3">缓存数据库读写</h2>      <p></p>
 <ul>
-<li>缓存Redis   <ol>
+<li><p>缓存Redis   </p>
+<ol>
 <li>redis中key的前缀生成策略如下：  <ol>
 <li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span>  </span></span></li>
 <li>高级方法:<br><span>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key</span><br><code>000000</code>该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）    </li>
@@ -404,18 +405,39 @@ Nodejs(express,promise,callback)">
 </li>
 <li>缓存淘汰策略：</li>
 <li>Redis发布订阅模式（pub/sub）：</li>
+<li>Redis实现Session </li>
+</ol>
+<ul>
+<li>session其实是在cookie中保存了一个sessionid，用户每次访问都将sessionid发给服务器，服务器通过ID查找用户对应的状态数据。</li>
+<li>在这里，Redis处理方式也是在cookie中定义一个sessionid，程序需要取得用户状态时将sessionid做为key在Redis中查找。</li>
+<li>同时session支持用户在一定时间不访问将session回收。借用Redis中Keys支持过期时间的特性支持这个功能<br>我们使用redis缓存用户登录信息，没有使用seesion。将用户的用户名加盐加密作为key在redis中缓存起来，并设置过期时间，同时将这个key作为sessionId写回cookies中</li>
+</ul>
+<ol>
+<li>Redis实现分布式锁setnx,hsetnx</li>
+<li>Redis事务 <code>WATCH</code>、<code>MULTI/EXEC</code>、<code>UNWATCH/DISCARD</code>，特别需要注意，分布式中不支持事务。Redis的WATCH是一种乐观锁模型。  </li>
+<li><code>Redis pipeline</code> Redis 管道技术可以在服务端未响应时，客户端可以继续向服务端发送请求，并最终一次性读取所有服务端的响应。</li>
 </ol>
 </li>
-<li>数据库Mysql    <ol>
+<li><p>数据库Mysql    </p>
+<ol>
 <li>数据库读写分离<br><code>Spring AOP</code>作为切入点控制读库写库<br>使用<code>org.apache.commons.dbcp.BasicDataSource</code>数据库连接池</li>
 <li>issue -&gt; “The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server”<br>由于数据库回收了连接，而系统的缓冲池不知道，继续使用被回收的连接所致的。</li>
 </ol>
 </li>
 </ul>
-<p></p><h2 id="4">系统架构</h2><br>分布式数据库，主从读写分离，多台redis，应用分布式部署，自动化构建，自动化检测脚本，日志搜集系统，hessian rpc，nodejs，python<p></p>
+<p></p><h2 id="4">系统架构</h2>  <p></p>
+<p></p><p>分布式数据库，主从读写分离，多台redis，应用分布式部署，自动化构建，自动化检测脚本，日志搜集系统，hessian rpc，nodejs，python</p><p></p>
 <ul>
 <li>微服务架构<br>spring boot, spring cloud  </li>
-<li>用户体系</li>
+<li><p>分布式<br>nginx分布式部署方案，nginx负载均衡算法</p>
+<ol>
+<li><code>round-robin</code>，轮询（默认）</li>
+<li><code>weight</code> 轮询权值，指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</li>
+<li><code>ip_hash</code>，每个请求按访问IP的哈希结果分配，使来自同一个IP的访客固定访问一台后端服务器，并且可以有效解决动态网页存在的session共享问题。<br>4、<code>fair</code>，比 <code>weight</code>，<code>ip_hash</code>更加智能的负载均衡算法，fair算法可以根据页面大小和加载时间长短智能地进行负载均衡，也就是根据后端服务器的响应时间 来分配请求，响应时间短的优先分配。Nginx本身不支持fair，如果需要这种调度算法，则必须安装upstream_fair模块。<br>5、<code>url_hash</code>，按访问的URL的哈希结果来分配请求，使每个URL定向到一台后端服务器，可以进一步提高后端缓存服务器的效率。Nginx本身不支持url_hash，如果需要这种调度算法，则必须安装Nginx的hash软件包。</li>
+</ol>
+</li>
+<li><p>用户体系</p>
+</li>
 <li>常量结构</li>
 </ul>
 
@@ -526,7 +548,7 @@ Nodejs(express,promise,callback)">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -248,6 +248,265 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/26/Java死锁分析/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/26/Java死锁分析/" itemprop="url">
+                  Java死锁分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-26T15:01:53+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>多线程死锁的产生：</li>
+<li>当一个线程永远地持有一个锁，并且其他线程都尝试去获得这个锁时，那么它们将永远被阻塞。</li>
+<li>如果线程A持有锁L并且想获得锁M，线程B持有锁M并且想获得锁L，那么这两个线程将永远等待下去，这种情况就是最简单的死锁形式。</li>
+<li>检测死锁产生：</li>
+<li>1、先找到可疑进程，jps获得当前Java虚拟机进程的pid</li>
+<li>2、使用jstack打印堆栈，jstack打印内容的会报告发现了一个死锁，同时也能够通过分析waiting，locked得出结论<br><img src="https://github.com/suyuanhxx/suyuanhxx.github.io/blob/master/images/deadLock.png" alt=""></li>
+<li>避免死锁的方式：</li>
+<li>1、让程序每次至多只能获得一个锁。当然，在多线程环境下，这种情况通常并不现实</li>
+<li>2、设计时考虑清楚锁的顺序，尽量减少嵌在的加锁交互数量</li>
+<li>3、既然死锁的产生是两个线程无限等待对方持有的锁，那么只要等待时间有个上限不就好了。当然synchronized不具备这个功能，但是我们可以使用Lock类中的tryLock方法去尝试获取锁，这个方法可以指定一个超时时限，在等待超过该时限之后变回返回一个失败信息<br>示例代码：
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/26/Java死锁分析/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/21/分布式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/21/分布式/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T19:01:06+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="lt-lt-lt-lt-lt-lt-lt-HEAD"><a href="#lt-lt-lt-lt-lt-lt-lt-HEAD" class="headerlink" title="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2><p>title: 分布式技术<br>date: 2017-03-09 13:20:13</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>中心化<br>中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。<br>去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。</p>
+<p>Zookeeper：<br>用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。</p>
+<p>MySql：<br>MySQL的主从库设计也是基于日志。从库只需通过回放主库的日志，就可以实现与主库的同步。由于从库同步的速度与主库更新的速度没有强约束，这种方式只能实现最终一致性。<br>读写分离，主从同步<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/21/分布式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/18/《spring技术内幕》/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,134 +589,9 @@
           
             <h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Spring core</p>
 <h2 id="IoC、AOP是spring的核心"><a href="#IoC、AOP是spring的核心" class="headerlink" title="IoC、AOP是spring的核心"></a>IoC、AOP是spring的核心</h2><p>IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象<br>AOP以动态非侵入式的方式来增强服务的功能<br>（Spring架构图）</p>
-<p>IoC容器：BeanFactory，ApplicationContext</p>
+<p>IoC容器：BeanFactory，ApplicationContext<br>Spring请求调用链</p>
 
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/09/分布式/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huangxiaoxu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="长大后能够飞">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/09/分布式/" itemprop="url">
-                  分布式技术
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T13:20:13+08:00">
-                2017-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>中心化<br>中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。<br>去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。</p>
-<p>Zookeeper：<br>用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。</p>
-<p>MySql：<br>MySQL的主从库设计也是基于日志。从库只需通过回放主库的日志，就可以实现与主库的同步。由于从库同步的速度与主库更新的速度没有强约束，这种方式只能实现最终一致性。<br>读写分离，主从同步<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/09/分布式/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1388,135 +1522,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2016/06/21/Java基础/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huangxiaoxu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="长大后能够飞">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/Java基础/" itemprop="url">
-                  Java基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-21T20:27:53+08:00">
-                2016-06-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java能力提升计划"><a href="#Java能力提升计划" class="headerlink" title="Java能力提升计划"></a>Java能力提升计划</h1><p>主要以J2EE为主线，摆脱迷茫和随波逐流<br>这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解</p>
-<h1 id="TODO-List"><a href="#TODO-List" class="headerlink" title="TODO List"></a>TODO List</h1><ul>
-<li>Learning English</li>
-<li>阅读spring源码</li>
-<li>提高Java知识（基础知识和J2EE相关）</li>
-<li>读书</li>
-<li>目前急需提高的技术能力：DI，多线程，ORM映射框架
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/21/Java基础/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1564,7 +1569,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

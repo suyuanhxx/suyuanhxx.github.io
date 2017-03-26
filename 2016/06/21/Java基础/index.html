@@ -102,7 +102,7 @@ Learning English
 提高Java知识（基础知识和J2EE相关）
 读书
 目前急需提高的技术能力：DI，多线程，ORM映射框架">
-<meta property="og:updated_time" content="2017-03-09T09:05:19.000Z">
+<meta property="og:updated_time" content="2017-03-26T05:56:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础">
 <meta name="twitter:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
@@ -360,7 +360,9 @@ Learning English
 </li>
 </ol>
 <h3 id="3-Java泛型和反射"><a href="#3-Java泛型和反射" class="headerlink" title="3. Java泛型和反射"></a>3. Java泛型和反射</h3><h3 id="4-多线程，高并发。线程池技术ThreadPool"><a href="#4-多线程，高并发。线程池技术ThreadPool" class="headerlink" title="4. 多线程，高并发。线程池技术ThreadPool"></a>4. 多线程，高并发。线程池技术<code>ThreadPool</code></h3><p>进程和线程之间的区别。</p>
-<h3 id="5-IO，NIO"><a href="#5-IO，NIO" class="headerlink" title="5. IO，NIO"></a>5. IO，NIO</h3><h3 id="6-JVM虚拟机"><a href="#6-JVM虚拟机" class="headerlink" title="6. JVM虚拟机"></a>6. JVM虚拟机</h3><h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><hr>
+<h3 id="5-IO，NIO"><a href="#5-IO，NIO" class="headerlink" title="5. IO，NIO"></a>5. IO，NIO</h3><p>文件读取<br>step1: <code>File file = new File(&quot;path&quot;);</code><br>step2: <code>InputStreamReader is = new InputStreamReader(new FileInputStream(file),&quot;UTF-8&quot;);</code><br>step3: <code>BufferedReader bs = new BufferedReader(is);</code><br>step4: <code>String line = bs.readLine();</code>  </p>
+<h3 id="6-JVM虚拟机"><a href="#6-JVM虚拟机" class="headerlink" title="6. JVM虚拟机"></a>6. JVM虚拟机</h3><h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><p><a href="https://www.zhihu.com/question/35164211" target="_blank" rel="external">垃圾回收面试技巧</a><br>内存溢出（不能被GC）：检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。<br>为什么要垃圾回收<br>回收对象：不使用的对象；超出作用域的对象/引用计数为空的对象；从gc root开始搜索，搜索不到的对象；从root搜索不到，而且经过第一次标记、清理后，仍然没有复活的对象。<br>垃圾回收时间：系统空闲的时候，系统自身决定，不可预测的时间/调用System.gc()的时候，<br>垃圾回收方式：引用计数；根搜索算法（GC Root Tracing）<br>垃圾回收算法  </p>
+<hr>
 <h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul>
 <li>Servlet和Servlet容器</li>
 <li>EJB</li>
@@ -496,7 +498,7 @@ Learning English
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
