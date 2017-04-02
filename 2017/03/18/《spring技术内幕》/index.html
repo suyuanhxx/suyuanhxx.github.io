@@ -86,20 +86,20 @@
 
 <meta name="description" content="Spring FrameworkSpring core
 IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
-IoC容器：BeanFactory，ApplicationContextSpring请求调用链">
+IoC容器：BeanFactory，ApplicationContextBeanFactory和FactoryBean的区别，简而言之，Bean">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《spring技术内幕》">
 <meta property="og:url" content="https://suyuanhxx.github.io/2017/03/18/《spring技术内幕》/index.html">
 <meta property="og:site_name" content="长大后能够飞">
 <meta property="og:description" content="Spring FrameworkSpring core
 IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
-IoC容器：BeanFactory，ApplicationContextSpring请求调用链">
-<meta property="og:updated_time" content="2017-03-26T07:47:10.000Z">
+IoC容器：BeanFactory，ApplicationContextBeanFactory和FactoryBean的区别，简而言之，Bean">
+<meta property="og:updated_time" content="2017-03-28T07:15:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《spring技术内幕》">
 <meta name="twitter:description" content="Spring FrameworkSpring core
 IoC、AOP是spring的核心IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象AOP以动态非侵入式的方式来增强服务的功能（Spring架构图）
-IoC容器：BeanFactory，ApplicationContextSpring请求调用链">
+IoC容器：BeanFactory，ApplicationContextBeanFactory和FactoryBean的区别，简而言之，Bean">
 
 
 
@@ -333,7 +333,18 @@ IoC容器：BeanFactory，ApplicationContextSpring请求调用链">
       
         <h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Spring core</p>
 <h2 id="IoC、AOP是spring的核心"><a href="#IoC、AOP是spring的核心" class="headerlink" title="IoC、AOP是spring的核心"></a>IoC、AOP是spring的核心</h2><p>IoC容器管理POJO对象，以及它们相互之间的耦合关系，是数据资源可用简单的Java语言来描述和抽象<br>AOP以动态非侵入式的方式来增强服务的功能<br>（Spring架构图）</p>
-<p>IoC容器：BeanFactory，ApplicationContext<br>Spring请求调用链</p>
+<p>IoC容器：BeanFactory，ApplicationContext<br>BeanFactory和FactoryBean的区别，简而言之，BeanFactory是加载的容器，加载一切的BEAN，而FactoryBean用于创建代理类</p>
+<p>Spring请求调用过程</p>
+<ol>
+<li>用户向服务器发送请求，请求被Spring 前端控制Servelt DispatcherServlet捕获；</li>
+<li>DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI）。然后根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain对象的形式返回；</li>
+<li>DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter。（附注：如果成功获得HandlerAdapter后，此时将开始执行拦截器的preHandler(…)方法）</li>
+<li>提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)。 在填充Handler的入参过程中，根据你的配置，Spring将帮你做一些额外的工作：<br>HttpMessageConveter： 将请求消息（如Json、xml等数据）转换成一个对象，将对象转换为指定的响应信息<br>数据转换：对请求消息进行数据转换。如String转换成Integer、Double等<br>数据根式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等<br>数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中</li>
+<li>Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象；</li>
+<li>根据返回的ModelAndView，选择一个适合的ViewResolver（必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet ；</li>
+<li>ViewResolver 结合Model和View，来渲染视图</li>
+<li>将渲染结果返回给客户端。</li>
+</ol>
 
       
     </div>
@@ -442,7 +453,7 @@ IoC容器：BeanFactory，ApplicationContextSpring请求调用链">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

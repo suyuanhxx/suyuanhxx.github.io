@@ -102,7 +102,8 @@ Learning English
 提高Java知识（基础知识和J2EE相关）
 读书
 目前急需提高的技术能力：DI，多线程，ORM映射框架">
-<meta property="og:updated_time" content="2017-03-26T10:05:45.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/suyuanhxx/suyuanhxx.github.io/master/images/classload.png">
+<meta property="og:updated_time" content="2017-03-28T02:30:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础">
 <meta name="twitter:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
@@ -112,6 +113,7 @@ Learning English
 提高Java知识（基础知识和J2EE相关）
 读书
 目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/suyuanhxx/suyuanhxx.github.io/master/images/classload.png">
 
 
 
@@ -361,7 +363,15 @@ Learning English
 </ol>
 <h3 id="3-Java泛型和反射"><a href="#3-Java泛型和反射" class="headerlink" title="3. Java泛型和反射"></a>3. Java泛型和反射</h3><h3 id="4-多线程，高并发。线程池技术ThreadPool"><a href="#4-多线程，高并发。线程池技术ThreadPool" class="headerlink" title="4. 多线程，高并发。线程池技术ThreadPool"></a>4. 多线程，高并发。线程池技术<code>ThreadPool</code></h3><p>进程和线程之间的区别。</p>
 <h3 id="5-IO，NIO"><a href="#5-IO，NIO" class="headerlink" title="5. IO，NIO"></a>5. IO，NIO</h3><p>文件读取<br>step1: <code>File file = new File(&quot;path&quot;);</code><br>step2: <code>InputStreamReader is = new InputStreamReader(new FileInputStream(file),&quot;UTF-8&quot;);</code><br>step3: <code>BufferedReader bs = new BufferedReader(is);</code><br>step4: <code>String line = bs.readLine();</code>  </p>
-<h3 id="6-JVM虚拟机"><a href="#6-JVM虚拟机" class="headerlink" title="6. JVM虚拟机"></a>6. JVM虚拟机</h3><h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><p><a href="https://www.zhihu.com/question/35164211" target="_blank" rel="external">垃圾回收面试技巧</a><br>内存溢出（不能被GC）：检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。<br>为什么要垃圾回收<br>回收对象：不使用的对象；超出作用域的对象/引用计数为空的对象；从gc root开始搜索，搜索不到的对象；从root搜索不到，而且经过第一次标记、清理后，仍然没有复活的对象。<br>垃圾回收时间：系统空闲的时候，系统自身决定，不可预测的时间/调用System.gc()的时候，<br>垃圾回收方式：引用计数；根搜索算法（GC Root Tracing）<br>垃圾回收算法  </p>
+<h3 id="6-JVM虚拟机"><a href="#6-JVM虚拟机" class="headerlink" title="6. JVM虚拟机"></a>6. JVM虚拟机</h3><ul>
+<li>类加载机制<br>类从被加载到JVM中开始，到卸载出内存为止，整个生命周期包括：<strong>加载</strong>、<strong>验证</strong>、<strong>准备</strong>、<strong>解析</strong>、<strong>初始化</strong>、<strong>使用</strong>和<strong>卸载</strong>，7个阶段。发生顺序如下图所示。<br><img src="https://raw.githubusercontent.com/suyuanhxx/suyuanhxx.github.io/master/images/classload.png" alt=""><br>类加载器包括：<ul>
+<li>启动类加载器，Bootstrap ClassLoad，这个类负责将存放在$JAVA_HOME\lib，或者被-Xbootclasspath参数所指定的路径中，并且是虚拟机识别的类库加载到内存中。启动类加载器无法直接被java程序直接引用，用户编写自定义加载器时，如果需要把加载请求委派给引导类加载器，那直接使用null代替即可。</li>
+<li>扩展类加载器：Extension ClassLoader，该加载器由sun.misc.Launcher$ExtClassLoader实现，它负责加载$JAVA_HOME\jre\lib\ext目录中，或者由java.ext.dirs系统变量指定的路径中的所有类库（如javax.*开头的类），开发者可以直接使用扩展类加载器。</li>
+<li>应用程序类加载器：Application ClassLoader，该类加载器由sun.misc.Launcher$AppClassLoader来实现，它负责加载用户类路径（ClassPath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><p><a href="https://www.zhihu.com/question/35164211" target="_blank" rel="external">垃圾回收面试技巧</a><br>内存溢出（不能被GC）：检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。<br>为什么要垃圾回收<br>回收对象：不使用的对象；超出作用域的对象/引用计数为空的对象；从gc root开始搜索，搜索不到的对象；从root搜索不到，而且经过第一次标记、清理后，仍然没有复活的对象。<br>垃圾回收时间：系统空闲的时候，系统自身决定，不可预测的时间/调用System.gc()的时候，<br>垃圾回收方式：引用计数；根搜索算法（GC Root Tracing）<br>垃圾回收算法  </p>
 <hr>
 <h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul>
 <li>Servlet和Servlet容器</li>
@@ -498,7 +508,7 @@ Learning English
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
