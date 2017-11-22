@@ -84,46 +84,28 @@
 
 
 
-<meta name="description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
+<meta name="description" content="solr实践Solr是一个高性能，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言。实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。
+工作方式
+文档通过Http利用XML 加到一个搜索集合中。
+查询该集合也是通过http收到一个XML/JSON响应来实现。
+它的主要特性包括：高效、灵活的缓存功能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="技术进阶">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/01/16/技术进阶/index.html">
+<meta property="og:title" content="solr实践">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/11/22/solr/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
-<meta property="og:updated_time" content="2017-03-28T06:47:43.000Z">
+<meta property="og:description" content="solr实践Solr是一个高性能，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言。实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。
+工作方式
+文档通过Http利用XML 加到一个搜索集合中。
+查询该集合也是通过http收到一个XML/JSON响应来实现。
+它的主要特性包括：高效、灵活的缓存功能">
+<meta property="og:updated_time" content="2017-11-22T14:23:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术进阶">
-<meta name="twitter:description" content="技术进阶之路  
-
-java
-mysql()
-redis
-mybatis
-RPC(hessian,grpc,thrift,protobuf)
-Spring FrameWork(Spring MVC,Spring Boot)
-Rabbitmq
-Mongodb(mongoose)
-Nodejs(express,promise,callback)">
+<meta name="twitter:title" content="solr实践">
+<meta name="twitter:description" content="solr实践Solr是一个高性能，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言。实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。
+工作方式
+文档通过Http利用XML 加到一个搜索集合中。
+查询该集合也是通过http收到一个XML/JSON响应来实现。
+它的主要特性包括：高效、灵活的缓存功能">
 
 
 
@@ -151,13 +133,13 @@ Nodejs(express,promise,callback)">
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2017/11/22/solr/"/>
 
 
 
 
 
-  <title> 技术进阶 | 长大后能够飞 </title>
+  <title> solr实践 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -280,7 +262,7 @@ Nodejs(express,promise,callback)">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/11/22/solr/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -304,7 +286,7 @@ Nodejs(express,promise,callback)">
             
             
               
-                技术进阶
+                solr实践
               
             
           </h1>
@@ -319,8 +301,8 @@ Nodejs(express,promise,callback)">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T13:20:13+08:00">
-                2017-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T22:22:28+08:00">
+                2017-11-22
               </time>
             
 
@@ -355,91 +337,24 @@ Nodejs(express,promise,callback)">
       
 
       
-        <!--
-# 目录
-1. [技术栈](#1)
-2. [并发多线程，网络IO](#2)
-2. [缓存数据库读写](#3)
-3. [系统架构](#4)
--->
-<p></p><h2 id="1">技术进阶之路</h2>  <p></p>
-<ul>
-<li>java</li>
-<li>mysql()</li>
-<li>redis</li>
-<li>mybatis</li>
-<li>RPC(hessian,grpc,thrift,protobuf)</li>
-<li>Spring FrameWork(Spring MVC,Spring Boot)</li>
-<li>Rabbitmq</li>
-<li>Mongodb(mongoose)</li>
-<li>Nodejs(express,promise,callback)<a id="more"></a>
-</li>
-</ul>
-<p></p><h2 id="2">并发多线程，网络IO</h2>     <p></p>
-<ul>
-<li>并发编程<br>  <em>场景1：</em><br>  将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象<br>  <em>场景2：</em><br>  在推送APP消息推送过程中，总是出现一条消息推送两次给用户的现象。<br>  JVM内存模型，多线程之间共享变量造成<br>  <em>场景3：</em><br>  日志打印，同一请求在多台服务器上打印日志（同一行日志）<br>  <em>场景4：</em><br>  项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁<br>  <em>场景5:</em> 100ms内响应用户请求，最高峰时候单位时间高几百万的用户请求，高并发，服务不宕机（高可用），设计方案<ol>
-<li>（应用）服务分布式部署，防止一台服务器宕机之后影响其他服务。</li>
-<li>数据库设计读写分离（分表分库），一主多重，主从同步</li>
-<li>缓存的设计，可使用分布式集群部署缓存，防止数据库雪崩</li>
-<li>接口代码中使用hystrix服务降级和过载保护<br>项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁</li>
+        <h1 id="solr实践"><a href="#solr实践" class="headerlink" title="solr实践"></a>solr实践</h1><p>Solr是一个高性能，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言。实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。</p>
+<h2 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h2><ol>
+<li>文档通过Http利用XML 加到一个搜索集合中。</li>
+<li>查询该集合也是通过http收到一个XML/JSON响应来实现。</li>
+<li>它的主要特性包括：高效、灵活的缓存功能，垂直搜索功能，高亮显示搜索结果，通过索引复制来提高可用性，</li>
+<li>提供一套强大Data Schema来定义字段，类型和设置文本分析，提供基于Web的管理界面等。</li>
 </ol>
-</li>
-<li><p>线程安全<br>  <code>synchronized</code><br>  <code>volatile</code><br>  CountDownLatch 能够统计线程正在执行个数，并且将所有计算结果返回</p>
-</li>
-<li><p>IO</p>
-<ol>
-<li>同步与异步<br>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</li>
-<li>阻塞与非阻塞<br>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.</li>
-<li>HTTP Response Entity多次读取，会抛出视图读取已经关闭的流异常<br>4.</li>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>索引，用来检索关键字</li>
+<li>分词，</li>
+<li>“定时器”，定时“全量更新”和“重建索引”，防止数据不一致，或者查询效率低。</li>
 </ol>
-</li>
-</ul>
-<p></p><h2 id="3">缓存数据库读写</h2>      <p></p>
-<ul>
-<li><p>缓存Redis   </p>
-<ol>
-<li>redis中key的前缀生成策略如下：  <ol>
-<li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span>  </span></span></li>
-<li>高级方法:<br><span>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key</span><br><code>000000</code>该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）    </li>
+<h2 id="使用步骤："><a href="#使用步骤：" class="headerlink" title="使用步骤："></a>使用步骤：</h2><ol>
+<li>solr服务器搭建搭建部署，配置</li>
+<li>将数据库中的查询内容导入到solr索引库，这里使用的是solrj的客户端实现的。</li>
+<li>建立搜索服务，供客户端调用。调用solr，查询内容，这中间有分页功能的实现等。solr高亮显示的实现。</li>
+<li>客户端接收页面的请求参数，调用搜索服务，进行搜索。</li>
 </ol>
-</li>
-<li>缓存淘汰策略：</li>
-<li>Redis发布订阅模式（pub/sub）：</li>
-<li>Redis实现Session </li>
-</ol>
-<ul>
-<li>session其实是在cookie中保存了一个sessionid，用户每次访问都将sessionid发给服务器，服务器通过ID查找用户对应的状态数据。</li>
-<li>在这里，Redis处理方式也是在cookie中定义一个sessionid，程序需要取得用户状态时将sessionid做为key在Redis中查找。</li>
-<li>同时session支持用户在一定时间不访问将session回收。借用Redis中Keys支持过期时间的特性支持这个功能<br>我们使用redis缓存用户登录信息，没有使用seesion。将用户的用户名加盐加密作为key在redis中缓存起来，并设置过期时间，同时将这个key作为sessionId写回cookies中</li>
-</ul>
-<ol>
-<li>Redis实现分布式锁setnx,hsetnx</li>
-<li>Redis事务 <code>WATCH</code>、<code>MULTI/EXEC</code>、<code>UNWATCH/DISCARD</code>，特别需要注意，分布式中不支持事务。Redis的WATCH是一种乐观锁模型。  </li>
-<li><code>Redis pipeline</code> Redis 管道技术可以在服务端未响应时，客户端可以继续向服务端发送请求，并最终一次性读取所有服务端的响应。</li>
-</ol>
-</li>
-<li><p>数据库Mysql    </p>
-<ol>
-<li>数据库读写分离<br><code>Spring AOP</code>作为切入点控制读库写库<br>使用<code>org.apache.commons.dbcp.BasicDataSource</code>数据库连接池</li>
-<li>issue -&gt; “The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server”<br>由于数据库回收了连接，而系统的缓冲池不知道，继续使用被回收的连接所致的。</li>
-</ol>
-</li>
-</ul>
-<p></p><h2 id="4">系统架构</h2>  <p></p>
-<p></p><p>分布式数据库，主从读写分离，多台redis，应用分布式部署，自动化构建，自动化检测脚本，日志搜集系统，hessian rpc，nodejs，python</p><p></p>
-<ul>
-<li>微服务架构<br>spring boot, spring cloud  </li>
-<li><p>分布式<br>nginx分布式部署方案，nginx负载均衡算法</p>
-<ol>
-<li><code>round-robin</code>，轮询（默认）</li>
-<li><code>weight</code> 轮询权值，指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</li>
-<li><code>ip_hash</code>，每个请求按访问IP的哈希结果分配，使来自同一个IP的访客固定访问一台后端服务器，并且可以有效解决动态网页存在的session共享问题。<br>4、<code>fair</code>，比 <code>weight</code>，<code>ip_hash</code>更加智能的负载均衡算法，fair算法可以根据页面大小和加载时间长短智能地进行负载均衡，也就是根据后端服务器的响应时间 来分配请求，响应时间短的优先分配。Nginx本身不支持fair，如果需要这种调度算法，则必须安装upstream_fair模块。<br>5、<code>url_hash</code>，按访问的URL的哈希结果来分配请求，使每个URL定向到一台后端服务器，可以进一步提高后端缓存服务器的效率。Nginx本身不支持url_hash，如果需要这种调度算法，则必须安装Nginx的hash软件包。</li>
-</ol>
-</li>
-<li><p>用户体系</p>
-</li>
-<li>常量结构</li>
-</ul>
 
       
     </div>
@@ -466,8 +381,8 @@ Nodejs(express,promise,callback)">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/07/SS-Command/" rel="next" title="SS Command">
-                <i class="fa fa-chevron-left"></i> SS Command
+              <a href="/2017/04/02/清明节祭文/" rel="next" title="清明节祭文">
+                <i class="fa fa-chevron-left"></i> 清明节祭文
               </a>
             
           </div>
@@ -475,10 +390,6 @@ Nodejs(express,promise,callback)">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/02/nodejs-express学习笔记/" rel="prev" title="nodejs express学习笔记">
-                nodejs express学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +498,7 @@ Nodejs(express,promise,callback)">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">技术进阶之路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">并发多线程，网络IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">缓存数据库读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">系统架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#solr实践"><span class="nav-number">1.</span> <span class="nav-text">solr实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作方式"><span class="nav-number">1.1.</span> <span class="nav-text">工作方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用步骤："><span class="nav-number">1.3.</span> <span class="nav-text">使用步骤：</span></a></li></ol></li></ol></div>
             
 
           </div>
