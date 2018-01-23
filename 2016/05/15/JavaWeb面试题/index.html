@@ -84,22 +84,17 @@
 
 
 
-<meta name="description" content="Java及Web服务器
-Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1
-int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
+<meta name="description" content="Java及Web服务器 Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1 int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaWeb面试题">
 <meta property="og:url" content="https://suyuanhxx.github.io/2016/05/15/JavaWeb面试题/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="Java及Web服务器
-Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1
-int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
+<meta property="og:description" content="Java及Web服务器 Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1 int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-03-27T01:47:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaWeb面试题">
-<meta name="twitter:description" content="Java及Web服务器
-Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1
-int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
+<meta name="twitter:description" content="Java及Web服务器 Java中数据类型的长度？可选这以下类型提问：Int 4、short 2、long 8、byte 1、float 4、double 8、char 2、boolean 1 int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类">
 
 
 
@@ -343,10 +338,10 @@ int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，
 <li>Java中finally关键字的作用是什么？<br>Finally是对Java异常处理模型的补充，不管有无异常发生，finally中的代码都会执行。<br>【追问】假设在try中的return x+y；其中x=1，y=1，如果在finally中修改了x=2，那么return返回得到的值是多少。为什么？<br>返回值为2，finally是在return后的表达式执行后执行的，先把返回值保存起来，所以无法finally中修改了什么返回值都不变。</li>
 <li>Java中的方法覆盖(Overriding)和方法重载(Overloading)是什么意思？<br>Java中的方法重载发生在同一个类里面两个或者是多个方法的方法名相同但是参数不同的情况。与此相对，方法覆盖是说子类重新定义了父类的方法。方法覆盖必须有相同的方法名，参数列表和返回类型。覆盖者可能不会限制它所覆盖的方法的访问。</li>
 <li>Java8有哪些新特性？<br>Lambda表达式、提供接口的默认方法、函数式接口、新的Date API等，只要回答出Lambda表达式可认为本题回答正确。</li>
-<li>介绍一下 Hibernate 的二级缓存<br>按照以下思路来回答：（1）首先说清楚什么是缓存。（2）再说有了 hibernate 的 Session 就是一级缓存，即有了一级缓存，为什么还要有二级缓存。（3）最后再说如何配置 Hibernate<br>（1）缓存就是把以前从数据库中查询出来和使用过的对象保存在内存中（一个数据结构中），这个数据结构通常是或类似 Hashmap，当以后要使用某个对象时，先查询缓存中是否有这个对象，如果有则使用缓存中的对象，如果没有则去查询数据库，并将查询出来的对象保存在缓存中，以便下次使用。下面是缓存的伪代码：<br>引出 hibernate 的第二级缓存，用下面的伪代码分析了 Cache 的实现原理<br>Dao<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> 		hashmap map = new map();</div><div class="line"> 		User getUser(integer id)</div><div class="line"> 		&#123;</div><div class="line"> 			User user =map.get(id)</div><div class="line"> 			if(user ==null)</div><div class="line"> 			&#123;</div><div class="line"> 				user =session.get(id);</div><div class="line"> 				map.put(id,user);</div><div class="line"> 			&#125;</div><div class="line"> 			return user;</div><div class="line"> 		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>介绍一下 Hibernate 的二级缓存<br>按照以下思路来回答：（1）首先说清楚什么是缓存。（2）再说有了 hibernate 的 Session 就是一级缓存，即有了一级缓存，为什么还要有二级缓存。（3）最后再说如何配置 Hibernate<br>（1）缓存就是把以前从数据库中查询出来和使用过的对象保存在内存中（一个数据结构中），这个数据结构通常是或类似 Hashmap，当以后要使用某个对象时，先查询缓存中是否有这个对象，如果有则使用缓存中的对象，如果没有则去查询数据库，并将查询出来的对象保存在缓存中，以便下次使用。下面是缓存的伪代码：<br>引出 hibernate 的第二级缓存，用下面的伪代码分析了 Cache 的实现原理<br>Dao<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> 		hashmap map = new map();</span><br><span class="line"> 		User getUser(integer id)</span><br><span class="line"> 		&#123;</span><br><span class="line"> 			User user =map.get(id)</span><br><span class="line"> 			if(user ==null)</span><br><span class="line"> 			&#123;</span><br><span class="line"> 				user =session.get(id);</span><br><span class="line"> 				map.put(id,user);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			return user;</span><br><span class="line"> 		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>Dao<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> 		Cache cache = null</div><div class="line"> 		setCache(Cache cache)</div><div class="line"> 		&#123;</div><div class="line"> 			this.cache =cache</div><div class="line"> 		&#125;</div><div class="line"> 		User getUser(int id)</div><div class="line"> 		&#123;</div><div class="line"> 			&#123;</div><div class="line"> 				Useruser = cache.get(id);</div><div class="line"> 				if(user==null)</div><div class="line"> 				&#123;</div><div class="line"> 					user= session.get(id);</div><div class="line"> 					cache.put(id,user);</div><div class="line"> 				&#125;</div><div class="line"> 				returnuser;</div><div class="line"> 			&#125;</div><div class="line"> 			return session.get(id);</div><div class="line"> 		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Dao<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> 		Cache cache = null</span><br><span class="line"> 		setCache(Cache cache)</span><br><span class="line"> 		&#123;</span><br><span class="line"> 			this.cache =cache</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		User getUser(int id)</span><br><span class="line"> 		&#123;</span><br><span class="line"> 			&#123;</span><br><span class="line"> 				Useruser = cache.get(id);</span><br><span class="line"> 				if(user==null)</span><br><span class="line"> 				&#123;</span><br><span class="line"> 					user= session.get(id);</span><br><span class="line"> 					cache.put(id,user);</span><br><span class="line"> 				&#125;</span><br><span class="line"> 				returnuser;</span><br><span class="line"> 			&#125;</span><br><span class="line"> 			return session.get(id);</span><br><span class="line"> 		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>（2）Hibernate 的 Session 就是一种缓存，我们通常将之称为 Hibernate 的一级缓存，当想使用 session 从数据库中查询出一个对象时，Session 也是先从自己内部查看是否存在这个对象，存在则直接返回，不存在才去访问数据库，并将查询的结果保存在自己内部。由于Session 代表一次会话过程，一个 Session 与一个数据库连接相关连，所以 Session 最好不要长时间保持打开，通常仅用于一个事务当中，在事务结束时就应关闭。并且 Session 是线程不安全的，被多个线程共享时容易出现问题。通常只有那种全局意义上的缓存才是真正的缓存应用，才有较大的缓存价值，因此，Hibernate 的 Session 这一级缓存的缓存作用并不明显，应用价值不大。Hibernate 的二级缓存就是要为 Hibernate 配置一种全局缓存，让多个线程和多个事务都可以共享这个缓存。我们希望的是一个人使用过，其他人也可以使用，session 没有这种效果。<br>（3）二级缓存是独立于 Hibernate 的软件部件，属于第三方的产品，多个厂商和组织都提供有缓存产品，例如，EHCache和OSCache等等。在 Hibernate 中使用二级缓存，首先就要在hibernate.cfg.xml 配置文件中配置使用哪个厂家的缓存产品，接着需要配置该缓存产品自己的配置文件，最后要配置 Hibernate 中的哪些实体对象要纳入到二级缓存的管理中。明白了二级缓存原理和有了这个思路后，很容易配置起 Hibernate 的二级缓存。扩展知识：一个 SessionFactory 可以关联一个二级缓存，也即一个二级缓存只能负责缓存一个数据库中的数据，当使用 Hibernate 的二级缓存后，注意不要有其他的应用或 SessionFactory来更改当前数据库中的数据，这样缓存的数据就会与数据库中的实际数据不一致。</p>
 <ol>
 <li>同步和异步有何异同，在什么情况下分别使用他们？举例说明。<br>如果数据将在线程间共享，例如正在写的数据以后可能被另一个线程读到，或者正在读的数据可能已经被另一个线程写过了，那么这些数据就是共享数据，必须进行同步存取。<br>当应用程序在对象上调用了一个需要花费很长时间来执行的方法，并且不希望让程序等待方法的返回时，就应该使用异步编程，在很多情况下采用异步途径往往更有效率。</li>
@@ -359,8 +354,8 @@ int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，
 <li>Tomcat的默认端口是多少？如何修改？<br>默认端口是8080，在tomcat目录下的conf/server.xml文件中修改端口。</li>
 <li>如何使用tomcat部署一个web工程？<br>三种方式<ol>
 <li>直接把项目复制到Tomcat安装目录的webapps目录</li>
-<li>更改$CATALINA_HOME\conf\server.xml文件，在<host>标签内添加<context>标签，内容如下：<br><context docbase="F:/PetWeb" reloadable="false" path="/Pet"><br>其中reloadable=”false”表示当应用程序中的内容发生更改之后服务器不会自动加载，这个属性在开发阶段通常都设为true，方便开发，在发布阶段应该设置为false，提高应用程序的访问速度。docBase为路径，可以使用绝对路径，也可以使用相对路径，相对路径相对于webapps。path属性的值是访问时的根地址。访问地址如下：<a href="http://localhost:8080/Pet/" target="_blank" rel="external">http://localhost:8080/Pet/</a> </context></context></host></li>
-<li>在$CATALINA_HOME\conf\Catalina\localhost中添加一个xml文件，如Pet.xml，内容如下：<br><context docbase="F:/PetWeb" reloadable="false">大家可能发现和第二种方式差不多，但是缺少了path属性，这种方式服务器会使用.xml的名字作为path属性的值。访问地址如下：<a href="http://localhost:8080/Pet/" target="_blank" rel="external">http://localhost:8080/Pet/</a> </context></li>
+<li>更改$CATALINA_HOME\conf\server.xml文件，在<host>标签内添加<context>标签，内容如下：<br><context docbase="F:/PetWeb" reloadable="false" path="/Pet"><br>其中reloadable=”false”表示当应用程序中的内容发生更改之后服务器不会自动加载，这个属性在开发阶段通常都设为true，方便开发，在发布阶段应该设置为false，提高应用程序的访问速度。docBase为路径，可以使用绝对路径，也可以使用相对路径，相对路径相对于webapps。path属性的值是访问时的根地址。访问地址如下：<a href="http://localhost:8080/Pet/" target="_blank" rel="noopener">http://localhost:8080/Pet/</a> </context></context></host></li>
+<li>在$CATALINA_HOME\conf\Catalina\localhost中添加一个xml文件，如Pet.xml，内容如下：<br><context docbase="F:/PetWeb" reloadable="false">大家可能发现和第二种方式差不多，但是缺少了path属性，这种方式服务器会使用.xml的名字作为path属性的值。访问地址如下：<a href="http://localhost:8080/Pet/" target="_blank" rel="noopener">http://localhost:8080/Pet/</a> </context></li>
 </ol>
 </li>
 <li>请简单描述一下当我们访问淘宝网时，从输入url到浏览器显示页面之间发生的操作。<ol>
@@ -404,7 +399,7 @@ int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 
 <p>前端综合篇<br>1．HTTP协议？Header、body有哪些参数？<br>HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。<br>HTTP协议的主要特点可概括如下：<br>1)    支持客户/服务器模式。<br>2)    简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。<br>3)    灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。<br>4)    无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。<br>5)    无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</p>
-<p>POST <a href="http://10.170.3.50:8080/ntraffic/user/login.do" target="_blank" rel="external">http://10.170.3.50:8080/ntraffic/user/login.do</a> HTTP/1.1<br>Host: 10.170.3.50:8080<br>Connection: keep-alive<br>Content-Length: 36<br>Accept: application/json, text/plain, <em>/</em><br> Origin: <a href="http://10.170.3.50:8080" target="_blank" rel="external">http://10.170.3.50:8080</a><br> User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36<br> Content-Type: application/json;charset=UTF-8<br> Referer: <a href="http://10.170.3.50:8080/ntraffic/ntraffic/app/index.html" target="_blank" rel="external">http://10.170.3.50:8080/ntraffic/ntraffic/app/index.html</a><br> Accept-Encoding: gzip, deflate<br> Accept-Language: zh-CN,zh;q=0.8<br> Cookie: JSESSIONID=5AF249CC9E2DCD6F685980FF2E361A94<br>2．平时上哪些技术网站？知道哪些前端大牛博客？<br>csdn oschina 慕课网 W3CSchool 菜鸟 慕课 iteye 各大框架官网…<br>大漠、阮一峰、老赵、大猫 …<br>3．用过的前端或JS框架有哪些？NodeJS、RequireJS、AngularJS、Backbone、BootStrap、Grunt、yeoman有没有了解过？<br>使用过Require Angular Backbone Bootstrap 一种或几种为佳。</p>
+<p>POST <a href="http://10.170.3.50:8080/ntraffic/user/login.do" target="_blank" rel="noopener">http://10.170.3.50:8080/ntraffic/user/login.do</a> HTTP/1.1<br>Host: 10.170.3.50:8080<br>Connection: keep-alive<br>Content-Length: 36<br>Accept: application/json, text/plain, <em>/</em><br> Origin: <a href="http://10.170.3.50:8080" target="_blank" rel="noopener">http://10.170.3.50:8080</a><br> User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36<br> Content-Type: application/json;charset=UTF-8<br> Referer: <a href="http://10.170.3.50:8080/ntraffic/ntraffic/app/index.html" target="_blank" rel="noopener">http://10.170.3.50:8080/ntraffic/ntraffic/app/index.html</a><br> Accept-Encoding: gzip, deflate<br> Accept-Language: zh-CN,zh;q=0.8<br> Cookie: JSESSIONID=5AF249CC9E2DCD6F685980FF2E361A94<br>2．平时上哪些技术网站？知道哪些前端大牛博客？<br>csdn oschina 慕课网 W3CSchool 菜鸟 慕课 iteye 各大框架官网…<br>大漠、阮一峰、老赵、大猫 …<br>3．用过的前端或JS框架有哪些？NodeJS、RequireJS、AngularJS、Backbone、BootStrap、Grunt、yeoman有没有了解过？<br>使用过Require Angular Backbone Bootstrap 一种或几种为佳。</p>
 <p>4．有没有关注过GitHub上面的开源项目？有没有在git上共享过项目？你的git账号是什么？</p>
 <p>5．浏览器兼容问题？<br>问题一：不同浏览器的标签默认的padding和margin不同<br>解决方案：CSS里    *{margin:0;padding:0;}</p>
 <p>问题二：块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大，常见症状是IE6中后面的一块被顶到下一行。<br>解决方案：在float的标签样式控制中加入 display:inline;将其转化为行内属性</p>
@@ -519,7 +514,7 @@ int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -579,7 +574,7 @@ int和Integer的区别？Java是一个近乎纯洁的面向对象编程语言，
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

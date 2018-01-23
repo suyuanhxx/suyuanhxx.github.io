@@ -1,0 +1,630 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。 为什么要有锁 阮一峰的博客中用“门上的锁”来解释代码中的锁，以及为什么需要这样一把锁。非常的形象。如果没有锁，就会造成大家都能不能进去。锁是竞争资源的关键。有了锁才能保证唯一的资源被正常合理的使用，不造">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式锁">
+<meta property="og:url" content="https://suyuanhxx.github.io/2018/01/23/分布式锁/index.html">
+<meta property="og:site_name" content="长大后能够飞">
+<meta property="og:description" content="以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。 为什么要有锁 阮一峰的博客中用“门上的锁”来解释代码中的锁，以及为什么需要这样一把锁。非常的形象。如果没有锁，就会造成大家都能不能进去。锁是竞争资源的关键。有了锁才能保证唯一的资源被正常合理的使用，不造">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-23T13:07:23.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分布式锁">
+<meta name="twitter:description" content="以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。 为什么要有锁 阮一峰的博客中用“门上的锁”来解释代码中的锁，以及为什么需要这样一把锁。非常的形象。如果没有锁，就会造成大家都能不能进去。锁是竞争资源的关键。有了锁才能保证唯一的资源被正常合理的使用，不造">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://suyuanhxx.github.io/2018/01/23/分布式锁/"/>
+
+
+
+
+
+  <title> 分布式锁 | 长大后能够飞 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">长大后能够飞</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2018/01/23/分布式锁/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                分布式锁
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-23T19:51:32+08:00">
+                2018-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。"><a href="#以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。" class="headerlink" title="以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。"></a>以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。</h2><ol>
+<li>为什么要有锁<br> 阮一峰的博客中用“门上的锁”来解释代码中的锁，以及为什么需要这样一把锁。非常的形象。如果没有锁，就会造成大家都能不能进去。锁是竞争资源的关键。有了锁才能保证唯一的资源被正常合理的使用，不造城拥挤和等待。代码中也是这样。例如多个线程同时访问某个接口（这里以生成密钥串接口<code>keyGenerateImpl</code>为例，每生成一次密钥串，上一个密钥串就失效），如果没有锁就会造成多个线程同时去访问生成密钥串接口，而这几个线程都拿着生成好的密钥去做其他操作时，发现自己的密钥失效了，这个时候才发现这<code>n</code>个线程中只有一个线程能够访问成功。这显然不是我们希望得到的结果！如果在这个获取密钥接口上加一把锁，而锁一次只能一个线程拥有，那就能解决这个问题。</li>
+<li>什么是分布式锁<br> 现在大多是项目都采用微服务的，分布式的方式部署，对单个机器上的方法接口加锁已经失去了意义！同一时间有100个请求，服务器负载均衡的方式部署，就会有50个请求落在服务器A，50个请求落在服务器B上，还是会造成各个请求同时生成不用的密钥，100个请求中还是有99个失效。这就是分布式情况下以前的代码锁（专指关键字<code>synchronized</code>,<code>Lock</code>）就没什么用了。如何解决该问题，就需要一个中心节点（暂且称作中心节点）来维护这种关系，也就是分布式锁。分布式锁能够实现多个服务器的统一，AB…两台服务器上都只有这一把锁，有这把锁来控制请求是否能够获得密钥。</li>
+<li>怎么实现分布式锁<br> 可供选择的分布式中心节点方案很多，包括<code>redis</code>，<code>zookeeper</code>，<code>mq</code>等都适合作为中心节点，即锁的存放地方。<br> 具体细节：100个请求分别落在服务器AB上，AB两台服务器这时都会访问中心节点服务器，A服务器上的某个请求获取到<code>zookeeper</code>上的瞬时节点，说明该请求<code>request1</code>去到了锁，其他99个请求等待。这里需要特别说明，虽然请求是同时发出的，但到达中心节点的时刻不同，谁先到达谁获得该瞬时节点。获得瞬时节点的<code>request1</code>拿到密钥完成业务逻辑之后释放该瞬时节点，然后剩余的99个请求再去竞争锁。<br> 代码示例如下（以<code>redis</code>作为中心节点，在<code>redis</code>中可将<code>key</code>理解为<code>zookeeper</code>瞬时节点）：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param userId</span><br><span class="line"> * @param acquireLockTimeout 获取锁超时时间 单位：s</span><br><span class="line"> * @param lockTimeout        锁过期时间 单位：s</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private String acquireLockWithTimeout(String requestId, long acquireLockTimeout, long lockTimeout) &#123;</span><br><span class="line">    String identifier = UUID.randomUUID().toString();</span><br><span class="line">    String lockName = String.format(LOCK_NAME, requestId);</span><br><span class="line">    long end = System.currentTimeMillis() + acquireLockTimeout * 1000;</span><br><span class="line">    while (System.currentTimeMillis() &lt; end) &#123;</span><br><span class="line">        if (redisTemplate.opsForValue().setIfAbsent(lockName, identifier)) &#123;</span><br><span class="line">            expire(lockName, lockTimeout, TimeUnit.SECONDS);</span><br><span class="line">            return identifier;</span><br><span class="line">        &#125;</span><br><span class="line">        if (redisTemplate.getExpire(lockName) == -1) &#123;</span><br><span class="line">            expire(lockName, lockTimeout, TimeUnit.SECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(500);</span><br><span class="line">        &#125; catch (InterruptedException ie) &#123;</span><br><span class="line">            log.error(&quot;acquireLockWithTimeout thread sleep error!&quot;, ie);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>acquireLockWithTimeout</code>该方法属于超时锁，在<code>acquireLockTimeout</code>时间段内会不断的重试获取锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param userId</span><br><span class="line"> * @param waitTime    等待时间 单位：s</span><br><span class="line"> * @param lockTimeout 锁过期时间 单位：s</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private String acquireLockAndWait(String requestId, long waitTime, long lockTimeout) &#123;</span><br><span class="line">    String identifier = UUID.randomUUID().toString();</span><br><span class="line">    String lockName = String.format(LOCK_NAME, requestId);</span><br><span class="line">    if (redisTemplate.opsForValue().setIfAbsent(lockName, identifier)) &#123;</span><br><span class="line">        expire(lockName, lockTimeout, TimeUnit.SECONDS);</span><br><span class="line">        return identifier;</span><br><span class="line">    &#125;</span><br><span class="line">    if (redisTemplate.getExpire(lockName) == -1) &#123;</span><br><span class="line">        expire(lockName, lockTimeout, TimeUnit.SECONDS);</span><br><span class="line">    &#125;</span><br><span class="line">    try &#123;</span><br><span class="line">        Thread.sleep(waitTime * 1000);</span><br><span class="line">    &#125; catch (InterruptedException ie) &#123;</span><br><span class="line">        log.error(&quot;acquireLockAndWait thread sleep error!&quot;, ie);</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>acquireLockAndWait</code>该方法属于获取锁，当获取不到锁时等待，等待期间不会去尝试获取锁。<br>一定要释放锁，设置自动过期锁或者手动释放锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 释放锁，只有锁内容符合时才会释放</span><br><span class="line">*</span><br><span class="line">* @param requestId     用户id</span><br><span class="line">* @param identifier 锁内容</span><br><span class="line">* @return</span><br><span class="line">*/</span><br><span class="line">private boolean releaseLock(String requestId, String identifier) &#123;</span><br><span class="line">   String lockName = String.format(LOCK_NAME, requestId);</span><br><span class="line">   while (true) &#123;</span><br><span class="line">       if (identifier.equals(redisTemplate.opsForValue().get(lockName))) &#123;</span><br><span class="line">           redisTemplate.delete(lockName);</span><br><span class="line">           return true;</span><br><span class="line">       &#125;</span><br><span class="line">       break;</span><br><span class="line">   &#125;</span><br><span class="line">   return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://gist.github.com/suyuanhxx/91bc5d70a025a72f3d064bcca5fd20ea" target="_blank" rel="noopener">完整代码清单</a><br><a href="https://gist.github.com/suyuanhxx/baf7f049381426dc1ff9bd7d376f9164" target="_blank" rel="noopener">测试用例</a><br>注意测试用例的编写</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/31/2017个人总结/" rel="next" title="2017年个人总结">
+                <i class="fa fa-chevron-left"></i> 2017年个人总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Huangxiaoxu" />
+          <p class="site-author-name" itemprop="name">Huangxiaoxu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。"><span class="nav-number">1.</span> <span class="nav-text">以前写过一篇关于锁和分布式相关的文章，但当时对于锁和分布式的理解都不是很透彻，只是描述了一些简单的基本现象，又或者是一些别人的理解搬过来而已。而今随着能力的加强，见识的加深，有了自己的理解和解释。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxiaoxu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

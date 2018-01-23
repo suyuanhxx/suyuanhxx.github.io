@@ -84,35 +84,18 @@
 
 
 
-<meta name="description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
-TODO List
-Learning English
-阅读spring源码
-提高Java知识（基础知识和J2EE相关）
-读书
-目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta name="description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解 TODO List Learning English 阅读spring源码 提高Java知识（基础知识和J2EE相关） 读书 目前急需提高的技术能力：DI，多线程，ORM映射框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础">
 <meta property="og:url" content="https://suyuanhxx.github.io/2016/06/21/Java基础/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
-TODO List
-Learning English
-阅读spring源码
-提高Java知识（基础知识和J2EE相关）
-读书
-目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta property="og:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解 TODO List Learning English 阅读spring源码 提高Java知识（基础知识和J2EE相关） 读书 目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/suyuanhxx/suyuanhxx.github.io/master/images/classload.png">
 <meta property="og:updated_time" content="2017-03-28T02:30:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础">
-<meta name="twitter:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解
-TODO List
-Learning English
-阅读spring源码
-提高Java知识（基础知识和J2EE相关）
-读书
-目前急需提高的技术能力：DI，多线程，ORM映射框架">
+<meta name="twitter:description" content="Java能力提升计划主要以J2EE为主线，摆脱迷茫和随波逐流这篇文章一定要好好维护，不能copy网上的内容，专表达自己的见解 TODO List Learning English 阅读spring源码 提高Java知识（基础知识和J2EE相关） 读书 目前急需提高的技术能力：DI，多线程，ORM映射框架">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/suyuanhxx/suyuanhxx.github.io/master/images/classload.png">
 
 
@@ -358,7 +341,7 @@ Learning English
 <li><code>static</code> 静态修饰关键字，可以修饰变量，程序块，类的方法；当定义一个static的变量的时候jvm会将将其分配在内存堆上，所有程序对它的引用都会指向这一个地址而不会重新分配内存；</li>
 <li><code>final</code>  只能赋值一次；修饰变量、方法及类。当定义一个final变量时，jvm会将其分配到常量池中，程序不可改变其值；当你定义一个方法时，改方法在子类中将不能被重写；当你修饰一个类时，该类不能被继承。</li>
 <li><code>transient</code> 一个对象只要实现了Serilizable接口，这个对象就可以被序列化。将不需要序列化的属性前添加关键字transient，序列化对象的时候，这个属性就不会序列化到指定的目的地中。</li>
-<li><code>volatile</code><h3 id="2-java-util相关包"><a href="#2-java-util相关包" class="headerlink" title="2. java.util相关包"></a>2. <code>java.util</code>相关包</h3> 集合框架主要包括<br><strong>Collection</strong><br>├List <em>元素有放入顺序，元素可重复</em><br>│├LinkedList <em>双向链表，使用LinkedList可以实现队列<code>Queue</code>（包括优先级队列）和栈<code>Stack</code>，删除和插入时间复杂度O(1)，查询时间复杂度O(n)</em><br>│├ArrayList <em>数组列表，使用频率最高，插入和删除时间复杂度O(n)，查询时间复杂为O(1)</em><br>│└Vector <em>线程安全，其他非线程安全</em><br>│　└Stack<br>└Set <em>元素无放入顺序，元素不可重复，元素去重时可以使用借助set集合操作完成</em><br><strong>Map</strong>  <em> 元素按键值对存储，无放入顺序 </em><br>├HashMap <em>最常使用的一种键值对映射数据结构，HashMap内部维护一个线性数组和链表，key为数组，value为链表存储，采用hash算法计算key值，故查询时间复杂度为O(1)，扩容方式要注意</em><br>hash算法实现无序存放，<br>├Hashtable <em>HashMap的线程安全模式，该数据结构已弃用，使用ConcurrentHashMap替代</em><br>├ConcurrentHashMap <em>HashMap的线程安全模式，采用分段锁的概念实现Hash线程安全，且在效率上优于‘全局锁’</em><br>集合框架中非常重要的两个工具类<code>Collections</code>和<code>Arrays</code><br><code>HashMap</code>线程不安全，主要是多线程<code>put</code>，<code>get</code>时会出现同步问题<br><code>HashMap</code>存储键值对，<code>HashSet</code>仅存储对象。<code>HashSet</code>内部数据结构使用<code>HashMap</code>存储，存储的对象为<code>key</code>,<code>PRESENT</code>为<code>value</code>。<code>HashSet</code> <code>add</code>代码如下：(<code>PRESENT</code>为一个<code>static final Object</code>对象)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean add(E e) &#123;</div><div class="line">    return map.put(e, PRESENT)==null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><code>volatile</code><h3 id="2-java-util相关包"><a href="#2-java-util相关包" class="headerlink" title="2. java.util相关包"></a>2. <code>java.util</code>相关包</h3> 集合框架主要包括<br><strong>Collection</strong><br>├List <em>元素有放入顺序，元素可重复</em><br>│├LinkedList <em>双向链表，使用LinkedList可以实现队列<code>Queue</code>（包括优先级队列）和栈<code>Stack</code>，删除和插入时间复杂度O(1)，查询时间复杂度O(n)</em><br>│├ArrayList <em>数组列表，使用频率最高，插入和删除时间复杂度O(n)，查询时间复杂为O(1)</em><br>│└Vector <em>线程安全，其他非线程安全</em><br>│　└Stack<br>└Set <em>元素无放入顺序，元素不可重复，元素去重时可以使用借助set集合操作完成</em><br><strong>Map</strong>  <em> 元素按键值对存储，无放入顺序 </em><br>├HashMap <em>最常使用的一种键值对映射数据结构，HashMap内部维护一个线性数组和链表，key为数组，value为链表存储，采用hash算法计算key值，故查询时间复杂度为O(1)，扩容方式要注意</em><br>hash算法实现无序存放，<br>├Hashtable <em>HashMap的线程安全模式，该数据结构已弃用，使用ConcurrentHashMap替代</em><br>├ConcurrentHashMap <em>HashMap的线程安全模式，采用分段锁的概念实现Hash线程安全，且在效率上优于‘全局锁’</em><br>集合框架中非常重要的两个工具类<code>Collections</code>和<code>Arrays</code><br><code>HashMap</code>线程不安全，主要是多线程<code>put</code>，<code>get</code>时会出现同步问题<br><code>HashMap</code>存储键值对，<code>HashSet</code>仅存储对象。<code>HashSet</code>内部数据结构使用<code>HashMap</code>存储，存储的对象为<code>key</code>,<code>PRESENT</code>为<code>value</code>。<code>HashSet</code> <code>add</code>代码如下：(<code>PRESENT</code>为一个<code>static final Object</code>对象)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    return map.put(e, PRESENT)==null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="3-Java泛型和反射"><a href="#3-Java泛型和反射" class="headerlink" title="3. Java泛型和反射"></a>3. Java泛型和反射</h3><h3 id="4-多线程，高并发。线程池技术ThreadPool"><a href="#4-多线程，高并发。线程池技术ThreadPool" class="headerlink" title="4. 多线程，高并发。线程池技术ThreadPool"></a>4. 多线程，高并发。线程池技术<code>ThreadPool</code></h3><p>进程和线程之间的区别。</p>
@@ -371,7 +354,7 @@ Learning English
 </ul>
 </li>
 </ul>
-<h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><p><a href="https://www.zhihu.com/question/35164211" target="_blank" rel="external">垃圾回收面试技巧</a><br>内存溢出（不能被GC）：检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。<br>为什么要垃圾回收<br>回收对象：不使用的对象；超出作用域的对象/引用计数为空的对象；从gc root开始搜索，搜索不到的对象；从root搜索不到，而且经过第一次标记、清理后，仍然没有复活的对象。<br>垃圾回收时间：系统空闲的时候，系统自身决定，不可预测的时间/调用System.gc()的时候，<br>垃圾回收方式：引用计数；根搜索算法（GC Root Tracing）<br>垃圾回收算法  </p>
+<h3 id="7-java垃圾回收机制"><a href="#7-java垃圾回收机制" class="headerlink" title="7. java垃圾回收机制"></a>7. java垃圾回收机制</h3><p><a href="https://www.zhihu.com/question/35164211" target="_blank" rel="noopener">垃圾回收面试技巧</a><br>内存溢出（不能被GC）：检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。<br>为什么要垃圾回收<br>回收对象：不使用的对象；超出作用域的对象/引用计数为空的对象；从gc root开始搜索，搜索不到的对象；从root搜索不到，而且经过第一次标记、清理后，仍然没有复活的对象。<br>垃圾回收时间：系统空闲的时候，系统自身决定，不可预测的时间/调用System.gc()的时候，<br>垃圾回收方式：引用计数；根搜索算法（GC Root Tracing）<br>垃圾回收算法  </p>
 <hr>
 <h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul>
 <li>Servlet和Servlet容器</li>
@@ -508,7 +491,7 @@ Learning English
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -547,7 +530,7 @@ Learning English
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java能力提升计划"><span class="nav-number">1.</span> <span class="nav-text">Java能力提升计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO-List"><span class="nav-number">2.</span> <span class="nav-text">TODO List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java语言基础"><span class="nav-number">2.1.</span> <span class="nav-text">Java语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java中-static-final-transient-volatile关键字的作用"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java中 static , final,transient,volatile关键字的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-java-util相关包"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. java.util相关包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java泛型和反射"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Java泛型和反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-多线程，高并发。线程池技术ThreadPool"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 多线程，高并发。线程池技术ThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-IO，NIO"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. IO，NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-JVM虚拟机"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. JVM虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-java垃圾回收机制"><span class="nav-number">2.1.7.</span> <span class="nav-text">7. java垃圾回收机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J2EE"><span class="nav-number">2.2.</span> <span class="nav-text">J2EE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构-amp-amp-数据库"><span class="nav-number">2.3.</span> <span class="nav-text">数据结构&&数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件架构"><span class="nav-number">2.4.</span> <span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统-amp-amp-网络编程"><span class="nav-number">2.5.</span> <span class="nav-text">操作系统&&网络编程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java能力提升计划"><span class="nav-number">1.</span> <span class="nav-text">Java能力提升计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO-List"><span class="nav-number">2.</span> <span class="nav-text">TODO List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java语言基础"><span class="nav-number">2.1.</span> <span class="nav-text">Java语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java中-static-final-transient-volatile关键字的作用"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java中 static , final,transient,volatile关键字的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-java-util相关包"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. java.util相关包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java泛型和反射"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Java泛型和反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-多线程，高并发。线程池技术ThreadPool"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 多线程，高并发。线程池技术ThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-IO，NIO"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. IO，NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-JVM虚拟机"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. JVM虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-java垃圾回收机制"><span class="nav-number">2.1.7.</span> <span class="nav-text">7. java垃圾回收机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J2EE"><span class="nav-number">2.2.</span> <span class="nav-text">J2EE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构-amp-amp-数据库"><span class="nav-number">2.3.</span> <span class="nav-text">数据结构&amp;&amp;数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件架构"><span class="nav-number">2.4.</span> <span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统-amp-amp-网络编程"><span class="nav-number">2.5.</span> <span class="nav-text">操作系统&amp;&amp;网络编程</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -568,7 +551,7 @@ Learning English
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
