@@ -84,22 +84,17 @@
 
 
 
-<meta name="description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
-Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
-MySql：MySQL的主从库设计也是基于日志。从库只需">
+<meta name="description" content="上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致">
 <meta property="og:type" content="article">
-<meta property="og:title" content="长大后能够飞">
-<meta property="og:url" content="https://suyuanhxx.github.io/2017/03/06/分布式/index.html">
+<meta property="og:title" content="微服务发版总结">
+<meta property="og:url" content="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/index.html">
 <meta property="og:site_name" content="长大后能够飞">
-<meta property="og:description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
-Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
-MySql：MySQL的主从库设计也是基于日志。从库只需">
-<meta property="og:updated_time" content="2017-03-09T09:08:24.136Z">
+<meta property="og:description" content="上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-03T06:18:46.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="长大后能够飞">
-<meta name="twitter:description" content="分布式中心化中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。
-Zookeeper：用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。
-MySql：MySQL的主从库设计也是基于日志。从库只需">
+<meta name="twitter:title" content="微服务发版总结">
+<meta name="twitter:description" content="上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致">
 
 
 
@@ -127,13 +122,13 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
 
 
 
-  <link rel="canonical" href="https://suyuanhxx.github.io/2017/03/06/分布式/"/>
+  <link rel="canonical" href="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/"/>
 
 
 
 
 
-  <title>  | 长大后能够飞 </title>
+  <title> 微服务发版总结 | 长大后能够飞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -256,7 +251,7 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/03/06/分布式/">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huangxiaoxu">
@@ -280,7 +275,7 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
             
             
               
-                
+                微服务发版总结
               
             
           </h1>
@@ -295,8 +290,8 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T09:26:08+08:00">
-                2017-03-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T13:48:18+08:00">
+                2018-02-03
               </time>
             
 
@@ -331,11 +326,53 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
       
 
       
-        <h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>中心化<br>中心化副本控制协议的基本思路是由一个中心节点协调副本数据的更新、维护副本之间的一致性。<br>去中心化副本控制协议没有中心节点，协议中所有的节点都是完全对等的，节点之间通过平等协商达到一致。</p>
-<p>Zookeeper：<br>用Paxos协议选择Leader，用Lease协议控制数据是否有效。用Quorum协议把Leader的数据同步到follow。</p>
-<p>MySql：<br>MySQL的主从库设计也是基于日志。从库只需通过回放主库的日志，就可以实现与主库的同步。由于从库同步的速度与主库更新的速度没有强约束，这种方式只能实现最终一致性。<br>读写分离，主从同步<br><a id="more"></a><br>两阶段提交：<br>两阶段提交的思路比较简单，在第一阶段，协调者询问所有的参与者是否可以提交事务（请参与者投票），所有参与者向协调者投票。在第二阶段，协调者根据所有参与者的投票结果做出是否事务可以全局提交的决定，并通知所有的参与者执行该决定。在一个两阶段提交流程中，参与者不能改变自己的投票结果。两阶段提交协议的可以全局提交的前提是所有的参与者都同意提交事务，只要有一个参与者投票选择放弃(abort)事务，则事务必须被放弃。可以这么认为，两阶段提交协议对于这种超时的相关异常也没有很好的容错机制，整个流程只能阻塞在这里，且对于参与者而言流程状态处于未知，参与者即不能提交本地节点上的事务，也不能放弃本地节点事务。<br>    8． 第一、两阶段提交协议的容错能力较差。<br>    9．第二、两阶段提交协议的性能较差。一次成功的两阶段提交协议流程中，协调者与每个参与者之间至少需要两轮交互4个消息“prepare”、“vote-commit”、“global-commit”、“确认global-commit”。过多的交互次数会降低性能。另一方面，协调者需要等待所有的参与者的投票结果，一旦存在较慢的参与者，会影响全局流程执行速度。</p>
-<p>单机上的事务：<br>事务靠日志技术或MVCC等技术实现。<br>MVCC即多个不同版本的数据实现并发控制的技术，其基本思想是为每次事务生成一个新版本的数据，在读数据时选择不同版本的数据即可以实现对事务结果的完整性读取。在使用MVCC时，每个事务都是基于一个已生效的基础版本进行更新，事务可以并行进行。其思想是根据版本号，在多个节点取同一个版本号的数据。￼</p>
-<p>负载均衡算法：<br>常见负载均衡算法举例，轮询法、随机法、源地址哈希法、加权轮询法、加权随机法、最小连接达。大部分算法为了服务器上线、下线或宕机带来的并发问题，都会将服务调用地址缓存在线程本地变量中；<br>    •    轮询法：将服务调用地址缓存在线程本地变量中，通过同步顺序调用，保证请求转移的绝对均衡。缺点是缓存变量不能很好的更新下线的机器列表，并且悲观锁导致性能和吞吐量下降；<br>    •    随机法：将服务调用地址缓存在线程本地变量中，利用随机函数，随机选择一台服务器进行访问。比如random.nextInt(serverSize);<br>    •    源地址哈希法：利用客户端访问的IP地址，通过哈希函数计算得到一个数值，并对服务器列表大小取模运算，得到需要访问的索引；特点是每个IP访问的服务器地址将是固定的，所以可以建立有状态的session会话；<br>    •    加权轮询法：<br>给性能优良、配置好的服务器设置更大的权重值，根据权重大小，把服务器地址重复地添加到线程本地服务器地址中，权重越大，每次轮询获得的请求次数就越多；<br>    •    加权随机法：<br>与加权轮询法类似，不同的是，它按照权重来随机选取服务，而非顺序；<br>    •    最小连接数：<br>根据后台服务器的连接情况，动态的选择其中当前积压连接数最少的服务器来处理当前请求；<br>    •    一致性哈希：先构造一个长度为232的整数环（这个环被称为一致性Hash环），根据节点名称的Hash值（其分布为[0, 232-1]）将服务器节点放置在这个Hash环上，然后根据数据的Key值计算得到其Hash值（其分布也为[0, 232-1]），接着在Hash环上顺时针查找距离这个Key值的Hash值最近的服务器节点，完成Key到服务器的映射查找。<br>        虚拟节点：将一个物理节点拆分为多个虚拟节点，并且同一个物理节点的虚拟节点尽量均匀分布在Hash环上。采取这样的方式，就可以有效地解决增加或减少节点时候的负载不均衡的问题。</p>
+        <p>上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。</p>
+<h2 id="基金基础服务发版过于频繁的总结"><a href="#基金基础服务发版过于频繁的总结" class="headerlink" title="基金基础服务发版过于频繁的总结"></a>基金基础服务发版过于频繁的总结</h2><h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><ol>
+<li>思考问题不全面<ul>
+<li>在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致上线之后需要修复该功能。</li>
+<li>测试环境只包含线上很少的基金数据，导致自测和测试都无法发现场景分支。</li>
+<li>业务能力不够。对基金业务仍不是非常了解，往往容易出现业务场景思考不足，导致代码容易出bug。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>测试覆盖不全面<ul>
+<li>自测不到位。测试用例编写不够，很多时候只编写了少部分测试用例，只通过主功能，未考虑边界条件，同时未写测试用例分支也为考虑。</li>
+<li>测试人员测试粒度不够。有时代码优化功能，或者以前已经测试过通过的功能，做出优化重构之后未提交给测试，导致测试粒度不够，上线之后才发现bug。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>“环境问题”<br>测试数据与生产环境有一定差距。目前由于一些原因（恒生数据配置原因）导致测试环境数据和生产环境数据还是有很大的差距，会导致“环境问题”（测试环境无bug，生产上有bug，反之）。例如，代销基金列表，测试环境只有80只基金左右，而线上有将近2300只基金。而根据我经验，有时每只基金都可能会出现一种完全不同的情况，所以有时测试也很难测全面。  </li>
+</ol>
+<hr>
+<ol>
+<li>兼容性问题（设计缺陷）<ul>
+<li>由于飞鱼项目在app项目进度不一致，有时容易出现最开始设计的功能已经不再适用app的需求，而在上线之前未评估到这一情况，就会导致在上线之后才发现问题。同时前面设计的功能开发人员认为修修改改就能适用app（或者飞鱼），但实际情况可能不理想。</li>
+<li>由于OMS功能比较落后，而我们几个产品有时意见也很难统一，各自都有自己的特色。导致我们的设计很难顾全所有的产品。例如精选基金，app要求即按月份又要同时满足不同客户端的定制需求。而在前期的设计中没考虑不同客户端的问题，故在后期维护中难度较大。容易产生bug，不过后面经过协调产品达成一致。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>代码缺陷<ul>
+<li>空指针问题。编写代码时非常容易出现的一个问题，代码判断不全面导致</li>
+<li>超时问题。接口比较慢导致超时，而未做任何处理，这一般是开发人员无法意料到的问题。恒生接口和巨灵数据库sql查询等容易出现超时。</li>
+<li>异常补偿机制。开发人员很多时候对可能出现bug的代码未做异常处理，而有些则是只是做了简单的try catch，没有异常补偿，只能保证前端接口的正常访问，却不能修复数据。例如组合收益率走势图bug等。</li>
+<li>数据源问题。数据源的切换没有做更加详细的测试，对源数据未加工，导致界面显示错误。例如货币基金7日年化异常，持仓收益率未计算等bug。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结（改进）"><a href="#总结（改进）" class="headerlink" title="总结（改进）"></a>总结（改进）</h3><ol>
+<li>加强单元测试，自测。养成编写单元测试的习惯，不仅如此，还要养成对同一个场景编写尽可能全的单元测试用例，各个分支条件要覆盖到，还要对考虑边界条件测试用例的编写。多线程场景条件写的测试用例等。养成自测习惯。再小的功能点都需要编写测试用例。<strong>提高对测试用力的重视</strong>。</li>
+<li><strong>提高自身意识，需提高对代码上线的严肃态度</strong>。目前由于上线流程简单，而微服务往往上线牵涉面比较广，而我们目前用户较少，上线发生的服务中断等用户反馈较少，导致开发人员普遍没有高可用意识，上线比较随意。同时测试或者其他人员催促较急，代码未经过完整的测试就上线，这不利于培养上线严肃的态度。但这需要把控个度。<em>培养以用户为中心的思维习惯，能够提高开发人员对代码上线造成的服务不可用带来的思考。</em></li>
+<li>加强业务知识，业务理解。</li>
+<li>做好沟通交流。对优化的代码，功能点要及时发聩给测试人员回归测试。开发人员之间也要多保持交流，可以<strong>交换大家对业务的理解。也可提高编码能力。</strong></li>
+<li>加强自身编码能力。对于边界条件的思考和复杂场景的处理，要做到尽善尽美。</li>
+<li>代码审查。<strong>定期代码审查或者代码（技术）分享</strong>能够提高大家能力，减少bug。分享不一定是开会，好的代码或者好的idea都可以分享。</li>
+</ol>
 
       
     </div>
@@ -362,8 +399,8 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/nodejs-express学习笔记/" rel="next" title="nodejs express学习笔记">
-                <i class="fa fa-chevron-left"></i> nodejs express学习笔记
+              <a href="/2018/01/23/分布式锁/" rel="next" title="分布式锁">
+                <i class="fa fa-chevron-left"></i> 分布式锁
               </a>
             
           </div>
@@ -371,10 +408,6 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/09/《大型分布式网站架构设计与实践》阅读心得/" rel="prev" title="《大型分布式网站架构设计与实践》阅读心得">
-                《大型分布式网站架构设计与实践》阅读心得 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -444,7 +477,7 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -483,7 +516,7 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式"><span class="nav-number">1.</span> <span class="nav-text">分布式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基金基础服务发版过于频繁的总结"><span class="nav-number">1.</span> <span class="nav-text">基金基础服务发版过于频繁的总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因分析"><span class="nav-number">1.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结（改进）"><span class="nav-number">1.2.</span> <span class="nav-text">总结（改进）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -504,7 +537,7 @@ MySql：MySQL的主从库设计也是基于日志。从库只需">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

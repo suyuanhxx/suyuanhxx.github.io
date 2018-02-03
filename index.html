@@ -249,6 +249,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huangxiaoxu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长大后能够飞">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/03/微服务发版总结/" itemprop="url">
+                  微服务发版总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T13:48:18+08:00">
+                2018-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。</p>
+<h2 id="基金基础服务发版过于频繁的总结"><a href="#基金基础服务发版过于频繁的总结" class="headerlink" title="基金基础服务发版过于频繁的总结"></a>基金基础服务发版过于频繁的总结</h2><h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><ol>
+<li>思考问题不全面<ul>
+<li>在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致上线之后需要修复该功能。</li>
+<li>测试环境只包含线上很少的基金数据，导致自测和测试都无法发现场景分支。</li>
+<li>业务能力不够。对基金业务仍不是非常了解，往往容易出现业务场景思考不足，导致代码容易出bug。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>测试覆盖不全面<ul>
+<li>自测不到位。测试用例编写不够，很多时候只编写了少部分测试用例，只通过主功能，未考虑边界条件，同时未写测试用例分支也为考虑。</li>
+<li>测试人员测试粒度不够。有时代码优化功能，或者以前已经测试过通过的功能，做出优化重构之后未提交给测试，导致测试粒度不够，上线之后才发现bug。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>“环境问题”<br>测试数据与生产环境有一定差距。目前由于一些原因（恒生数据配置原因）导致测试环境数据和生产环境数据还是有很大的差距，会导致“环境问题”（测试环境无bug，生产上有bug，反之）。例如，代销基金列表，测试环境只有80只基金左右，而线上有将近2300只基金。而根据我经验，有时每只基金都可能会出现一种完全不同的情况，所以有时测试也很难测全面。  </li>
+</ol>
+<hr>
+<ol>
+<li>兼容性问题（设计缺陷）<ul>
+<li>由于飞鱼项目在app项目进度不一致，有时容易出现最开始设计的功能已经不再适用app的需求，而在上线之前未评估到这一情况，就会导致在上线之后才发现问题。同时前面设计的功能开发人员认为修修改改就能适用app（或者飞鱼），但实际情况可能不理想。</li>
+<li>由于OMS功能比较落后，而我们几个产品有时意见也很难统一，各自都有自己的特色。导致我们的设计很难顾全所有的产品。例如精选基金，app要求即按月份又要同时满足不同客户端的定制需求。而在前期的设计中没考虑不同客户端的问题，故在后期维护中难度较大。容易产生bug，不过后面经过协调产品达成一致。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>代码缺陷<ul>
+<li>空指针问题。编写代码时非常容易出现的一个问题，代码判断不全面导致</li>
+<li>超时问题。接口比较慢导致超时，而未做任何处理，这一般是开发人员无法意料到的问题。恒生接口和巨灵数据库sql查询等容易出现超时。</li>
+<li>异常补偿机制。开发人员很多时候对可能出现bug的代码未做异常处理，而有些则是只是做了简单的try catch，没有异常补偿，只能保证前端接口的正常访问，却不能修复数据。例如组合收益率走势图bug等。</li>
+<li>数据源问题。数据源的切换没有做更加详细的测试，对源数据未加工，导致界面显示错误。例如货币基金7日年化异常，持仓收益率未计算等bug。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结（改进）"><a href="#总结（改进）" class="headerlink" title="总结（改进）"></a>总结（改进）</h3><ol>
+<li>加强单元测试，自测。养成编写单元测试的习惯，不仅如此，还要养成对同一个场景编写尽可能全的单元测试用例，各个分支条件要覆盖到，还要对考虑边界条件测试用例的编写。多线程场景条件写的测试用例等。养成自测习惯。再小的功能点都需要编写测试用例。<strong>提高对测试用力的重视</strong>。</li>
+<li><strong>提高自身意识，需提高对代码上线的严肃态度</strong>。目前由于上线流程简单，而微服务往往上线牵涉面比较广，而我们目前用户较少，上线发生的服务中断等用户反馈较少，导致开发人员普遍没有高可用意识，上线比较随意。同时测试或者其他人员催促较急，代码未经过完整的测试就上线，这不利于培养上线严肃的态度。但这需要把控个度。<em>培养以用户为中心的思维习惯，能够提高开发人员对代码上线造成的服务不可用带来的思考。</em></li>
+<li>加强业务知识，业务理解。</li>
+<li>做好沟通交流。对优化的代码，功能点要及时发聩给测试人员回归测试。开发人员之间也要多保持交流，可以<strong>交换大家对业务的理解。也可提高编码能力。</strong></li>
+<li>加强自身编码能力。对于边界条件的思考和复杂场景的处理，要做到尽善尽美。</li>
+<li>代码审查。<strong>定期代码审查或者代码（技术）分享</strong>能够提高大家能力，减少bug。分享不一定是开会，好的代码或者好的idea都可以分享。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2018/01/23/分布式锁/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1427,134 +1592,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/07/SS-Command/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huangxiaoxu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="长大后能够飞">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="长大后能够飞" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/07/SS-Command/" itemprop="url">
-                  SS Command
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T16:32:19+08:00">
-                2017-01-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h2><ul>
-<li><code>yum install -y git</code></li>
-<li><code>yum install -y vim</code></li>
-<li><code>wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</code> </li>
-<li><code>chmod +x bbr.sh</code> </li>
-<li><code>./bbr.sh</code>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/07/SS-Command/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1602,7 +1639,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
