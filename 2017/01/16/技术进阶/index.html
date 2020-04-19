@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"suyuanhxx.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="技术进阶之路    java mysql() redis mybatis RPC(hessian,grpc,thrift,protobuf) Spring FrameWork(Spring MVC,Spring Boot) Rabbitmq Mongodb(mongoose) Nodejs(express,promise,callback)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术进阶">
+<meta property="og:url" content="https://suyuanhxx.github.io/2017/01/16/技术进阶/index.html">
+<meta property="og:site_name" content="长大后能够飞">
+<meta property="og:description" content="技术进阶之路    java mysql() redis mybatis RPC(hessian,grpc,thrift,protobuf) Spring FrameWork(Spring MVC,Spring Boot) Rabbitmq Mongodb(mongoose) Nodejs(express,promise,callback)">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-18T02:23:17.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术进阶">
+<meta name="twitter:description" content="技术进阶之路    java mysql() redis mybatis RPC(hessian,grpc,thrift,protobuf) Spring FrameWork(Spring MVC,Spring Boot) Rabbitmq Mongodb(mongoose) Nodejs(express,promise,callback)">
+
+<link rel="canonical" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>技术进阶 | 长大后能够飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">长大后能够飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2017/01/16/技术进阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Huangxiaoxu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长大后能够飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          技术进阶
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-01-16 13:20:13" itemprop="dateCreated datePublished" datetime="2017-01-16T13:20:13+08:00">2017-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-18 10:23:17" itemprop="dateModified" datetime="2020-04-18T10:23:17+08:00">2020-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <!--
+# 目录
+1. [技术栈](#1)
+2. [并发多线程，网络IO](#2)
+2. [缓存数据库读写](#3)
+3. [系统架构](#4)
+-->
+<p></p><h2 id="1">技术进阶之路</h2>  <p></p>
+<ul>
+<li>java</li>
+<li>mysql()</li>
+<li>redis</li>
+<li>mybatis</li>
+<li>RPC(hessian,grpc,thrift,protobuf)</li>
+<li>Spring FrameWork(Spring MVC,Spring Boot)</li>
+<li>Rabbitmq</li>
+<li>Mongodb(mongoose)</li>
+<li>Nodejs(express,promise,callback)<a id="more"></a>
+</li>
+</ul>
+<p></p><h2 id="2">并发多线程，网络IO</h2>     <p></p>
+<ul>
+<li>并发编程<br>  <em>场景1：</em><br>  将用户交易记录转化成用户积分，计算时需要防止并发出现积分计算错误现象<br>  <em>场景2：</em><br>  在推送APP消息推送过程中，总是出现一条消息推送两次给用户的现象。<br>  JVM内存模型，多线程之间共享变量造成<br>  <em>场景3：</em><br>  日志打印，同一请求在多台服务器上打印日志（同一行日志）<br>  <em>场景4：</em><br>  项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁<br>  <em>场景5:</em> 100ms内响应用户请求，最高峰时候单位时间高几百万的用户请求，高并发，服务不宕机（高可用），设计方案<ol>
+<li>（应用）服务分布式部署，防止一台服务器宕机之后影响其他服务。</li>
+<li>数据库设计读写分离（分表分库），一主多重，主从同步</li>
+<li>缓存的设计，可使用分布式集群部署缓存，防止数据库雪崩</li>
+<li>接口代码中使用hystrix服务降级和过载保护<br>项目中使用Spring AOP事务不合理，redis缓存也被事务包裹，登录时造成死锁</li>
+</ol>
+</li>
+<li><p>线程安全<br>  <code>synchronized</code><br>  <code>volatile</code><br>  CountDownLatch 能够统计线程正在执行个数，并且将所有计算结果返回</p>
+</li>
+<li><p>IO</p>
+<ol>
+<li>同步与异步<br>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</li>
+<li>阻塞与非阻塞<br>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.</li>
+<li>HTTP Response Entity多次读取，会抛出视图读取已经关闭的流异常<br>4.</li>
+</ol>
+</li>
+</ul>
+<p></p><h2 id="3">缓存数据库读写</h2>      <p></p>
+<ul>
+<li><p>缓存Redis   </p>
+<ol>
+<li>redis中key的前缀生成策略如下：  <ol>
+<li>基础方法：<br><span>以项目+模块的方式进行分开。项目采用项目名称缩写，模块采用模块的缩写。举例：sdk行为的 SDK为项目缩写，ACTION为模块缩写，中间采用下划线 “_” 分割。则前缀key为 “SDK _ACTION” 。<span>  </span></span></li>
+<li>高级方法:<br><span>对项目进行编码，采用16进展数。比如使用三位，对模块进行编码，比如使用三位。举例：sdk行为的，SDK编码：000，行为模块编码000，则前缀key为000000<br>以基础方法命名key</span><br><code>000000</code>该编码，短小，唯一。能减少内存。只要维护好字典表，就能够快速的查询到对应的项目。为最优的解决办法。（仅供参考）    </li>
+</ol>
+</li>
+<li>缓存淘汰策略：</li>
+<li>Redis发布订阅模式（pub/sub）：</li>
+<li>Redis实现Session </li>
+</ol>
+<ul>
+<li>session其实是在cookie中保存了一个sessionid，用户每次访问都将sessionid发给服务器，服务器通过ID查找用户对应的状态数据。</li>
+<li>在这里，Redis处理方式也是在cookie中定义一个sessionid，程序需要取得用户状态时将sessionid做为key在Redis中查找。</li>
+<li>同时session支持用户在一定时间不访问将session回收。借用Redis中Keys支持过期时间的特性支持这个功能<br>我们使用redis缓存用户登录信息，没有使用seesion。将用户的用户名加盐加密作为key在redis中缓存起来，并设置过期时间，同时将这个key作为sessionId写回cookies中</li>
+</ul>
+<ol start="5">
+<li>Redis实现分布式锁setnx,hsetnx</li>
+<li>Redis事务 <code>WATCH</code>、<code>MULTI/EXEC</code>、<code>UNWATCH/DISCARD</code>，特别需要注意，分布式中不支持事务。Redis的WATCH是一种乐观锁模型。  </li>
+<li><code>Redis pipeline</code> Redis 管道技术可以在服务端未响应时，客户端可以继续向服务端发送请求，并最终一次性读取所有服务端的响应。</li>
+</ol>
+</li>
+<li><p>数据库Mysql    </p>
+<ol>
+<li>数据库读写分离<br><code>Spring AOP</code>作为切入点控制读库写库<br>使用<code>org.apache.commons.dbcp.BasicDataSource</code>数据库连接池</li>
+<li>issue -&gt; “The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server”<br>由于数据库回收了连接，而系统的缓冲池不知道，继续使用被回收的连接所致的。</li>
+</ol>
+</li>
+</ul>
+<p></p><h2 id="4">系统架构</h2>  <p></p>
+<p></p><p>分布式数据库，主从读写分离，多台redis，应用分布式部署，自动化构建，自动化检测脚本，日志搜集系统，hessian rpc，nodejs，python</p><p></p>
+<ul>
+<li>微服务架构<br>spring boot, spring cloud  </li>
+<li><p>分布式<br>nginx分布式部署方案，nginx负载均衡算法</p>
+<ol>
+<li><code>round-robin</code>，轮询（默认）</li>
+<li><code>weight</code> 轮询权值，指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</li>
+<li><code>ip_hash</code>，每个请求按访问IP的哈希结果分配，使来自同一个IP的访客固定访问一台后端服务器，并且可以有效解决动态网页存在的session共享问题。<br>4、<code>fair</code>，比 <code>weight</code>，<code>ip_hash</code>更加智能的负载均衡算法，fair算法可以根据页面大小和加载时间长短智能地进行负载均衡，也就是根据后端服务器的响应时间 来分配请求，响应时间短的优先分配。Nginx本身不支持fair，如果需要这种调度算法，则必须安装upstream_fair模块。<br>5、<code>url_hash</code>，按访问的URL的哈希结果来分配请求，使每个URL定向到一台后端服务器，可以进一步提高后端缓存服务器的效率。Nginx本身不支持url_hash，如果需要这种调度算法，则必须安装Nginx的hash软件包。</li>
+</ol>
+</li>
+<li><p>用户体系</p>
+</li>
+<li>常量结构</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/01/07/SS-Command/" rel="prev" title="SS Command">
+      <i class="fa fa-chevron-left"></i> SS Command
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/03/02/nodejs-express学习笔记/" rel="next" title="nodejs express学习笔记">
+      nodejs express学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">技术进阶之路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">并发多线程，网络IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">缓存数据库读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">系统架构</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Huangxiaoxu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxiaoxu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

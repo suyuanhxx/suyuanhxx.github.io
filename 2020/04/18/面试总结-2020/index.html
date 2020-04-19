@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"suyuanhxx.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="高级开发进阶Java基础 Java泛型 代理 反射 JVM类加载机制 类加载过程：加载，链接（验证，准备，解析），初始化。 加载方式：双亲委派模型 JVM 加载 Class 文件的原理机制，显示加载（New），隐式加载（反射）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级开发进阶">
+<meta property="og:url" content="https://suyuanhxx.github.io/2020/04/18/面试总结-2020/index.html">
+<meta property="og:site_name" content="长大后能够飞">
+<meta property="og:description" content="高级开发进阶Java基础 Java泛型 代理 反射 JVM类加载机制 类加载过程：加载，链接（验证，准备，解析），初始化。 加载方式：双亲委派模型 JVM 加载 Class 文件的原理机制，显示加载（New），隐式加载（反射）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-19T02:40:22.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级开发进阶">
+<meta name="twitter:description" content="高级开发进阶Java基础 Java泛型 代理 反射 JVM类加载机制 类加载过程：加载，链接（验证，准备，解析），初始化。 加载方式：双亲委派模型 JVM 加载 Class 文件的原理机制，显示加载（New），隐式加载（反射）">
+
+<link rel="canonical" href="https://suyuanhxx.github.io/2020/04/18/面试总结-2020/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>高级开发进阶 | 长大后能够飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">长大后能够飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2020/04/18/面试总结-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Huangxiaoxu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长大后能够飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高级开发进阶
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-18 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-18T00:00:00+08:00">2020-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-19 10:40:22" itemprop="dateModified" datetime="2020-04-19T10:40:22+08:00">2020-04-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="高级开发进阶"><a href="#高级开发进阶" class="headerlink" title="高级开发进阶"></a>高级开发进阶</h1><h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><ul>
+<li>Java泛型</li>
+<li>代理</li>
+<li>反射</li>
+<li>JVM类加载机制<ul>
+<li>类加载过程：加载，链接（验证，准备，解析），初始化。</li>
+<li>加载方式：双亲委派模型</li>
+<li>JVM 加载 Class 文件的原理机制，显示加载（New），隐式加载（反射）<a id="more"></a></li>
+</ul>
+</li>
+<li><code>HashMap</code>，实现方式，resize过程</li>
+<li><code>ConcurrentHashMap</code> CAS，volatile sizeCtl</li>
+<li>java8 新特性，<code>Stream</code>流，java9 新特性</li>
+<li>组赛队列实现，<code>ReentrantLock</code></li>
+<li><code>TCP</code>协议，三次握手，四次挥手过程</li>
+<li><code>HTTP</code>协议，超文本传输协议<ul>
+<li>200 Ok</li>
+<li>400 Bad Request 客户端语法错误</li>
+<li>401 Unauthorized 未授权</li>
+<li>403 Forbidden 禁止访问</li>
+<li>404 Not Found 资源未找到</li>
+<li>500 Internal Server Error  服务器错误</li>
+<li>503 Server Unavailable 服务不可用</li>
+</ul>
+</li>
+<li><code>IO</code>流<ul>
+<li>select  io</li>
+<li>epoll工作原理</li>
+</ul>
+</li>
+</ul>
+<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><ul>
+<li>JVM内存模型，堆，本地方法栈，JVM虚拟机栈，程序计算器，本地方法区</li>
+<li>垃圾回收算法，引用计数，可达性分析，标记清除，复制算法，标记整理</li>
+<li>JVM垃圾回收过程，分代回收原则，Young，Old；<ul>
+<li>Young区又分为Eden区和survivor，survivor又分为survivor0，survivor1；Young区采用复制算法回收</li>
+<li>回收过程中先将eden区存活对象复制到一个survivor0区，然后清空eden区</li>
+<li>当survivor0区也存放满了时，则将eden区和survivor0区存活对象复制到另一个survivor1区，然后清空eden和这个survivor0区</li>
+<li>此时survivor0区是空的，然后将survivor0区和survivor1区交换，即保持survivor1区为空</li>
+<li>survivor1内存不够时，直接将对象放入老年代</li>
+<li>老年代主要采用复制整理算法回收</li>
+<li>持久代（Permanent Generation）为方法区回收</li>
+<li><code>CMS</code>工作原理</li>
+</ul>
+</li>
+<li>默认垃圾回收器<code>ParNew</code>,<code>CMS</code> <code>G1</code></li>
+<li>JVM调优命令及工具<ul>
+<li><code>jps</code>查看hotspot虚拟机进程</li>
+<li><code>jstat</code>虚拟机运行状态</li>
+<li><code>jmap</code>用于生成heap dump文件</li>
+<li><code>jstack</code>生成java虚拟机当前时刻的线程快照</li>
+<li><code>jinfo</code>实时查看和调整虚拟机运行参数</li>
+<li>JDK自带 <code>jconsole , jvisualvm</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="多线程，并发"><a href="#多线程，并发" class="headerlink" title="多线程，并发"></a>多线程，并发</h3><ul>
+<li><code>Synchronized</code> 原理，锁，锁原理，重入锁<ul>
+<li>原理，markword对象标记，monitor监控标记</li>
+<li>锁升级过程</li>
+<li>无状态锁</li>
+<li>偏向锁，markword，cas实现</li>
+<li>轻量级锁，自旋锁</li>
+<li>重量级锁，</li>
+</ul>
+</li>
+<li><code>ReentrantLock</code> 原理</li>
+<li><code>ThreadLocal</code>原理</li>
+<li>java  <code>JUC</code></li>
+<li>java线程模型</li>
+<li>线程生命周期，New，Runnable，Running，Blocked，Dead</li>
+<li>AQS原理<ul>
+<li>维护一个共享资源state，通过内置的FIFO来完成获取资源线程的排队工作</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="spring容器"><a href="#spring容器" class="headerlink" title="spring容器"></a>spring容器</h3><ul>
+<li><code>Spring</code>    <code>IoC</code>     <code>DI</code></li>
+<li><code>Spring AOP</code><ul>
+<li>代理实现</li>
+<li>JDK proxy 实现接口采用该代理</li>
+<li>CGLIB 未实现接口采用</li>
+</ul>
+</li>
+<li><code>Spring boot</code>启动</li>
+<li><code>Spring bean</code>生命周期，实例化，属性赋值，初始化，销毁</li>
+<li><code>Spring</code>事务传播级别</li>
+<li>Spring BeanFactory</li>
+<li>Spring FactoryBean</li>
+</ul>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><ul>
+<li><code>Redis</code>数据结构，String，Hash, List, Set，Sorted Set</li>
+<li><code>Redis</code> skiplist实现（sorted set底层实现）</li>
+<li><code>Redis</code>为什么快，内存数据库，epoll多路复用</li>
+<li><code>Redis</code>集群，<code>Redis Cluster</code>通信协议<ul>
+<li>Redis集群架构原理</li>
+</ul>
+</li>
+<li><code>Kafka</code>架构原理，消费模型，消息丢失，消息重复消费<ul>
+<li>kafka架构原理，broker宕掉之后集群</li>
+<li>消息重复消费，关闭自动offset</li>
+<li>消息丢失</li>
+</ul>
+</li>
+<li><code>kafka</code>和<code>RabbitMq</code>区别<ul>
+<li>MQ采用的是push模式，kafka采用的是pull模式</li>
+<li>kafka采用zookeeper负载均衡，MQ需要担loadbalance</li>
+<li>comsumer group</li>
+</ul>
+</li>
+<li><code>Zookeeper</code>节点类型，zk选举，zk zab协议，zk分布式事务<ul>
+<li>节点类型，持久化节点，持久化有序节点，瞬时节点，瞬时有序节点</li>
+<li>zab协议</li>
+<li>zk集群选举算法，投票算法</li>
+<li>zk集群数量为单数</li>
+</ul>
+</li>
+<li><code>Mysql</code>事务隔离级别，ACID</li>
+<li><code>Mysql</code>索引，B树，B+树区别<ul>
+<li>Mysql索引为什么采用B+树而不是红黑树</li>
+<li>Mysql索引存储方式，磁盘存储</li>
+<li>mysql读写锁</li>
+<li>mysql索引检索过程</li>
+</ul>
+</li>
+<li><code>Mysql</code>组合索引，聚簇索引，非聚簇索引，主键索引</li>
+<li><code>Mybatis</code>缓存，两级缓存，一级<code>sqlsession</code>缓存，二级mapper缓存</li>
+</ul>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><ul>
+<li>分布式事务实现（TCC，RocketMQ）<ul>
+<li>TCC</li>
+<li>基于消息队列的分布式一致性</li>
+<li>两阶段提交协议</li>
+<li>三阶段提交协议</li>
+</ul>
+</li>
+<li>分布式锁实现（Redis ，zk）</li>
+<li>幂等</li>
+<li><code>Hash</code>一致性</li>
+</ul>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
+<li>代理模式 ，适配器模式，装饰着模式，三者区别</li>
+<li><code>Spring</code>中使用到的设计模式</li>
+<li><code>AOP</code>涉及到的设计模式</li>
+</ul>
+<h3 id="操作系统-amp-磁盘"><a href="#操作系统-amp-磁盘" class="headerlink" title="操作系统&amp;磁盘"></a>操作系统&amp;磁盘</h3><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><ul>
+<li><code>Dubbo</code>架构设计，dubbo十层架构<ul>
+<li>Service层，服务提供方和消费方对应的接口和实现</li>
+<li>Config层</li>
+<li>Proxy层</li>
+<li>Registry</li>
+<li>Cluster</li>
+<li>Monitor</li>
+<li>Protocol，远程调用，封装rpc调用</li>
+<li>Exchange</li>
+<li>Transport</li>
+<li>Serialize</li>
+</ul>
+</li>
+<li><code>Spring cloud</code>和<code>Dubbo</code>差异对比</li>
+<li>服务降级</li>
+<li>缓存穿透，缓存雪崩</li>
+<li>服务结构设计原则<ul>
+<li>单一原则</li>
+<li>解偶原则</li>
+</ul>
+</li>
+<li>内存实现生产者消费者模式</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
+<li>有序链表合并</li>
+<li>链表反转</li>
+<li>二叉树中序遍历</li>
+<li>环形链表，判断方法<ul>
+<li>两指针，快慢指针</li>
+</ul>
+</li>
+<li>最长不重复子串<ul>
+<li>滑动窗口，双指针滑动</li>
+</ul>
+</li>
+</ul>
+<h3 id="新型技术"><a href="#新型技术" class="headerlink" title="新型技术"></a>新型技术</h3><ul>
+<li>docker容器</li>
+<li>Kubernates</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>源码阅读情况</li>
+<li>未来规划，独立owner的技术和业务</li>
+<li>和产品的难点是沟通，达成共识</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/04/23/Java程序员学习Go指南/" rel="prev" title="Java程序员学习Go指南">
+      <i class="fa fa-chevron-left"></i> Java程序员学习Go指南
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#高级开发进阶"><span class="nav-number">1.</span> <span class="nav-text">高级开发进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java基础"><span class="nav-number">1.0.1.</span> <span class="nav-text">Java基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM"><span class="nav-number">1.0.2.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程，并发"><span class="nav-number">1.0.3.</span> <span class="nav-text">多线程，并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring容器"><span class="nav-number">1.0.4.</span> <span class="nav-text">spring容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件"><span class="nav-number">1.0.5.</span> <span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式"><span class="nav-number">1.0.6.</span> <span class="nav-text">分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计模式"><span class="nav-number">1.0.7.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统-amp-磁盘"><span class="nav-number">1.0.8.</span> <span class="nav-text">操作系统&amp;磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构"><span class="nav-number">1.0.9.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法"><span class="nav-number">1.0.10.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新型技术"><span class="nav-number">1.0.11.</span> <span class="nav-text">新型技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.0.12.</span> <span class="nav-text">概念</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Huangxiaoxu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxiaoxu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

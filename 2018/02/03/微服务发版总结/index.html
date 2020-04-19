@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"suyuanhxx.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="2018-02-03 上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基金基础服务发版过于频繁的总结">
+<meta property="og:url" content="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/index.html">
+<meta property="og:site_name" content="长大后能够飞">
+<meta property="og:description" content="2018-02-03 上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-19T02:39:13.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基金基础服务发版过于频繁的总结">
+<meta name="twitter:description" content="2018-02-03 上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。 基金基础服务发版过于频繁的总结原因分析 思考问题不全面 在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交">
+
+<link rel="canonical" href="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>基金基础服务发版过于频繁的总结 | 长大后能够飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">长大后能够飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://suyuanhxx.github.io/2018/02/03/微服务发版总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Huangxiaoxu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长大后能够飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基金基础服务发版过于频繁的总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-03T00:00:00+08:00">2018-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-19 10:39:13" itemprop="dateModified" datetime="2020-04-19T10:39:13+08:00">2020-04-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2018-02-03 上周四版本上线，我的服务有几次重复发版，负责人让我总结下原因，感觉一阵蛋疼。</p>
+<h2 id="基金基础服务发版过于频繁的总结"><a href="#基金基础服务发版过于频繁的总结" class="headerlink" title="基金基础服务发版过于频繁的总结"></a>基金基础服务发版过于频繁的总结</h2><h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><ol>
+<li>思考问题不全面<ul>
+<li>在编写代码过程中，开发人员想到的场景可能不全。往往都会出现某些条件没有考虑的清形。例如：在飞鱼3.7.1基金终止上市该功能开发中，我只考虑到基金终止和正常上市的情况。而在上线之后，测试人员发现将“转型”过的基金（该基金由终止状态转换为正常上市交易）也设置为终止。导致上线之后需要修复该功能。</li>
+<li>测试环境只包含线上很少的基金数据，导致自测和测试都无法发现场景分支。</li>
+<li>业务能力不够。对基金业务仍不是非常了解，往往容易出现业务场景思考不足，导致代码容易出bug。<a id="more"></a></li>
+</ul>
+</li>
+<li>测试覆盖不全面<ul>
+<li>自测不到位。测试用例编写不够，很多时候只编写了少部分测试用例，只通过主功能，未考虑边界条件，同时未写测试用例分支也为考虑。</li>
+<li>测试人员测试粒度不够。有时代码优化功能，或者以前已经测试过通过的功能，做出优化重构之后未提交给测试，导致测试粒度不够，上线之后才发现bug。</li>
+</ul>
+</li>
+<li>“环境问题”<ul>
+<li>测试数据与生产环境有一定差距。目前由于一些原因（恒生数据配置原因）导致测试环境数据和生产环境数据还是有很大的差距，会导致“环境问题”（测试环境无bug，生产上有bug，反之）。例如，代销基金列表，测试环境只有80只基金左右，而线上有将近2300只基金。而根据我经验，有时每只基金都可能会出现一种完全不同的情况，所以有时测试也很难测全面。</li>
+</ul>
+</li>
+<li>兼容性问题（设计缺陷）<ul>
+<li>由于飞鱼项目在app项目进度不一致，有时容易出现最开始设计的功能已经不再适用app的需求，而在上线之前未评估到这一情况，就会导致在上线之后才发现问题。同时前面设计的功能开发人员认为修修改改就能适用app（或者飞鱼），但实际情况可能不理想。</li>
+<li>由于OMS功能比较落后，而我们几个产品有时意见也很难统一，各自都有自己的特色。导致我们的设计很难顾全所有的产品。例如精选基金，app要求即按月份又要同时满足不同客户端的定制需求。而在前期的设计中没考虑不同客户端的问题，故在后期维护中难度较大。容易产生bug，不过后面经过协调产品达成一致。</li>
+</ul>
+</li>
+<li>代码缺陷<ul>
+<li>空指针问题。编写代码时非常容易出现的一个问题，代码判断不全面导致</li>
+<li>超时问题。接口比较慢导致超时，而未做任何处理，这一般是开发人员无法意料到的问题。恒生接口和巨灵数据库sql查询等容易出现超时。</li>
+<li>异常补偿机制。开发人员很多时候对可能出现bug的代码未做异常处理，而有些则是只是做了简单的try catch，没有异常补偿，只能保证前端接口的正常访问，却不能修复数据。例如组合收益率走势图bug等。</li>
+<li>数据源问题。数据源的切换没有做更加详细的测试，对源数据未加工，导致界面显示错误。例如货币基金7日年化异常，持仓收益率未计算等bug。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结（改进）"><a href="#总结（改进）" class="headerlink" title="总结（改进）"></a>总结（改进）</h3><ol>
+<li>加强单元测试，自测。养成编写单元测试的习惯，不仅如此，还要养成对同一个场景编写尽可能全的单元测试用例，各个分支条件要覆盖到，还要对考虑边界条件测试用例的编写。多线程场景条件写的测试用例等。养成自测习惯。再小的功能点都需要编写测试用例。提高对测试用力的重视。</li>
+<li>提高自身意识，需提高对代码上线的严肃态度。目前由于上线流程简单，而微服务往往上线牵涉面比较广，而我们目前用户较少，上线发生的服务中断等用户反馈较少，导致开发人员普遍没有高可用意识，上线比较随意。同时测试或者其他人员催促较急，代码未经过完整的测试就上线，这不利于培养上线严肃的态度。但这需要把控个度。培养以用户为中心的思维习惯，能够提高开发人员对代码上线造成的服务不可用带来的思考。</li>
+<li>加强业务知识，业务理解。</li>
+<li>做好沟通交流。对优化的代码，功能点要及时发聩给测试人员回归测试。开发人员之间也要多保持交流，可以交换大家对业务的理解。也可提高编码能力。</li>
+<li>加强自身编码能力。对于边界条件的思考和复杂场景的处理，要做到尽善尽美。</li>
+<li>代码审查。定期代码审查或者代码（技术）分享能够提高大家能力，减少bug。分享不一定是开会，好的代码或者好的idea都可以分享。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/12/31/2017年个人总结/" rel="prev" title="2017年个人总结">
+      <i class="fa fa-chevron-left"></i> 2017年个人总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/04/23/Java程序员学习Go指南/" rel="next" title="Java程序员学习Go指南">
+      Java程序员学习Go指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基金基础服务发版过于频繁的总结"><span class="nav-number">1.</span> <span class="nav-text">基金基础服务发版过于频繁的总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因分析"><span class="nav-number">1.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结（改进）"><span class="nav-number">1.2.</span> <span class="nav-text">总结（改进）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Huangxiaoxu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxiaoxu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
